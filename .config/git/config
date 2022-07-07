@@ -1,0 +1,7 @@
+[pull]
+	rebase = false
+[user]
+	name = imjah
+	email = imjah@tuta.io
+[init]
+	defaultBranch = main
