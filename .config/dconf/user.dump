@@ -6,7 +6,7 @@ height=1002
 width=1920
 
 [ca/desrt/dconf-editor]
-saved-pathbar-path='/org/gnome/control-center/'
+saved-pathbar-path='/'
 saved-view='/'
 window-height=500
 window-is-maximized=true
@@ -15,6 +15,11 @@ window-width=540
 [com/solus-project/budgie-panel]
 migration-level=1
 panels=['54df6390-4635-11ec-9da9-18c04d09967c']
+
+[com/solus-project/budgie-panel/applets/{09fcada4-f726-11ec-8e69-a44e31b3eea8}]
+alignment='end'
+name='BrightnessController'
+position=2
 
 [com/solus-project/budgie-panel/applets/{593efd42-4635-11ec-9da9-18c04d09967c}]
 alignment='start'
@@ -70,7 +75,7 @@ spacing=6
 spacing=6
 
 [com/solus-project/budgie-panel/panels/{54df6390-4635-11ec-9da9-18c04d09967c}]
-applets=['e2989252-9111-11ec-a863-18c04d09967c', '593efd42-4635-11ec-9da9-18c04d09967c', '771bfedc-4635-11ec-9da9-18c04d09967c', '7fe0c2c8-4635-11ec-9da9-18c04d09967c', '5e14347c-4635-11ec-9da9-18c04d09967c']
+applets=['e2989252-9111-11ec-a863-18c04d09967c', '593efd42-4635-11ec-9da9-18c04d09967c', '771bfedc-4635-11ec-9da9-18c04d09967c', '7fe0c2c8-4635-11ec-9da9-18c04d09967c', '5e14347c-4635-11ec-9da9-18c04d09967c', '09fcada4-f726-11ec-8e69-a44e31b3eea8']
 autohide='automatic'
 enable-shadow=false
 location='top'
@@ -97,18 +102,18 @@ last-checked=int64 1648922983
 settings-migrated=true
 
 [io/github/gnome-mpv/window-state]
-height=844
+height=722
 playlist-width=250
 show-controls=true
 show-playlist=false
 volume=1.0
-width=1440
+width=1366
 
 [org/buddiesofbudgie/budgie-desktop-view]
 show=false
 
 [org/buddiesofbudgie/control-center]
-last-panel='usage'
+last-panel='keyboard'
 
 [org/gnome/Disks]
 image-dir-uri='file:///home/rafal/documents'
@@ -134,7 +139,7 @@ source-currency=''
 source-units='degree'
 target-currency=''
 target-units='radian'
-window-position=(701, 509)
+window-position=(13, 62)
 word-size=64
 
 [org/gnome/calendar]
@@ -168,7 +173,13 @@ icon-theme='Papirus'
 monospace-font-name='Hack 9'
 toolkit-accessibility=false
 
+[org/gnome/desktop/peripherals/mouse]
+left-handed=false
+
 [org/gnome/desktop/peripherals/touchpad]
+edge-scrolling-enabled=false
+natural-scroll=true
+speed=-0.014285714285714235
 two-finger-scrolling-enabled=true
 
 [org/gnome/desktop/privacy]
@@ -261,7 +272,7 @@ maximized=false
 network-total-in-bits=false
 show-dependencies=false
 show-whose-processes='user'
-window-state=(803, 496, 1117, 34)
+window-state=(803, 496, 0, 0)
 
 [org/gnome/gnome-system-monitor/disktreenew]
 col-6-visible=true
@@ -314,6 +325,10 @@ ignore-phase2-ca-cert=false
 ignore-ca-cert=true
 ignore-phase2-ca-cert=false
 
+[org/gnome/nm-applet/eap/98b1bf8e-e59d-443e-86de-05e7ec591af1]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
 [org/gnome/nm-applet/eap/e0448bf2-abea-40cb-9302-a93db983edd1]
 ignore-ca-cert=false
 ignore-phase2-ca-cert=false
@@ -323,9 +338,8 @@ ignore-ca-cert=true
 ignore-phase2-ca-cert=false
 
 [org/gnome/settings-daemon/plugins/media-keys]
-custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/']
-home=['<Super>e']
-www=['<Super>f']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/']
+www=@as []
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
 binding='<Super>Delete'
@@ -348,9 +362,24 @@ command='gnome-terminal --maximize'
 name='Terminal'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4]
-binding='<Super>backslash'
+binding='<Super>e'
 command='gnome-terminal --maximize -- neovim'
 name=' Editor'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5]
+binding='<Super>m'
+command='gnome-terminal --maximize -- ncspot'
+name='Player'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6]
+binding='<Super>b'
+command='firefox'
+name='Browser'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7]
+binding='<Super>f'
+command='nautilus'
+name='File manager'
 
 [org/gnome/settings-daemon/plugins/power]
 idle-dim=true
@@ -371,22 +400,9 @@ save-directory='file:///home/rafal/documents/'
 scrollbar-policy='never'
 visible-name='Default'
 
-[org/gtk/gtk4/settings/file-chooser]
-date-format='regular'
-location-mode='path-bar'
-show-hidden=false
-show-size-column=true
-show-type-column=true
-sidebar-width=149
-sort-column='name'
-sort-directories-first=false
-sort-order='ascending'
-type-format='category'
-window-size=(880, 446)
-
 [org/gtk/settings/color-chooser]
-custom-colors=[(0.019607843137254902, 0.31372549019607843, 0.6588235294117647, 1.0), (0.0, 0.019607843137254902, 0.90588235294117647, 1.0), (0.99607843137254903, 0.29411764705882354, 0.090196078431372548, 1.0), (0.61176470588235299, 0.9882352941176471, 0.53333333333333333, 1.0)]
-selected-color=(true, 1.0, 1.0, 1.0, 1.0)
+custom-colors=[(0.10588235294117647, 0.40392156862745099, 0.031372549019607843, 1.0), (0.019607843137254902, 0.31372549019607843, 0.6588235294117647, 1.0), (0.0, 0.019607843137254902, 0.90588235294117647, 1.0), (0.99607843137254903, 0.29411764705882354, 0.090196078431372548, 1.0), (0.61176470588235299, 0.9882352941176471, 0.53333333333333333, 1.0)]
+selected-color=(true, 0.10588235294117647, 0.40392156862745099, 0.031372549019607843, 1.0)
 
 [org/gtk/settings/file-chooser]
 date-format='regular'
@@ -399,7 +415,7 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(451, 175)
+window-position=(174, 19)
 window-size=(1018, 685)
 
 [org/onboard]
