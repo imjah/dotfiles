@@ -1,25 +1,21 @@
-[apps/seahorse/listing]
-sidebar-width=170
-
-[apps/seahorse/windows/key-manager]
-height=1002
-width=1920
-
 [ca/desrt/dconf-editor]
-saved-pathbar-path='/'
+saved-pathbar-path='/x/dm/slick-greeter/'
 saved-view='/'
+show-warning=false
 window-height=500
 window-is-maximized=true
 window-width=540
 
 [com/solus-project/budgie-panel]
+builtin-theme=false
+confirm-remove-applet=false
 migration-level=1
 panels=['54df6390-4635-11ec-9da9-18c04d09967c']
 
-[com/solus-project/budgie-panel/applets/{09fcada4-f726-11ec-8e69-a44e31b3eea8}]
-alignment='end'
-name='BrightnessController'
-position=2
+[com/solus-project/budgie-panel/applets/{5017223c-0ded-11ed-a83c-a44e31b3eea8}]
+alignment='start'
+name='Icon Task List'
+position=1
 
 [com/solus-project/budgie-panel/applets/{593efd42-4635-11ec-9da9-18c04d09967c}]
 alignment='start'
@@ -27,9 +23,9 @@ name='Budgie Menu'
 position=0
 
 [com/solus-project/budgie-panel/applets/{5e14347c-4635-11ec-9da9-18c04d09967c}]
-alignment='center'
+alignment='end'
 name='Clock'
-position=0
+position=2
 
 [com/solus-project/budgie-panel/applets/{6144a7ba-9970-11ec-b04d-a44e31b3eea8}]
 alignment='start'
@@ -51,21 +47,18 @@ alignment='end'
 name='System Tray'
 position=0
 
-[com/solus-project/budgie-panel/applets/{e2989252-9111-11ec-a863-18c04d09967c}]
-alignment='start'
-name='Icon Task List'
-position=1
-
 [com/solus-project/budgie-panel/instance/budgie-menu/{593efd42-4635-11ec-9da9-18c04d09967c}]
 menu-compact=true
 
 [com/solus-project/budgie-panel/instance/budgie-menu/{6144a7ba-9970-11ec-b04d-a44e31b3eea8}]
 menu-compact=true
 
-[com/solus-project/budgie-panel/instance/icon-tasklist/{70009e58-9970-11ec-b04d-a44e31b3eea8}]
+[com/solus-project/budgie-panel/instance/icon-tasklist/{5017223c-0ded-11ed-a83c-a44e31b3eea8}]
+lock-icons=true
 pinned-launchers=@as []
+restrict-to-workspace=true
 
-[com/solus-project/budgie-panel/instance/icon-tasklist/{e2989252-9111-11ec-a863-18c04d09967c}]
+[com/solus-project/budgie-panel/instance/icon-tasklist/{70009e58-9970-11ec-b04d-a44e31b3eea8}]
 pinned-launchers=@as []
 
 [com/solus-project/budgie-panel/instance/status/{771bfedc-4635-11ec-9da9-18c04d09967c}]
@@ -75,34 +68,34 @@ spacing=6
 spacing=6
 
 [com/solus-project/budgie-panel/panels/{54df6390-4635-11ec-9da9-18c04d09967c}]
-applets=['e2989252-9111-11ec-a863-18c04d09967c', '593efd42-4635-11ec-9da9-18c04d09967c', '771bfedc-4635-11ec-9da9-18c04d09967c', '7fe0c2c8-4635-11ec-9da9-18c04d09967c', '5e14347c-4635-11ec-9da9-18c04d09967c', '09fcada4-f726-11ec-8e69-a44e31b3eea8']
-autohide='automatic'
-enable-shadow=false
-location='top'
-size=37
-theme-regions=true
-transparency='dynamic'
+applets=['5e14347c-4635-11ec-9da9-18c04d09967c', '593efd42-4635-11ec-9da9-18c04d09967c', '5017223c-0ded-11ed-a83c-a44e31b3eea8', '7fe0c2c8-4635-11ec-9da9-18c04d09967c', '771bfedc-4635-11ec-9da9-18c04d09967c']
+autohide='none'
+enable-shadow=true
+location='bottom'
+size=39
+theme-regions=false
+transparency='none'
 
 [com/solus-project/budgie-raven]
+enable-week-numbers=false
+raven-position='BUDGIE_RAVEN_POSITION_RIGHT'
 show-mic-input-widget=false
-show-mpris-widget=false
+show-mpris-widget=true
 show-power-strip=true
-show-sound-output-widget=false
+show-sound-output-widget=true
 
 [com/solus-project/budgie-wm]
+attach-modal-dialogs=false
 button-layout='appmenu:minimize,maximize,close'
 caffeine-mode=false
 caffeine-mode-timer=0
 center-windows=false
 
-[com/solus-project/software-center]
-last-checked=int64 1648922983
-
 [io/github/gnome-mpv]
 settings-migrated=true
 
 [io/github/gnome-mpv/window-state]
-height=722
+height=683
 playlist-width=250
 show-controls=true
 show-playlist=false
@@ -112,51 +105,12 @@ width=1366
 [org/buddiesofbudgie/budgie-desktop-view]
 show=false
 
-[org/buddiesofbudgie/control-center]
-last-panel='keyboard'
-
-[org/gnome/Disks]
-image-dir-uri='file:///home/rafal/documents'
-
-[org/gnome/baobab/ui]
-window-size=(960, 600)
-window-state=43908
-
-[org/gnome/boxes]
-first-run=false
-view='icon-view'
-window-maximized=true
-
-[org/gnome/calculator]
-accuracy=9
-angle-units='degrees'
-base=10
-button-mode='basic'
-number-format='automatic'
-show-thousands=false
-show-zeroes=false
-source-currency=''
-source-units='degree'
-target-currency=''
-target-units='radian'
-window-position=(13, 62)
-word-size=64
-
-[org/gnome/calendar]
-active-view='month'
-window-maximized=true
-window-position=(0, 0)
-window-size=(1366, 731)
-
 [org/gnome/control-center]
 last-panel='sound'
 
 [org/gnome/desktop/background]
 picture-options='spanned'
 picture-uri='file:///home/rafal/.local/share/backgrounds/escape-velocity.png'
-
-[org/gnome/desktop/calendar]
-show-weekdate=false
 
 [org/gnome/desktop/input-sources]
 current=uint32 0
@@ -172,9 +126,6 @@ gtk-theme='Plata-Noir'
 icon-theme='Papirus'
 monospace-font-name='Hack 9'
 toolkit-accessibility=false
-
-[org/gnome/desktop/peripherals/mouse]
-left-handed=false
 
 [org/gnome/desktop/peripherals/touchpad]
 edge-scrolling-enabled=false
@@ -199,10 +150,10 @@ idle-delay=uint32 300
 allow-volume-above-100-percent=false
 
 [org/gnome/desktop/wm/keybindings]
-move-to-workspace-1=['<Primary><Super>1']
-move-to-workspace-2=['<Primary><Super>2']
-move-to-workspace-3=['<Primary><Super>3']
-move-to-workspace-4=['<Primary><Super>4']
+move-to-workspace-1=['<Shift><Super>exclam']
+move-to-workspace-2=['<Shift><Super>at']
+move-to-workspace-3=['<Shift><Super>numbersign']
+move-to-workspace-4=['<Shift><Super>dollar']
 switch-to-workspace-1=['<Super>1']
 switch-to-workspace-2=['<Super>2']
 switch-to-workspace-3=['<Super>3']
@@ -214,16 +165,6 @@ auto-raise-delay=250
 button-layout='appmenu:minimize,maximize,close'
 focus-mode='click'
 titlebar-font='Noto Sans 11'
-
-[org/gnome/eog/ui]
-sidebar=true
-
-[org/gnome/eog/view]
-background-color='rgb(0,0,0)'
-use-background-color=true
-
-[org/gnome/evince/default]
-window-ratio=(1.1472821339783648, 0.87419232231090849)
 
 [org/gnome/evolution-data-server]
 migrated=true
@@ -240,24 +181,6 @@ sort-type='ascending'
 sidebar-width=200
 window-height=480
 window-width=600
-
-[org/gnome/gedit/plugins]
-active-plugins=['modelines', 'openlinks', 'sort', 'docinfo', 'filebrowser', 'spell']
-
-[org/gnome/gedit/plugins/filebrowser]
-root='file:///'
-tree-view=true
-virtual-root='file:///mnt/files/documents/notes'
-
-[org/gnome/gedit/preferences/ui]
-show-tabs-mode='auto'
-
-[org/gnome/gedit/state/window]
-bottom-panel-size=140
-side-panel-active-page='GeditWindowDocumentsPanel'
-side-panel-size=200
-size=(683, 685)
-state=76672
 
 [org/gnome/gnome-screenshot]
 border-effect='none'
@@ -279,7 +202,7 @@ col-6-visible=true
 col-6-width=0
 
 [org/gnome/mutter]
-attach-modal-dialogs=true
+attach-modal-dialogs=false
 center-new-windows=false
 edge-tiling=true
 
@@ -293,49 +216,9 @@ search-filter-time-type='last_modified'
 search-view='list-view'
 
 [org/gnome/nautilus/window-state]
-initial-size=(953, 550)
+initial-size=(830, 515)
 maximized=true
 sidebar-width=149
-
-[org/gnome/nm-applet/eap/0d32a8c5-3861-40d4-98d6-2a1330eade25]
-ignore-ca-cert=false
-ignore-phase2-ca-cert=false
-
-[org/gnome/nm-applet/eap/3df2f31c-0926-4519-b79d-ef090771bb79]
-ignore-ca-cert=false
-ignore-phase2-ca-cert=false
-
-[org/gnome/nm-applet/eap/60c9e2cb-183d-47ce-b6d8-c1a179d4a1b0]
-ignore-ca-cert=true
-ignore-phase2-ca-cert=false
-
-[org/gnome/nm-applet/eap/6590ada1-5e70-4d7e-b548-77b7084f0835]
-ignore-ca-cert=false
-ignore-phase2-ca-cert=false
-
-[org/gnome/nm-applet/eap/65ca5e96-44e5-4d6e-99e9-9cbd6c1d159c]
-ignore-ca-cert=true
-ignore-phase2-ca-cert=false
-
-[org/gnome/nm-applet/eap/6c47cfae-cafc-4fe0-b923-7536c41bf89f]
-ignore-ca-cert=false
-ignore-phase2-ca-cert=false
-
-[org/gnome/nm-applet/eap/7fdf6fa3-6f1b-4910-9c52-f83c26a93a1c]
-ignore-ca-cert=true
-ignore-phase2-ca-cert=false
-
-[org/gnome/nm-applet/eap/98b1bf8e-e59d-443e-86de-05e7ec591af1]
-ignore-ca-cert=false
-ignore-phase2-ca-cert=false
-
-[org/gnome/nm-applet/eap/e0448bf2-abea-40cb-9302-a93db983edd1]
-ignore-ca-cert=false
-ignore-phase2-ca-cert=false
-
-[org/gnome/nm-applet/eap/e4f9eea3-292e-4871-b068-adc803dd91f5]
-ignore-ca-cert=true
-ignore-phase2-ca-cert=false
 
 [org/gnome/settings-daemon/plugins/media-keys]
 custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/']
@@ -392,36 +275,9 @@ sleep-inactive-battery-type='suspend'
 [org/gnome/settings-daemon/plugins/xsettings]
 overrides={'Gtk/ShellShowsAppMenu': <0>, 'Gtk/DecorationLayout': <'menu:minimize,maximize,close'>}
 
-[org/gnome/simple-scan]
-document-type='text'
-save-directory='file:///home/rafal/documents/'
-
 [org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
 scrollbar-policy='never'
 visible-name='Default'
 
-[org/gtk/settings/color-chooser]
-custom-colors=[(0.10588235294117647, 0.40392156862745099, 0.031372549019607843, 1.0), (0.019607843137254902, 0.31372549019607843, 0.6588235294117647, 1.0), (0.0, 0.019607843137254902, 0.90588235294117647, 1.0), (0.99607843137254903, 0.29411764705882354, 0.090196078431372548, 1.0), (0.61176470588235299, 0.9882352941176471, 0.53333333333333333, 1.0)]
-selected-color=(true, 0.10588235294117647, 0.40392156862745099, 0.031372549019607843, 1.0)
-
 [org/gtk/settings/file-chooser]
-date-format='regular'
-location-mode='path-bar'
-show-hidden=true
-show-size-column=true
-show-type-column=true
-sidebar-width=149
-sort-column='name'
-sort-directories-first=true
-sort-order='ascending'
-type-format='category'
-window-position=(174, 19)
-window-size=(1018, 685)
-
-[org/onboard]
-schema-version='2.3'
-system-theme-associations={'HighContrast': 'HighContrast', 'HighContrastInverse': 'HighContrastInverse', 'LowContrast': 'LowContrast', 'ContrastHighInverse': 'HighContrastInverse', 'Default': ''}
-use-system-defaults=false
-
-[us/getsol/budgie-desktop-view]
-show=false
+show-hidden=false
