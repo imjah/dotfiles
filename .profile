@@ -11,6 +11,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 # Dotfiles path overwrite
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export GOPATH="$XDG_DATA_HOME/go"
 export HISTFILE="$XDG_DATA_HOME/bash/history"
 export LESSHISTFILE="$XDG_DATA_HOME/less/history"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
