@@ -1,4 +1,5 @@
 [Default Applications]
+application/pdf=firefox.desktop;
 image/bmp=org.gnome.eog.desktop
 image/gif=org.gnome.eog.desktop
 image/jpeg=org.gnome.eog.desktop
@@ -23,12 +24,3 @@ image/x-portable-pixmap=org.gnome.eog.desktop
 image/x-xbitmap=org.gnome.eog.desktop
 image/x-xpixmap=org.gnome.eog.desktop
 text/plain=nvim.desktop
-x-scheme-handler/eclipse+command x-scheme-handler/eclipse+mpc=_app_eclipse_.desktop
-
-[Added Associations]
-application/pdf=firefox.desktop;
-text/x-java=nvim.desktop;
-text/plain=org.gnome.GHex.desktop;nvim.desktop;
-application/octet-stream=org.gnome.GHex.desktop;
-image/png=gimp.desktop;
-application/epub+zip=nvim.desktop;
