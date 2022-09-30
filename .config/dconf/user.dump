@@ -1,5 +1,5 @@
 [ca/desrt/dconf-editor]
-saved-pathbar-path='/x/dm/slick-greeter/'
+saved-pathbar-path='/org/gnome/desktop/interface/toolkit-accessibility'
 saved-view='/'
 show-warning=false
 window-height=500
@@ -9,8 +9,14 @@ window-width=540
 [com/solus-project/budgie-panel]
 builtin-theme=false
 confirm-remove-applet=false
+dark-theme=true
 migration-level=1
 panels=['54df6390-4635-11ec-9da9-18c04d09967c']
+
+[com/solus-project/budgie-panel/applets/{0a0ce76c-407f-11ed-9884-a44e31b3eea8}]
+alignment='end'
+name='Caffeine'
+position=2
 
 [com/solus-project/budgie-panel/applets/{5017223c-0ded-11ed-a83c-a44e31b3eea8}]
 alignment='start'
@@ -25,7 +31,7 @@ position=0
 [com/solus-project/budgie-panel/applets/{5e14347c-4635-11ec-9da9-18c04d09967c}]
 alignment='end'
 name='Clock'
-position=2
+position=3
 
 [com/solus-project/budgie-panel/applets/{6144a7ba-9970-11ec-b04d-a44e31b3eea8}]
 alignment='start'
@@ -68,12 +74,12 @@ spacing=6
 spacing=6
 
 [com/solus-project/budgie-panel/panels/{54df6390-4635-11ec-9da9-18c04d09967c}]
-applets=['5e14347c-4635-11ec-9da9-18c04d09967c', '593efd42-4635-11ec-9da9-18c04d09967c', '5017223c-0ded-11ed-a83c-a44e31b3eea8', '7fe0c2c8-4635-11ec-9da9-18c04d09967c', '771bfedc-4635-11ec-9da9-18c04d09967c']
+applets=['5e14347c-4635-11ec-9da9-18c04d09967c', '593efd42-4635-11ec-9da9-18c04d09967c', '5017223c-0ded-11ed-a83c-a44e31b3eea8', '7fe0c2c8-4635-11ec-9da9-18c04d09967c', '771bfedc-4635-11ec-9da9-18c04d09967c', '0a0ce76c-407f-11ed-9884-a44e31b3eea8']
 autohide='none'
 enable-shadow=true
 location='bottom'
 size=39
-theme-regions=false
+theme-regions=true
 transparency='none'
 
 [com/solus-project/budgie-raven]
@@ -105,6 +111,27 @@ width=1366
 [org/buddiesofbudgie/budgie-desktop-view]
 show=false
 
+[org/buddiesofbudgie/control-center]
+last-panel='background'
+window-state=(980, 640, false)
+
+[org/gnome/calculator]
+accuracy=9
+angle-units='degrees'
+base=10
+button-mode='basic'
+number-format='automatic'
+show-thousands=false
+show-zeroes=false
+source-currency=''
+source-units='degree'
+target-currency=''
+target-units='radian'
+word-size=64
+
+[org/gnome/cheese]
+burst-delay=1000
+
 [org/gnome/control-center]
 last-panel='sound'
 
@@ -119,13 +146,8 @@ sources=[('xkb', 'pl')]
 xkb-options=['lv3:ralt_switch']
 
 [org/gnome/desktop/interface]
-cursor-theme='breeze_cursors'
-enable-animations=true
-font-hinting='slight'
+color-scheme='prefer-dark'
 gtk-theme='Plata-Noir'
-icon-theme='Papirus'
-monospace-font-name='Hack 9'
-toolkit-accessibility=false
 
 [org/gnome/desktop/peripherals/touchpad]
 edge-scrolling-enabled=false
@@ -191,11 +213,11 @@ last-save-directory='file:///home/rafal/pictures'
 
 [org/gnome/gnome-system-monitor]
 current-tab='resources'
-maximized=false
+maximized=true
 network-total-in-bits=false
 show-dependencies=false
 show-whose-processes='user'
-window-state=(803, 496, 0, 0)
+window-state=(1366, 729, 0, 0)
 
 [org/gnome/gnome-system-monitor/disktreenew]
 col-6-visible=true
@@ -279,5 +301,19 @@ overrides={'Gtk/ShellShowsAppMenu': <0>, 'Gtk/DecorationLayout': <'menu:minimize
 scrollbar-policy='never'
 visible-name='Default'
 
-[org/gtk/settings/file-chooser]
+[org/gtk/gtk4/settings/file-chooser]
+date-format='regular'
+location-mode='path-bar'
 show-hidden=false
+show-size-column=true
+show-type-column=true
+sidebar-width=149
+sort-column='name'
+sort-directories-first=false
+sort-order='ascending'
+type-format='category'
+window-size=(760, 326)
+
+[org/gtk/settings/file-chooser]
+show-hidden=true
+sort-directories-first=true
