@@ -3,6 +3,9 @@ source /usr/share/defaults/etc/profile
 # Default applications
 export EDITOR="neovim"
 
+# Directories
+export PROJECTS="$HOME/projects"
+
 # XDG Base Directory
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
