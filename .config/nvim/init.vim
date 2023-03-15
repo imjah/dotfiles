@@ -67,7 +67,7 @@ let NERDTreeMinimalUI             = 1
 let NERDTreeShowHidden            = 1
 let NERDTreeWinSize               = 35
 
-nnoremap          <C-o> :NERDTree $PROJECTS
+nnoremap          <C-o> :NERDTree $PROJECTS/
 nnoremap <silent> <C-\> :NERDTreeFocus<CR>
 nnoremap <silent> \     :NERDTreeToggle<CR>
 
