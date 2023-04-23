@@ -1,6 +1,6 @@
 [ca/desrt/dconf-editor]
-saved-pathbar-path='/'
-saved-view='/org/gnome/nautilus/window-state/'
+saved-pathbar-path='/org/gnome/nautilus/preferences/show-hidden-files'
+saved-view='/org/gnome/nautilus/preferences/show-hidden-files'
 show-warning=false
 window-height=500
 window-is-maximized=true
@@ -13,10 +13,10 @@ dark-theme=true
 migration-level=1
 panels=['54df6390-4635-11ec-9da9-18c04d09967c']
 
-[com/solus-project/budgie-panel/applets/{152a8030-7745-11ed-95c2-a44e31b3eea8}]
-alignment='end'
-name='Spacer'
-position=4
+[com/solus-project/budgie-panel/applets/{480c29a2-e1c3-11ed-8c80-a44e31b3eea8}]
+alignment='start'
+name='Icon Task List'
+position=1
 
 [com/solus-project/budgie-panel/applets/{593efd42-4635-11ec-9da9-18c04d09967c}]
 alignment='start'
@@ -24,9 +24,9 @@ name='Budgie Menu'
 position=0
 
 [com/solus-project/budgie-panel/applets/{5e14347c-4635-11ec-9da9-18c04d09967c}]
-alignment='end'
+alignment='center'
 name='Clock'
-position=3
+position=0
 
 [com/solus-project/budgie-panel/applets/{6144a7ba-9970-11ec-b04d-a44e31b3eea8}]
 alignment='start'
@@ -48,16 +48,6 @@ alignment='end'
 name='System Tray'
 position=0
 
-[com/solus-project/budgie-panel/applets/{a483b252-7744-11ed-95c2-a44e31b3eea8}]
-alignment='start'
-name='Workspace Switcher'
-position=1
-
-[com/solus-project/budgie-panel/applets/{ea839f00-7745-11ed-95c2-a44e31b3eea8}]
-alignment='end'
-name='Notifications'
-position=2
-
 [com/solus-project/budgie-panel/instance/budgie-menu/{593efd42-4635-11ec-9da9-18c04d09967c}]
 enable-menu-label=false
 menu-compact=true
@@ -65,11 +55,13 @@ menu-compact=true
 [com/solus-project/budgie-panel/instance/budgie-menu/{6144a7ba-9970-11ec-b04d-a44e31b3eea8}]
 menu-compact=true
 
-[com/solus-project/budgie-panel/instance/icon-tasklist/{70009e58-9970-11ec-b04d-a44e31b3eea8}]
+[com/solus-project/budgie-panel/instance/icon-tasklist/{480c29a2-e1c3-11ed-8c80-a44e31b3eea8}]
+lock-icons=true
+middle-click-launch-new-instance=true
 pinned-launchers=@as []
 
-[com/solus-project/budgie-panel/instance/spacer/{152a8030-7745-11ed-95c2-a44e31b3eea8}]
-size=3
+[com/solus-project/budgie-panel/instance/icon-tasklist/{70009e58-9970-11ec-b04d-a44e31b3eea8}]
+pinned-launchers=@as []
 
 [com/solus-project/budgie-panel/instance/status/{771bfedc-4635-11ec-9da9-18c04d09967c}]
 spacing=6
@@ -77,18 +69,17 @@ spacing=6
 [com/solus-project/budgie-panel/instance/tray/{7fe0c2c8-4635-11ec-9da9-18c04d09967c}]
 spacing=6
 
-[com/solus-project/budgie-panel/instance/workspaces/{a483b252-7744-11ed-95c2-a44e31b3eea8}]
-addbutton-visibility='never'
-item-size-multiplier='0.75'
-
 [com/solus-project/budgie-panel/panels/{54df6390-4635-11ec-9da9-18c04d09967c}]
-applets=['5e14347c-4635-11ec-9da9-18c04d09967c', 'ea839f00-7745-11ed-95c2-a44e31b3eea8', '152a8030-7745-11ed-95c2-a44e31b3eea8', '593efd42-4635-11ec-9da9-18c04d09967c', 'a483b252-7744-11ed-95c2-a44e31b3eea8', '7fe0c2c8-4635-11ec-9da9-18c04d09967c', '771bfedc-4635-11ec-9da9-18c04d09967c']
-autohide='none'
-enable-shadow=true
-location='bottom'
-size=39
+applets=['771bfedc-4635-11ec-9da9-18c04d09967c', '593efd42-4635-11ec-9da9-18c04d09967c', '480c29a2-e1c3-11ed-8c80-a44e31b3eea8', '5e14347c-4635-11ec-9da9-18c04d09967c', '7fe0c2c8-4635-11ec-9da9-18c04d09967c']
+autohide='automatic'
+enable-shadow=false
+location='top'
+size=37
 theme-regions=true
-transparency='none'
+transparency='dynamic'
+
+[com/solus-project/budgie-panel/panels/{658cc59e-9be2-11ed-81e7-310299c9ff4f}]
+size=39
 
 [com/solus-project/budgie-raven]
 enable-week-numbers=false
@@ -124,8 +115,12 @@ width=1366
 show=false
 
 [org/buddiesofbudgie/control-center]
-last-panel='keyboard'
-window-state=(980, 640, false)
+last-panel='background'
+window-state=(980, 640, true)
+
+[org/gnome/baobab/ui]
+is-maximized=false
+window-size=(960, 600)
 
 [org/gnome/calculator]
 accuracy=9
@@ -148,8 +143,11 @@ burst-delay=1000
 last-panel='sound'
 
 [org/gnome/desktop/background]
-picture-options='spanned'
-picture-uri='file:///home/rafal/.local/share/backgrounds/escape-velocity.png'
+color-shading-type='solid'
+picture-options='zoom'
+picture-uri='file:///home/rafal/.local/share/backgrounds/background.png'
+primary-color='#000000000000'
+secondary-color='#000000000000'
 
 [org/gnome/desktop/input-sources]
 current=uint32 0
@@ -163,6 +161,8 @@ color-scheme='prefer-dark'
 cursor-theme='breeze_cursors'
 gtk-theme='Plata-Noir'
 icon-theme='Papirus'
+show-battery-percentage=false
+toolkit-accessibility=false
 
 [org/gnome/desktop/peripherals/keyboard]
 numlock-state=false
@@ -180,9 +180,13 @@ remove-old-temp-files=true
 remove-old-trash-files=true
 
 [org/gnome/desktop/screensaver]
+color-shading-type='solid'
 lock-delay=uint32 30
 lock-enabled=true
-picture-uri='file:///home/rafal/.local/share/backgrounds/escape-velocity-screensaver.png'
+picture-options='zoom'
+picture-uri='file:///home/rafal/.local/share/backgrounds/background.png'
+primary-color='#000000000000'
+secondary-color='#000000000000'
 
 [org/gnome/desktop/session]
 idle-delay=uint32 300
@@ -255,8 +259,10 @@ default-zoom-level='small'
 [org/gnome/nautilus/preferences]
 click-policy='double'
 default-folder-viewer='icon-view'
+migrated-gtk-settings=true
 search-filter-time-type='last_modified'
 search-view='list-view'
+show-hidden-files=true
 
 [org/gnome/nautilus/window-state]
 initial-size=(830, 515)
@@ -266,8 +272,27 @@ maximized=true
 ignore-ca-cert=false
 ignore-phase2-ca-cert=false
 
+[org/gnome/nm-applet/eap/45a43ebf-3360-4ac5-a14a-dd0c1bc8eedd]
+ignore-ca-cert=true
+ignore-phase2-ca-cert=false
+
+[org/gnome/nm-applet/eap/a60a710c-2621-4121-b117-ecabca9cf137]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[org/gnome/nm-applet/eap/c8386c3d-e7ed-48d1-91fd-4072d2d9629a]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[org/gnome/nm-applet/eap/e4d5423d-a886-4b2f-ac17-5d090c1749a7]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
 [org/gnome/settings-daemon/plugins/color]
 night-light-enabled=true
+night-light-schedule-automatic=false
+night-light-schedule-to=10.0
+night-light-temperature=uint32 2200
 
 [org/gnome/settings-daemon/plugins/media-keys]
 custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/']
@@ -335,12 +360,12 @@ visible-name='Default'
 [org/gtk/gtk4/settings/file-chooser]
 date-format='regular'
 location-mode='path-bar'
-show-hidden=false
+show-hidden=true
 show-size-column=true
 show-type-column=true
 sidebar-width=149
 sort-column='name'
-sort-directories-first=false
+sort-directories-first=true
 sort-order='ascending'
 type-format='category'
 window-size=(760, 326)
@@ -356,5 +381,5 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(188, 10)
+window-position=(188, 1)
 window-size=(990, 682)
