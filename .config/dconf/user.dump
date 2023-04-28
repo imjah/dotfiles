@@ -48,6 +48,11 @@ alignment='end'
 name='System Tray'
 position=0
 
+[com/solus-project/budgie-panel/applets/{f6d56e9e-e470-11ed-a67c-a44e31b3eea8}]
+alignment='end'
+name='Spacer'
+position=2
+
 [com/solus-project/budgie-panel/instance/budgie-menu/{593efd42-4635-11ec-9da9-18c04d09967c}]
 enable-menu-label=false
 menu-compact=true
@@ -63,6 +68,9 @@ pinned-launchers=@as []
 [com/solus-project/budgie-panel/instance/icon-tasklist/{70009e58-9970-11ec-b04d-a44e31b3eea8}]
 pinned-launchers=@as []
 
+[com/solus-project/budgie-panel/instance/spacer/{f6d56e9e-e470-11ed-a67c-a44e31b3eea8}]
+size=3
+
 [com/solus-project/budgie-panel/instance/status/{771bfedc-4635-11ec-9da9-18c04d09967c}]
 spacing=6
 
@@ -70,7 +78,7 @@ spacing=6
 spacing=6
 
 [com/solus-project/budgie-panel/panels/{54df6390-4635-11ec-9da9-18c04d09967c}]
-applets=['771bfedc-4635-11ec-9da9-18c04d09967c', '593efd42-4635-11ec-9da9-18c04d09967c', '480c29a2-e1c3-11ed-8c80-a44e31b3eea8', '5e14347c-4635-11ec-9da9-18c04d09967c', '7fe0c2c8-4635-11ec-9da9-18c04d09967c']
+applets=['771bfedc-4635-11ec-9da9-18c04d09967c', 'f6d56e9e-e470-11ed-a67c-a44e31b3eea8', '593efd42-4635-11ec-9da9-18c04d09967c', '480c29a2-e1c3-11ed-8c80-a44e31b3eea8', '5e14347c-4635-11ec-9da9-18c04d09967c', '7fe0c2c8-4635-11ec-9da9-18c04d09967c']
 autohide='automatic'
 enable-shadow=false
 location='top'
@@ -115,7 +123,7 @@ width=1366
 show=false
 
 [org/buddiesofbudgie/control-center]
-last-panel='background'
+last-panel='keyboard'
 window-state=(980, 640, true)
 
 [org/gnome/baobab/ui]
@@ -198,16 +206,18 @@ allow-volume-above-100-percent=false
 move-to-workspace-1=['<Shift><Super>exclam']
 move-to-workspace-2=['<Shift><Super>at']
 move-to-workspace-3=['<Shift><Super>numbersign']
+move-to-workspace-4=['<Shift><Super>dollar']
 switch-to-workspace-1=['<Super>1']
 switch-to-workspace-2=['<Super>2']
 switch-to-workspace-3=['<Super>3']
+switch-to-workspace-4=['<Super>4']
 
 [org/gnome/desktop/wm/preferences]
 auto-raise=false
 auto-raise-delay=250
 button-layout='appmenu:minimize,maximize,close'
 focus-mode='click'
-num-workspaces=3
+num-workspaces=4
 titlebar-font='Noto Sans 11'
 
 [org/gnome/evolution-data-server]
@@ -295,7 +305,7 @@ night-light-schedule-to=10.0
 night-light-temperature=uint32 2200
 
 [org/gnome/settings-daemon/plugins/media-keys]
-custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom8/']
 www=@as []
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
@@ -337,6 +347,11 @@ name='Browser'
 binding='<Super>f'
 command='nautilus'
 name='File manager'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom8]
+binding='<Super>BackSpace'
+command='gnome-session-quit'
+name='Log out'
 
 [org/gnome/settings-daemon/plugins/power]
 idle-dim=true
