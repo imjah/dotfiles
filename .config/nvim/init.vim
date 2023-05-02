@@ -17,14 +17,16 @@ endif
 call plug#begin(s:dir)
 
 Plug 'ackyshake/VimCompletesMe'
+Plug 'godlygeek/tabular'
 Plug 'jiangmiao/auto-pairs'
 Plug 'kdheepak/lazygit.vim'
 Plug 'morhetz/gruvbox'
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
+Plug 'scrooloose/syntastic'
 Plug 'sheerun/vim-polyglot'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 Plug 'voldikss/vim-floaterm'
 
 call plug#end()
