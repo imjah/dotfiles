@@ -3,5 +3,6 @@
 [user]
 	name = imjah
 	email = imjah@tuta.io
+	signingkey = 7D9D490A
 [init]
 	defaultBranch = main
