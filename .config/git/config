@@ -3,6 +3,10 @@
 [user]
 	name = imjah
 	email = imjah@tuta.io
-	signingkey = 7D9D490A
+	signingKey = 6F2E9A3B
 [init]
 	defaultBranch = main
+[commit]
+	gpgSign = true
+[tag]
+	gpgSign = true
