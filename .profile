@@ -1,8 +1,5 @@
 source /usr/share/defaults/etc/profile
 
-# Default applications
-export EDITOR="neovim"
-
 # Directories
 export PROJECTS="$HOME/projects"
 
