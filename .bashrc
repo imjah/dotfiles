@@ -1,6 +1,6 @@
 source /usr/share/defaults/etc/profile
 
-alias config="git --git-dir=$XDG_DATA_HOME/dotfiles --work-tree=$HOME"
+alias dotfiles="git --git-dir=$REPOSITORIES/dotfiles --work-tree=$HOME"
 alias dconf-dump="dconf dump / > $XDG_CONFIG_HOME/dconf/user.dump"
 alias dconf-load="dconf load / < $XDG_CONFIG_HOME/dconf/user.dump"
 alias pip="pip3"
