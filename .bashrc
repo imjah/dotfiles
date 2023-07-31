@@ -19,3 +19,20 @@ http-server() {
 
 	python -m http.server
 }
+
+repo-ls() {
+	ls /mnt/files/repositories/
+}
+
+repo-init() {
+	git init --bare "/mnt/files/repositories/$1"
+}
+
+repo-clone() {
+	git clone "/mnt/files/repositories/$1"
+}
+
+repo-clone-bare() {
+	git clone --bare "/mnt/files/repositories/$1"
+}
+
