@@ -1,6 +1,6 @@
 source /usr/share/defaults/etc/profile
 
-alias dotfiles="git --git-dir=$REPOSITORIES/dotfiles --work-tree=$HOME"
+alias dotfiles="git --git-dir=$REPOSITORIES_LOCAL/dotfiles --work-tree=$HOME"
 alias dconf-dump="dconf dump / > $XDG_CONFIG_HOME/dconf/user.dump"
 alias dconf-load="dconf load / < $XDG_CONFIG_HOME/dconf/user.dump"
 alias pip="pip3"
@@ -21,18 +21,26 @@ http-server() {
 }
 
 repo-ls() {
-	ls /mnt/files/repositories/
+	ls $REPOSITORIES_REMOTE
 }
 
 repo-init() {
-	git init --bare "/mnt/files/repositories/$1"
+	name=$1
+
+	[[ ${name:(-4):4} == ".git" ]] || name="$name.git"
+
+	git init --bare "$REPOSITORIES_REMOTE/$name"
 }
 
 repo-clone() {
-	git clone "/mnt/files/repositories/$1"
+	name=$1
+
+	[[ ${name:(-4):4} == ".git" ]] || name="$name.git"
+
+	git clone "$REPOSITORIES_REMOTE/$name" $2
 }
 
-repo-clone-bare() {
-	git clone --bare "/mnt/files/repositories/$1"
+repo-init-clone() {
+	repo-init $1 && repo-clone $1
 }
 

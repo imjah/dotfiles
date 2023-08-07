@@ -1,7 +1,8 @@
 source /usr/share/defaults/etc/profile
 
 # Directories
-export REPOSITORIES="$HOME/repositories"
+export REPOSITORIES_LOCAL="$HOME/repositories"
+export REPOSITORIES_REMOTE="/mnt/files/repositories"
 
 # XDG Base Directory
 export XDG_CACHE_HOME="$HOME/.cache"
