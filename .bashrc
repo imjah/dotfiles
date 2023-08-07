@@ -1,6 +1,6 @@
 source /usr/share/defaults/etc/profile
 
-alias dotfiles="git --git-dir=$REPOSITORIES_LOCAL/dotfiles --work-tree=$HOME"
+alias config="lazygit --git-dir=$REPOSITORIES_LOCAL/dotfiles --work-tree=$HOME"
 alias dconf-dump="dconf dump / > $XDG_CONFIG_HOME/dconf/user.dump"
 alias dconf-load="dconf load / < $XDG_CONFIG_HOME/dconf/user.dump"
 alias pip="pip3"
