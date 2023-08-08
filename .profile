@@ -16,7 +16,7 @@ export GOPATH="$XDG_DATA_HOME/go"
 export HISTFILE="$XDG_DATA_HOME/bash/history"
 export LESSHISTFILE="$XDG_DATA_HOME/less/history"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
-export PASSWORD_STORE_DIR="$REPOSITORIES/password-store"
+export PASSWORD_STORE_DIR="$REPOSITORIES_LOCAL/password-store"
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
 
 # Move xsession-errors
