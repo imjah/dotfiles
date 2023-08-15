@@ -31,7 +31,7 @@ position=0
 [com/solus-project/budgie-panel/applets/{5e14347c-4635-11ec-9da9-18c04d09967c}]
 alignment='end'
 name='Clock'
-position=3
+position=4
 
 [com/solus-project/budgie-panel/applets/{6144a7ba-9970-11ec-b04d-a44e31b3eea8}]
 alignment='start'
@@ -53,10 +53,15 @@ alignment='end'
 name='System Tray'
 position=0
 
+[com/solus-project/budgie-panel/applets/{f6017590-3b68-11ee-aeb2-18c04d09967c}]
+alignment='end'
+name='Shutdown Timer'
+position=3
+
 [com/solus-project/budgie-panel/applets/{f6d56e9e-e470-11ed-a67c-a44e31b3eea8}]
 alignment='end'
 name='Spacer'
-position=4
+position=5
 
 [com/solus-project/budgie-panel/instance/budgie-menu/{593efd42-4635-11ec-9da9-18c04d09967c}]
 enable-menu-label=false
@@ -86,7 +91,7 @@ spacing=2
 spacing=2
 
 [com/solus-project/budgie-panel/panels/{54df6390-4635-11ec-9da9-18c04d09967c}]
-applets=['5e14347c-4635-11ec-9da9-18c04d09967c', 'f6d56e9e-e470-11ed-a67c-a44e31b3eea8', '37dca5b0-297c-11ee-bea2-18c04d09967c', '593efd42-4635-11ec-9da9-18c04d09967c', '480c29a2-e1c3-11ed-8c80-a44e31b3eea8', '7fe0c2c8-4635-11ec-9da9-18c04d09967c', '771bfedc-4635-11ec-9da9-18c04d09967c']
+applets=['5e14347c-4635-11ec-9da9-18c04d09967c', '7fe0c2c8-4635-11ec-9da9-18c04d09967c', '771bfedc-4635-11ec-9da9-18c04d09967c', '480c29a2-e1c3-11ed-8c80-a44e31b3eea8', 'f6d56e9e-e470-11ed-a67c-a44e31b3eea8', '37dca5b0-297c-11ee-bea2-18c04d09967c', 'f6017590-3b68-11ee-aeb2-18c04d09967c', '593efd42-4635-11ec-9da9-18c04d09967c']
 autohide='none'
 enable-shadow=true
 location='bottom'
