@@ -366,7 +366,7 @@ night-light-schedule-to=10.0
 night-light-temperature=uint32 2200
 
 [org/gnome/settings-daemon/plugins/media-keys]
-custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom8/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom9/']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom8/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom9/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom10/']
 www=@as []
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
@@ -378,6 +378,11 @@ name='Shutdown'
 binding='<Shift><Super>Delete'
 command='systemctl reboot'
 name='Reboot'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom10]
+binding='<Super>w'
+command='gnome-terminal --profile=Weather'
+name='Weather'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2]
 binding='<Super>z'
@@ -434,6 +439,20 @@ overrides={'Gtk/ShellShowsAppMenu': <0>, 'Gtk/DecorationLayout': <'menu:minimize
 document-type='text'
 save-directory='file:///home/rafal/documents/'
 
+[org/gnome/terminal/legacy/profiles:]
+list=['b1dcc9dd-5262-4d8d-a863-c897e6d979b9', '1c0212c0-b651-4133-852a-9928b95edafb']
+
+[org/gnome/terminal/legacy/profiles:/:1c0212c0-b651-4133-852a-9928b95edafb]
+custom-command='bash -c "curl -s https://wttr.in/stargard |tail -n +3 | head -n -3 | head -c -1; read -rsn1"'
+default-size-columns=125
+default-size-rows=35
+exit-action='close'
+login-shell=false
+scrollbar-policy='never'
+title='Weather - Stargard'
+use-custom-command=true
+visible-name='Weather'
+
 [org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
 scrollbar-policy='never'
 visible-name='Default'
@@ -467,5 +486,5 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(465, 146)
+window-position=(465, 166)
 window-size=(990, 682)
