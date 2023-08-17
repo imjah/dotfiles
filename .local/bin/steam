@@ -1,0 +1,6 @@
+#!/bin/bash
+
+HOME=$HOME/.local/share/Steam-Garbage
+
+mkdir -p $HOME
+exec /usr/bin/steam "$@"
