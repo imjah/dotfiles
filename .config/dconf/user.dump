@@ -53,6 +53,11 @@ alignment='end'
 name='System Tray'
 position=0
 
+[com/solus-project/budgie-panel/applets/{eead8f56-3af3-11ee-986d-a44e31b3eea8}]
+alignment='end'
+name='Shutdown Timer'
+position=3
+
 [com/solus-project/budgie-panel/applets/{f6017590-3b68-11ee-aeb2-18c04d09967c}]
 alignment='end'
 name='Shutdown Timer'
@@ -448,9 +453,9 @@ save-directory='file:///home/rafal/documents/'
 list=['b1dcc9dd-5262-4d8d-a863-c897e6d979b9', '1c0212c0-b651-4133-852a-9928b95edafb']
 
 [org/gnome/terminal/legacy/profiles:/:1c0212c0-b651-4133-852a-9928b95edafb]
-custom-command='bash -c "curl -s https://wttr.in/stargard |tail -n +3 | head -n -3 | head -c -1; read -rsn1"'
+custom-command='bash -c "curl -s https://wttr.in/stargard | tail -n +2 | head -n -3 | head -c -1; read -rsn1"'
 default-size-columns=125
-default-size-rows=35
+default-size-rows=36
 exit-action='close'
 login-shell=false
 scrollbar-policy='never'
