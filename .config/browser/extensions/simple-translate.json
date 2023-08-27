@@ -16,7 +16,7 @@
   "disableUrlList": "",
   "waitTime": 500,
   "ifChangeSecondLang": true,
-  "ifShowMenu": false,
+  "ifShowMenu": true,
   "pageTranslationOpenTo": "newTab",
   "theme": "system",
   "buttonSize": 22,
