@@ -53,11 +53,6 @@ alignment='end'
 name='System Tray'
 position=0
 
-[com/solus-project/budgie-panel/applets/{eead8f56-3af3-11ee-986d-a44e31b3eea8}]
-alignment='end'
-name='Shutdown Timer'
-position=3
-
 [com/solus-project/budgie-panel/applets/{f6017590-3b68-11ee-aeb2-18c04d09967c}]
 alignment='end'
 name='Shutdown Timer'
@@ -132,13 +127,13 @@ show-seconds=false
 settings-migrated=true
 
 [io/github/celluloid-player/celluloid/window-state]
-height=633
+height=1041
 loop-playlist=false
-maximized=false
+maximized=true
 playlist-width=250
 show-playlist=false
-volume=1.0
-width=960
+volume=0.0
+width=1920
 
 [io/github/gnome-mpv]
 settings-migrated=true
@@ -175,7 +170,7 @@ allow-volume-overdrive=false
 
 [org/buddiesofbudgie/budgie-desktop/screenshot]
 delay=0
-screenshot-mode='Selection'
+screenshot-mode='Screen'
 
 [org/buddiesofbudgie/control-center]
 last-panel='keyboard'
@@ -185,13 +180,13 @@ window-state=(980, 640, false)
 image-dir-uri='file:///run/media/rafal/ISO'
 
 [org/gnome/Disks/benchmark]
-do-write=true
+do-write=false
 num-access-samples=1000
 num-samples=100
 sample-size-mib=10
 
 [org/gnome/MultiWriter]
-filename='/home/rafal/downloads/Win10_22H2_EnglishInternational_x64.iso'
+filename='/home/rafal/downloads/Win10_22H2_Polish_x64v1.iso'
 show-warning=false
 
 [org/gnome/baobab/ui]
@@ -287,6 +282,9 @@ button-layout='appmenu:minimize,maximize,close'
 focus-mode='click'
 num-workspaces=4
 titlebar-font='Noto Sans 11'
+
+[org/gnome/eog/ui]
+sidebar=true
 
 [org/gnome/evolution-data-server]
 migrated=true
@@ -411,7 +409,7 @@ name=' Editor'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5]
 binding='<Super>m'
-command='gnome-terminal --maximize -- ncspot'
+command='gnome-terminal --maximize -- cmus'
 name='Player'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6]
@@ -447,13 +445,14 @@ overrides={'Gtk/ShellShowsAppMenu': <0>, 'Gtk/DecorationLayout': <'menu:minimize
 
 [org/gnome/simple-scan]
 document-type='text'
-save-directory='file:///home/rafal/documents/'
+save-directory='file:///mnt/files/documents/school/college/semestr-7/PZ/'
+text-dpi=600
 
 [org/gnome/terminal/legacy/profiles:]
 list=['b1dcc9dd-5262-4d8d-a863-c897e6d979b9', '1c0212c0-b651-4133-852a-9928b95edafb']
 
 [org/gnome/terminal/legacy/profiles:/:1c0212c0-b651-4133-852a-9928b95edafb]
-custom-command='bash -c "curl -s https://wttr.in/stargard | tail -n +2 | head -n -3 | head -c -1; read -rsn1"'
+custom-command='bash -c "curl -s https://wttr.in/stargard | head -n -3 | head -c -1; read -rsn1"'
 default-size-columns=125
 default-size-rows=36
 exit-action='close'
@@ -496,5 +495,5 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(465, 166)
+window-position=(891, 156)
 window-size=(990, 682)
