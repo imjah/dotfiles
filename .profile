@@ -1,9 +1,5 @@
 source /usr/share/defaults/etc/profile
 
-# Directories
-export REPOSITORIES_LOCAL="$HOME/repositories"
-export REPOSITORIES_REMOTE="/mnt/files/repositories"
-
 # XDG Base Directory
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -16,7 +12,7 @@ export GOPATH="$XDG_DATA_HOME/go"
 export HISTFILE="$XDG_DATA_HOME/bash/history"
 export LESSHISTFILE="$XDG_DATA_HOME/less/history"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
-export PASSWORD_STORE_DIR="$REPOSITORIES_LOCAL/password-store"
+export PASSWORD_STORE_DIR="`xdg-user-dir PROJECTS`/.password-store"
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
 
 # Move xsession-errors

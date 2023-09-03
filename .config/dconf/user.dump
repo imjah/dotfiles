@@ -170,7 +170,7 @@ allow-volume-overdrive=false
 
 [org/buddiesofbudgie/budgie-desktop/screenshot]
 delay=0
-screenshot-mode='Screen'
+screenshot-mode='Selection'
 
 [org/buddiesofbudgie/control-center]
 last-panel='keyboard'
@@ -429,7 +429,7 @@ name='Log out'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom9]
 binding='<Super>d'
-command='gnome-terminal --maximize -- lazygit --git-dir=/home/rafal/repositories/dotfiles --work-tree=/home/rafal'
+command='dotfiles-lazygit'
 name='Dotfiles manager'
 
 [org/gnome/settings-daemon/plugins/power]
