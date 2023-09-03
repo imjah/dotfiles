@@ -1,0 +1,9 @@
+#!/bin/bash
+
+for filename in "$@"; do
+	f=${filename,,}
+	f=${f/ - /-}
+	f=${f// /-}
+
+	mv -n "$filename" "$f"
+done
