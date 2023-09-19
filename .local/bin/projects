@@ -1,7 +1,7 @@
 #!/bin/bash
 
-int_dir=$PROJECT_INTERNAL_DIR
-ext_dir=$PROJECT_EXTERNAL_DIR
+int_dir=$PROJECTS_INTERNAL_DIR
+ext_dir=$PROJECTS_EXTERNAL_DIR
 
 init() {
 
