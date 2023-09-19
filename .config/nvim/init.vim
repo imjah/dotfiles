@@ -1,14 +1,14 @@
 set nocompatible
 
 " Plug:
-" ----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 fu! s:IsMissingPlugin()
 	return len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 endfu
 
-let s:dir = stdpath('data').'/plugged'
-let s:src = stdpath('data').'/site/autoload/plug.vim'
-let s:url = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+let s:dir=stdpath('data').'/plugged'
+let s:src=stdpath('data').'/site/autoload/plug.vim'
+let s:url='https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 if !filereadable(s:src)
 	sil exe '!curl --create-dirs -fo' s:src s:url
@@ -36,7 +36,7 @@ if (s:IsMissingPlugin())
 endif
 
 " Plugin: floaterm
-" ----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 let g:floaterm_width         = 1.0
 let g:floaterm_height        = 25
 let g:floaterm_autoclose     = 2
@@ -47,17 +47,17 @@ let g:floaterm_keymap_prev   = '<F5>'
 let g:floaterm_keymap_toggle = '<C-Space>'
 
 " Plugin: gruvbox
-" ----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 colorscheme gruvbox
 
 " Plugin: lazygit
-" ----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 let g:lazygit_floating_window_scaling_factor = 1
 
 nnoremap <silent> <Space> :LazyGit<CR>
 
 " Plugin: nerdtree
-" ----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 let NERDTreeBookmarksFile         = ''
 let NERDTreeCascadeSingleChildDir = 0
 let NERDTreeChDirMode             = 1
@@ -73,9 +73,9 @@ nnoremap <silent> <C-\> :NERDTreeFocus<CR>
 nnoremap <silent> \     :NERDTreeToggle<CR>
 
 " Editor:
-" ----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 set clipboard=unnamedplus
-set colorcolumn=+1
+set colorcolumn=81
 set list
 set number
 set shiftwidth=4
