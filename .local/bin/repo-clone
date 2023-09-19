@@ -1,9 +1,0 @@
-#!/bin/bash
-
-FILES_PROJECTS=/mnt/files/projects
-
-name=$1
-
-[[ ${name:(-4):4} == ".git" ]] || name="$name.git"
-
-git clone "$FILES_PROJECTS/$name" $2

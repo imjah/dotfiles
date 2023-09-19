@@ -1,3 +1,0 @@
-#!/bin/bash
-
-repo-init $1 && repo-clone $1

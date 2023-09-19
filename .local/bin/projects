@@ -1,30 +1,75 @@
 #!/bin/bash
 
-int_dir=$PROJECTS_INTERNAL_DIR
-ext_dir=$PROJECTS_EXTERNAL_DIR
-
-init() {
-
+add_extention() {
+	grep ".$2$" <<< "$1" || echo "$1.$2"
 }
 
-case "$1" in
-	init)
-	;;
-	clone)
-	;;
-	new)
-	;;
-	help)
-		printf "%s\n" \
-			   "Usage: `basename $0` <command> name" \
-			   "" \
-			   "Commands:" \
-			   "  [ls]     List projects" \
-			   "  init     Init project on external directory" \
-			   "  clone    Clone project from external to internal directory" \
-			   "  new      Init and clone in short" \
-			   "  help     Show this help" \
-	;;
-	*)
-	;;
-esac
+quit() {
+	echo "$1"
+	exit "$2"
+}
+
+quit_on_misconfiguration() {
+	test -d $PROJECTS_INTERNAL_DIR || quit "Internal directory not exist" 1
+	test -d $PROJECTS_EXTERNAL_DIR || quit "External directory not exist" 2
+}
+
+list_repositories() {
+	ls $PROJECTS_EXTERNAL_DIR
+}
+
+clone_repository() {
+	repo="$PROJECTS_EXTERNAL_DIR/$(add_extention "$1" "git")"
+	dest="$PROJECTS_INTERNAL_DIR/$1"
+
+	git clone $2 $repo $dest
+}
+
+initialize_repository() {
+	dest="$PROJECTS_EXTERNAL_DIR/$(add_extention "$1" "git")"
+
+	git init --bare $dest
+}
+
+delete_repository() {
+	dest="$PROJECTS_EXTERNAL_DIR/$(add_extention "$1" "git")"
+
+	read -p "Remove $1? (y/n): " a; [[ "$a" == "y" ]] && rm -r $dest
+}
+
+main() {
+	quit_on_misconfiguration
+
+	case "$1" in
+		-l | "")
+			list_repositories
+		;;
+		-c)
+			clone_repository $2
+		;;
+		-b)
+			clone_repository $2 "--bare"
+		;;
+		-i)
+			initialize_repository $2
+		;;
+		-n)
+			initialize_repository $2 && clone_repository $2
+		;;
+		-d)
+			delete_repository $2
+		;;
+		*)
+			echo "Usage: $(basename $0) [<option>] [<name>]"
+			echo
+			echo "Options:"
+			echo "   -l  List repositories (default)"
+			echo "   -c  Clone repository"
+			echo "   -b  Clone bare repository"
+			echo "   -i  Initialize repository"
+			echo "   -n  Initialize and clone repository"
+			echo "   -d  Delete repository"
+			echo "   -h  Show help"
+		;;
+	esac
+}; main $@

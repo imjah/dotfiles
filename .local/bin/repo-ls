@@ -1,5 +1,0 @@
-#!/bin/bash
-
-FILES_PROJECTS=/mnt/files/projects
-
-ls $FILES_PROJECTS
