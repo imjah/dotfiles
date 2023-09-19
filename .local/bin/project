@@ -1,0 +1,30 @@
+#!/bin/bash
+
+int_dir=$PROJECT_INTERNAL_DIR
+ext_dir=$PROJECT_EXTERNAL_DIR
+
+init() {
+
+}
+
+case "$1" in
+	init)
+	;;
+	clone)
+	;;
+	new)
+	;;
+	help)
+		printf "%s\n" \
+			   "Usage: `basename $0` <command> name" \
+			   "" \
+			   "Commands:" \
+			   "  [ls]     List projects" \
+			   "  init     Init project on external directory" \
+			   "  clone    Clone project from external to internal directory" \
+			   "  new      Init and clone in short" \
+			   "  help     Show this help" \
+	;;
+	*)
+	;;
+esac

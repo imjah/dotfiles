@@ -1,0 +1,3 @@
+#!/bin/bash
+
+dconf load / < $XDG_CONFIG_HOME/dconf/user.dump
