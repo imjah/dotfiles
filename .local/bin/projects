@@ -5,71 +5,67 @@ add_extention() {
 }
 
 quit() {
-	echo "$1"
-	exit "$2"
+	echo "$1"; exit "$2"
 }
 
 quit_on_misconfiguration() {
-	test -d $PROJECTS_INTERNAL_DIR || quit "Internal directory not exist" 1
-	test -d $PROJECTS_EXTERNAL_DIR || quit "External directory not exist" 2
+	test -d $PROJECTS_INTERNAL_DIR || quit "Internal directory not found" 1
+	test -d $PROJECTS_EXTERNAL_DIR || quit "External directory not found" 2
 }
 
-list_repositories() {
-	ls $PROJECTS_EXTERNAL_DIR
+init() {
+	git init --bare "$1"
 }
 
-clone_repository() {
-	repo="$PROJECTS_EXTERNAL_DIR/$(add_extention "$1" "git")"
-	dest="$PROJECTS_INTERNAL_DIR/$1"
-
-	git clone $2 $repo $dest
+clone() {
+	git clone $3 "$1" "$2"
 }
 
-initialize_repository() {
-	dest="$PROJECTS_EXTERNAL_DIR/$(add_extention "$1" "git")"
-
-	git init --bare $dest
-}
-
-delete_repository() {
-	dest="$PROJECTS_EXTERNAL_DIR/$(add_extention "$1" "git")"
-
-	read -p "Remove $1? (y/n): " a; [[ "$a" == "y" ]] && rm -r $dest
+remove() {
+	read -p "Remove $1? (y/n): " a; test "$a" = "y" && rm -r $1
 }
 
 main() {
 	quit_on_misconfiguration
 
+	repo_internal="$PROJECTS_INTERNAL_DIR/$2"
+	repo_external="$PROJECTS_EXTERNAL_DIR/$(add_extention "$2" "git")"
+
 	case "$1" in
 		-l | "")
-			list_repositories
-		;;
-		-c)
-			clone_repository $2
-		;;
-		-b)
-			clone_repository $2 "--bare"
+			ls $PROJECTS_EXTERNAL_DIR
 		;;
 		-i)
-			initialize_repository $2
+			init $repo_external
 		;;
 		-n)
-			initialize_repository $2 && clone_repository $2
+			init $repo_external && clone $repo_external $repo_internal
 		;;
-		-d)
-			delete_repository $2
+		-c)
+			clone $repo_external $repo_internal
+		;;
+		-b)
+			clone $repo_external $repo_internal "--bare"
+		;;
+		-r)
+			remove $repo_external
+		;;
+		-R)
+			remove $repo_external
+			remove $repo_internal
 		;;
 		*)
 			echo "Usage: $(basename $0) [<option>] [<name>]"
 			echo
 			echo "Options:"
-			echo "   -l  List repositories (default)"
-			echo "   -c  Clone repository"
-			echo "   -b  Clone bare repository"
-			echo "   -i  Initialize repository"
-			echo "   -n  Initialize and clone repository"
-			echo "   -d  Delete repository"
-			echo "   -h  Show help"
+			echo "  -l  List external repositories (default)"
+			echo "  -c  Clone repository"
+			echo "  -b  Clone bare repository"
+			echo "  -i  Initialize repository"
+			echo "  -n  Initialize and clone repository"
+			echo "  -r  Remove external repository"
+			echo "  -R  Remove external and internal repository"
+			echo "  -h  Show help"
 		;;
 	esac
 }; main $@
