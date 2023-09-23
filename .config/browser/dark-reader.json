@@ -30,7 +30,9 @@
         "discord.com",
         "duckduckgo.com",
         "lichess.org",
-        "piped.video",
+        "piped.yt",
+        "piped.lunar.icu",
+        "piped.simpleprivacy.fr",
         "mail.tutanota.com"
     ],
     "siteListEnabled": [],
@@ -55,34 +57,5 @@
     "enableForPDF": true,
     "enableForProtectedPages": false,
     "enableContextMenus": false,
-    "detectDarkTheme": true,
-    "displayedNews": [
-        "news-2023"
-    ],
-    "readNews": [
-        "news-2023",
-        "filter-mode",
-        "v5-survey",
-        "mobile",
-        "detect-dark-theme",
-        "no-war",
-        "chrome-favorites-2021",
-        "thanks-2021",
-        "5m-users",
-        "v4-9-16",
-        "v4-9",
-        "attention",
-        "dr-5-announcement",
-        "2m-users",
-        "automation",
-        "product-hunt-golden-kitty-2018",
-        "time-settings",
-        "safari",
-        "500k-users",
-        "stylish",
-        "product-hunt",
-        "custom-site-settings",
-        "thanks-for-contribution",
-        "dynamic-theme"
-    ]
+    "detectDarkTheme": true
 }
