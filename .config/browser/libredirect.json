@@ -12,7 +12,7 @@
   "piped": [
     "https://piped.yt",
     "https://piped.lunar.icu",
-    "https://piped.simpleprivacy.fr"
+    "https://piped.hostux.net"
   ],
   "pipedMaterial": [
     "https://piped-material.xn--17b.net"
@@ -43,14 +43,14 @@
     "https://nitter.net"
   ],
   "twitch": {
-    "enabled": true,
+    "enabled": false,
     "redirectType": "main_frame",
     "unsupportedUrls": "bypass",
     "frontend": "safetwitch",
     "instance": "public"
   },
   "safetwitch": [
-    "https://safetwitch.projectsegfau.lt"
+    "https://safetwitch.drgns.space"
   ],
   "tiktok": {
     "enabled": false,
@@ -356,7 +356,6 @@
   "theme": "detect",
   "popupServices": [
     "youtube",
-    "twitch",
     "stackOverflow"
   ],
   "fetchInstances": "github",
