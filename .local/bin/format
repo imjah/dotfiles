@@ -1,0 +1,14 @@
+#!/bin/bash
+
+s="-"
+
+for file in "$@"; do
+	f=${file,,}
+	f=${f//" - "/$s}
+	f=${f//" "/$s}
+	f=${f//"_"/$s}
+	f=${f//"("/}
+	f=${f//")"/}
+
+	mv -n "$file" "$f"
+done
