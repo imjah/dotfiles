@@ -1,5 +1,11 @@
 source /usr/share/defaults/etc/profile
 
+# Default applications
+export BROWSER="firefox"
+export EDITOR="nvim --noplugin"
+export PAGER="less"
+export VISUAL="nvim"
+
 # XDG Base Directory
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
