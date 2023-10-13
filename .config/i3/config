@@ -336,4 +336,4 @@ bar {
 font pango:Hack 9
 
 # Wallpaper
-exec_always --no-startup-id xsetroot -solid $bg
+exec_always --no-startup-id xsetroot -solid "#202020"
