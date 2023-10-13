@@ -40,7 +40,7 @@ font pango:Clear Sans 10
 # exec --no-startup-id /usr/lib64/polkit-gnome/polkit-gnome-authentication-agent-1
 
 ########## Keybindings ##########
-bindsym Mod4+Shift+s exec i3lock # Easier locking
+# bindsym Mod4+Shift+s exec i3lock # Easier locking
 
 ### Backlight ###
 # Note: If light doesn't work, install xbacklight and 1) uncomment the two lines below.
@@ -171,8 +171,8 @@ bindsym Mod4+Shift+9 move container to workspace $ws9
 bindsym Mod4+Shift+0 move container to workspace $ws10
 
 # move container
-bindsym Mod4+z move workspace to output left
-bindsym Mod4+x move workspace to output right
+# bindsym Mod4+z move workspace to output left
+# bindsym Mod4+x move workspace to output right
 
 # reload the configuration file
 # bindsym Mod4+Shift+c reload
@@ -181,7 +181,7 @@ bindsym Mod4+x move workspace to output right
 # bindsym Mod4+Shift+r restart
 
 # exit i3 (logs you out of your X session)
-bindsym Mod4+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# bindsym Mod4+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -264,6 +264,19 @@ for_window [title="Preferences$"] floating enable
 # Autostart
 exec --no-startup-id nm-applet
 
+# Modes
+set $power "[e]xit  [l]ock  [s]leep  [r]eboot  [p]oweroff"
+
+mode $power {
+	bindsym e exec i3-msg exit
+	bindsym l exec i3lock
+	bindsym s exec systemctl suspend
+	bindsym r exec systemctl reboot
+	bindsym p exec systemctl poweroff
+
+	bindsym Escape mode "default"
+}
+
 # Keybinds
 set $mod Mod4
 
@@ -274,6 +287,7 @@ bindsym $mod+s exec nautilus
 bindsym $mod+e layout toggle split
 bindsym $mod+w layout tabbed
 bindsym $mod+f fullscreen toggle
+bindsym $mod+Escape mode $power
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+r restart
 
