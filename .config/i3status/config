@@ -6,16 +6,11 @@ general {
 	color_bad      = "#cc241d"
 }
 
-# order += "read_file weather"
 order += "ethernet _first_"
 order += "wireless _first_"
 order += "battery all"
 order += "volume master"
 order += "time"
-
-# read_file weather {
-# 	path = "/tmp/.weather"
-# }
 
 ethernet _first_ {
 	format_up = "󰈀  Wired"
