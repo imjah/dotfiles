@@ -269,8 +269,8 @@ set $power "[e]xit  [l]ock  [s]leep  [r]eboot  [p]oweroff"
 
 mode $power {
 	bindsym e exec i3-msg exit
-	bindsym l exec i3lock
-	bindsym s exec systemctl suspend
+	bindsym l exec i3lock; mode "default"
+	bindsym s exec systemctl suspend; mode "default"
 	bindsym r exec systemctl reboot
 	bindsym p exec systemctl poweroff
 
@@ -310,4 +310,4 @@ bar {
 }
 
 # Wallpaper
-exec_always --no-startup-id feh --no-fehbg --bg-fill "$XDG_DATA_HOME/backgrounds/wallpaper.png"
+exec_always --no-startup-id xsetroot -solid $bg
