@@ -13,12 +13,12 @@ order += "volume master"
 order += "time"
 
 ethernet _first_ {
-	format_up = "󰈀 Wired"
+	format_up = "󰈁 %ip"
 	format_down = ""
 }
 
 wireless _first_ {
-	format_up = "󰖩 %quality %essid"
+	format_up = " %quality %essid %ip"
 	format_down = ""
 }
 
@@ -33,7 +33,7 @@ battery all {
 }
 
 volume master {
-	format = "󰖀 %volume"
+	format = "󰕾 %volume"
 	format_muted = "󰝟 Muted"
 	mixer = "Master"
 	mixer_idx = 0
