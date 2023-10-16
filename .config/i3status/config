@@ -16,7 +16,7 @@ order += "volume master"
 order += "time"
 
 ethernet _first_ {
-	format_up = "󰈁 %ip"
+	format_up = "󰈀 %ip"
 	format_down = ""
 }
 
