@@ -9,6 +9,7 @@ general {
 order += "ethernet _first_"
 order += "wireless _first_"
 order += "battery all"
+order += "cpu_usage"
 order += "volume master"
 order += "time"
 
@@ -30,6 +31,10 @@ battery all {
 	status_bat = "󰁹"
 	status_full = "󰚥"
 	low_threshold = 20
+}
+
+cpu_usage {
+	format = "󰻠 %usage"
 }
 
 volume master {
