@@ -9,6 +9,7 @@ general {
 order += "ethernet _first_"
 order += "wireless _first_"
 order += "battery all"
+order += "disk /"
 order += "memory"
 order += "cpu_usage"
 order += "volume master"
@@ -32,6 +33,10 @@ battery all {
 	status_bat = "󰁹"
 	status_full = "󰚥"
 	low_threshold = 20
+}
+
+disk / {
+	format = "󰋊 %used"
 }
 
 memory {
