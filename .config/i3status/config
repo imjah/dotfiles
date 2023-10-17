@@ -9,6 +9,7 @@ general {
 order += "ethernet _first_"
 order += "wireless _first_"
 order += "battery all"
+order += "disk /mnt/passwords"
 order += "disk /mnt/files"
 order += "disk /"
 order += "memory"
@@ -17,17 +18,17 @@ order += "volume master"
 order += "time"
 
 ethernet _first_ {
-	format_up = "󰈀 %ip"
+	format_up = "󰈀 %speed 󰩟 %ip"
 	format_down = ""
 }
 
 wireless _first_ {
-	format_up = " %quality %essid %ip"
+	format_up = "󰖩 %essid %speed 󰩟 %ip"
 	format_down = ""
 }
 
 battery all {
-	format = "%status %percentage %remaining"
+	format = "%status %percentage 󱧥 %remaining"
 	format_down = ""
 	format_percentage = "%.00f%s"
 	status_chr = "󰂄"
@@ -36,12 +37,16 @@ battery all {
 	low_threshold = 20
 }
 
-disk / {
-	format = "󰋊 %used"
+disk /mnt/passwords {
+	format = "󰟵 %used"
 }
 
 disk /mnt/files {
-	format = "󱊞 %used"
+	format = "󰆼 %used"
+}
+
+disk / {
+	format = "󰋊 %used"
 }
 
 memory {
