@@ -23,7 +23,7 @@ ethernet _first_ {
 }
 
 wireless _first_ {
-	format_up = "󰖩 %essid %speed 󰩟 %ip"
+	format_up = "󰖩 %essid %bitrate 󰩟 %ip"
 	format_down = ""
 }
 
