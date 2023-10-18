@@ -1,9 +1,0 @@
-#!/bin/bash
-
-IPs=`ip addr | grep 192.168 | cut -d " " -f 6 | cut -d "/" -f 1`
-
-for IP in $IPs; do
-	echo Local network address: http://$IP:8000
-done
-
-python3 -m http.server

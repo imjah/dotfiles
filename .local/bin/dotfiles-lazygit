@@ -1,5 +1,0 @@
-#!/bin/bash
-
-git_dir="`xdg-user-dir PROJECTS`/.dotfiles"
-
-gnome-terminal --maximize -- lazygit --git-dir=$git_dir --work-tree=$HOME
