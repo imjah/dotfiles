@@ -1,0 +1,39 @@
+#!/bin/bash
+
+init() {
+	trash_dir="${XDG_DATA_HOME:-$HOME/.local/share}/trash"
+
+	mkdir -p $trash_dir
+}
+
+main() {
+	init
+	
+	case "$1" in
+		-r)
+			mv -t . "$trash_dir/${2:-?}"
+		;;
+		-p)
+			rm -rf $trash_dir/*
+		;;
+		-u)
+			du -h "$trash_dir"
+		;;
+		-l | "")
+			ls "$trash_dir"
+		;;
+		-h)
+			echo "Usage: $(basename $0) [<option>] [file]"
+			echo
+			echo "Options:"
+			echo "  -r  Restore trashed file"
+			echo "  -p  Purge trash"
+			echo "  -u  Show trash usage"
+			echo "  -l  Show trashed files (default)"
+			echo "  -h  Show help"
+		;;
+		*)
+			mv -t "$trash_dir" $@
+		;;
+	esac
+}; main $@
