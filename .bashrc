@@ -6,7 +6,6 @@ alias open="xdg-open"
 alias pip="pip3"
 alias python="python3"
 alias serve="python3 -m http.server"
-alias vi="nvim"
 
 cd() {
 	builtin cd "$@" && ls
