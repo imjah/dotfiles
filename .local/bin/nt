@@ -1,6 +1,6 @@
 #!/bin/bash
 
 DIR="`xdg-user-dir DOCUMENTS`/notes"
-FILE=`ls "$DIR" | fzf --preview "cat $DIR/{}"`
+FILE=`find "$DIR" -type f | sed "s~$DIR/~~" | fzf --preview "cat $DIR/{}"`
 
 [ "$FILE" ] && ${EDITOR:-nvim} "$DIR/$FILE"
