@@ -287,10 +287,10 @@ bindsym $mod+k focus up
 bindsym $mod+j focus down
 bindsym $mod+h focus left
 bindsym $mod+l focus right
-bindsym $mod+Up resize shrink height 10 px
-bindsym $mod+Down resize grow height 10 px
-bindsym $mod+Left resize shrink width 10 px
-bindsym $mod+Right resize grow width 10 px
+bindsym $mod+Up resize shrink height 50 px
+bindsym $mod+Down resize grow height 50 px
+bindsym $mod+Left resize shrink width 100 px
+bindsym $mod+Right resize grow width 100 px
 bindsym $mod+Escape mode $power
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+r restart
