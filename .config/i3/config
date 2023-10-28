@@ -280,7 +280,6 @@ set $mod Mod4
 bindsym $mod+b exec firefox
 bindsym $mod+d exec dmenu_run
 bindsym $mod+p exec passmenu
-bindsym $mod+s exec nautilus
 bindsym $mod+e layout toggle split
 bindsym $mod+w layout tabbed
 bindsym $mod+f fullscreen toggle
