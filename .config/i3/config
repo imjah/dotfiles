@@ -334,4 +334,4 @@ bar {
 font pango:Hack 9
 
 # Wallpaper
-exec_always --no-startup-id feh --bg-fill "$XDG_CONFIG_HOME/wallpaper.png"
+exec_always --no-startup-id feh --no-fehbg --bg-fill "$XDG_CONFIG_HOME/wallpaper.png"
