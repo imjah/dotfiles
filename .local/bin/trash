@@ -17,7 +17,7 @@ main() {
 			rm -rf $trash_dir/*
 		;;
 		-u)
-			du -h "$trash_dir"
+			du -hs "$trash_dir"
 		;;
 		-l | "")
 			ls "$trash_dir"
