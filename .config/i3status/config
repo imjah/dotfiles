@@ -1,6 +1,3 @@
-# test
-# test 2
-
 general {
 	colors         = true
 	interval       = 2
@@ -12,8 +9,6 @@ general {
 order += "ethernet _first_"
 order += "wireless _first_"
 order += "battery all"
-order += "disk /mnt/passwords"
-order += "disk /mnt/files"
 order += "disk /"
 order += "memory"
 order += "cpu_usage"
@@ -40,14 +35,6 @@ battery all {
 	low_threshold = 20
 }
 
-disk /mnt/passwords {
-	format = "󰟵 %used"
-}
-
-disk /mnt/files {
-	format = "󰆼 %used"
-}
-
 disk / {
 	format = "󰋊 %used"
 }
@@ -68,5 +55,5 @@ volume master {
 }
 
 time {
-	format = "%a %d %b %H:%M"
+	format = "󰃭 %a %d %b %H:%M "
 }

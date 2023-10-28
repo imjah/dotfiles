@@ -317,6 +317,7 @@ smart_borders on
 bar {
 	status_command i3status
 	position top
+	separator_symbol ""
 
 	colors {
 		statusline $fg
@@ -333,4 +334,4 @@ bar {
 font pango:Hack 9
 
 # Wallpaper
-exec_always --no-startup-id xsetroot -solid "#202020"
+exec_always --no-startup-id feh --bg-fill "$XDG_CONFIG_HOME/wallpaper.png"
