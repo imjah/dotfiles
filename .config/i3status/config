@@ -1,6 +1,6 @@
 general {
 	colors         = true
-	interval       = 2
+	interval       = 1
 	color_good     = "#ebdbb2"
 	color_degraded = "#d79921"
 	color_bad      = "#cc241d"
@@ -16,17 +16,17 @@ order += "volume master"
 order += "time"
 
 ethernet _first_ {
-	format_up = "󰈀 %speed 󰩟 %ip"
+	format_up = "󰈀 %speed"
 	format_down = ""
 }
 
 wireless _first_ {
-	format_up = "󰖩 %essid 󱚸 %bitrate 󰩟 %ip"
+	format_up = "󰖩%quality"
 	format_down = ""
 }
 
 battery all {
-	format = "%status %percentage 󱧥 %remaining"
+	format = "%status %percentage"
 	format_down = ""
 	format_percentage = "%.00f%s"
 	status_chr = "󰂄"
@@ -55,5 +55,5 @@ volume master {
 }
 
 time {
-	format = "󰃭 %a %d %b %H:%M "
+	format = "%a %d %b %H:%M "
 }
