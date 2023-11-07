@@ -19,6 +19,7 @@ export BROWSER="firefox"
 export EDITOR="nvim --noplugin"
 export PAGER="less"
 export VISUAL="nvim"
+export GTK_THEME="Adwaita-dark"
 
 # Move xsession-errors
 if [ -e "$HOME/.xsession-errors" ]; then
