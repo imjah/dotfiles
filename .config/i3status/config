@@ -6,18 +6,24 @@ general {
 	color_bad      = "#cc241d"
 }
 
-order += "ethernet _first_"
-order += "wireless _first_"
-order += "battery all"
 order += "disk /"
 order += "memory"
 order += "cpu_usage"
+order += "wireless _first_"
+order += "battery all"
 order += "volume master"
 order += "time"
 
-ethernet _first_ {
-	format_up = "󰈀 %speed"
-	format_down = ""
+disk / {
+	format = "󰋊 %percentage_used"
+}
+
+memory {
+	format = "󰍛 %percentage_used"
+}
+
+cpu_usage {
+	format = "󰻠 %usage"
 }
 
 wireless _first_ {
@@ -33,18 +39,6 @@ battery all {
 	status_bat = "󰁹"
 	status_full = "󰚥"
 	low_threshold = 20
-}
-
-disk / {
-	format = "󰋊 %used"
-}
-
-memory {
-	format = "󰍛 %used"
-}
-
-cpu_usage {
-	format = "󰻠 %usage"
 }
 
 volume master {
