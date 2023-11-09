@@ -1,0 +1,3 @@
+#!/bin/bash
+
+libreoffice "`xdg-user-dir DOCUMENTS`/sheets/budget.ods"

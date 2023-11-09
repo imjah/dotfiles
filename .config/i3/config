@@ -280,7 +280,7 @@ set $mod Mod4
 bindsym $mod+i exec firefox
 bindsym $mod+d exec dmenu_run
 bindsym $mod+p exec passmenu
-bindsym $mod+b exec libreoffice $HOME/documents/sheets/budget.ods
+bindsym $mod+b exec budget
 bindsym $mod+e layout toggle split
 bindsym $mod+w layout tabbed
 bindsym $mod+f fullscreen toggle
