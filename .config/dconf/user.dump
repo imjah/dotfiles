@@ -211,6 +211,8 @@ source-currency='DZD'
 source-units='degree'
 target-currency='DZD'
 target-units='radian'
+window-maximized=false
+window-size=(958, 1058)
 word-size=64
 
 [org/gnome/cheese]
@@ -236,6 +238,7 @@ xkb-options=['lv3:ralt_switch']
 clock-format='24h'
 color-scheme='prefer-dark'
 cursor-theme='breeze_cursors'
+font-hinting='slight'
 gtk-theme='Plata-Noir'
 icon-theme='Papirus'
 show-battery-percentage=false
@@ -294,7 +297,18 @@ image-gallery=false
 sidebar=false
 
 [org/gnome/evince/default]
+continuous=true
+dual-page=false
+dual-page-odd-left=false
+enable-spellchecking=true
+fullscreen=false
+inverted-colors=false
+show-sidebar=true
+sidebar-page='thumbnails'
+sidebar-size=168
+sizing-mode='free'
 window-ratio=(2.2336134453781513, 0.86579572446555819)
+zoom=0.48002943172578771
 
 [org/gnome/evolution-data-server]
 migrated=true
@@ -468,12 +482,23 @@ default-show-menubar=false
 [org/gnome/terminal/legacy/profiles:]
 list=['b1dcc9dd-5262-4d8d-a863-c897e6d979b9']
 
+[org/gnome/terminal/legacy/profiles:/:1c0212c0-b651-4133-852a-9928b95edafb]
+custom-command='bash -c "curl -s https://wttr.in/stargard | head -n -3 | head -c -1; read -rsn1"'
+default-size-columns=125
+default-size-rows=36
+exit-action='close'
+login-shell=false
+scrollbar-policy='never'
+title='Weather - Stargard'
+use-custom-command=true
+visible-name='Weather'
+
 [org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
 background-color='rgb(40,40,40)'
 background-transparency-percent=12
 custom-command=''
 foreground-color='rgb(235,219,178)'
-palette=['rgb(0,0,0)', 'rgb(205,0,0)', 'rgb(0,205,0)', 'rgb(205,205,0)', 'rgb(0,0,238)', 'rgb(205,0,205)', 'rgb(0,205,205)', 'rgb(229,229,229)', 'rgb(127,127,127)', 'rgb(255,0,0)', 'rgb(0,255,0)', 'rgb(255,255,0)', 'rgb(92,92,255)', 'rgb(255,0,255)', 'rgb(0,255,255)', 'rgb(255,255,255)']
+palette=['rgb(46,52,54)', 'rgb(204,0,0)', 'rgb(78,154,6)', 'rgb(196,160,0)', 'rgb(52,101,164)', 'rgb(117,80,123)', 'rgb(6,152,154)', 'rgb(211,215,207)', 'rgb(85,87,83)', 'rgb(239,41,41)', 'rgb(138,226,52)', 'rgb(252,233,79)', 'rgb(114,159,207)', 'rgb(173,127,168)', 'rgb(52,226,226)', 'rgb(238,238,236)']
 scrollback-unlimited=false
 scrollbar-policy='never'
 use-custom-command=false
