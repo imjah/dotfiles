@@ -39,9 +39,8 @@ endif
 " Plugin: floaterm
 " ------------------------------------------------------------------------------
 let g:floaterm_width         = 1.0
-let g:floaterm_height        = 25
+let g:floaterm_height        = 1.0
 let g:floaterm_autoclose     = 2
-let g:floaterm_position      = 'bottom'
 let g:floaterm_keymap_new    = '<F7>'
 let g:floaterm_keymap_next   = '<F6>'
 let g:floaterm_keymap_prev   = '<F5>'
@@ -59,19 +58,20 @@ nnoremap <silent> <Space> :LazyGit<CR>
 
 " Plugin: nerdtree
 " ------------------------------------------------------------------------------
-let NERDTreeBookmarksFile         = ''
-let NERDTreeCascadeSingleChildDir = 0
-let NERDTreeChDirMode             = 1
-let NERDTreeDirArrowCollapsible   = ''
-let NERDTreeDirArrowExpandable    = ''
-let NERDTreeMinimalMenu           = 1
-let NERDTreeMinimalUI             = 1
-let NERDTreeShowHidden            = 1
-let NERDTreeWinSize               = 35
+let g:NERDTreeBookmarksFile         = ''
+let g:NERDTreeCascadeSingleChildDir = 0
+let g:NERDTreeChDirMode             = 1
+let g:NERDTreeDirArrowCollapsible   = ''
+let g:NERDTreeDirArrowExpandable    = ''
+let g:NERDTreeMinimalMenu           = 1
+let g:NERDTreeMinimalUI             = 1
+let g:NERDTreeShowHidden            = 1
+let g:NERDTreeWinPos                = 'right'
+let g:NERDTreeWinSize               = 30
 
 nnoremap          <C-o> :NERDTree /home/rafal/projects/
 nnoremap <silent> <C-\> :NERDTreeFocus<CR>
-nnoremap <silent> \     :NERDTreeToggle<CR>
+nnoremap <silent> \     :NERDTreeToggle<CR>:NERDTreeRefreshRoot<CR>:NERDTreeRefreshRoot<CR>
 
 " Editor:
 " ------------------------------------------------------------------------------
