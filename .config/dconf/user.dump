@@ -53,6 +53,11 @@ alignment='end'
 name='System Tray'
 position=0
 
+[com/solus-project/budgie-panel/applets/{eead8f56-3af3-11ee-986d-a44e31b3eea8}]
+alignment='end'
+name='Shutdown Timer'
+position=3
+
 [com/solus-project/budgie-panel/applets/{f6017590-3b68-11ee-aeb2-18c04d09967c}]
 alignment='end'
 name='Shutdown Timer'
@@ -132,7 +137,7 @@ loop-playlist=false
 maximized=true
 playlist-width=250
 show-playlist=false
-volume=0.0
+volume=1.0
 width=1920
 
 [io/github/gnome-mpv]
@@ -170,6 +175,7 @@ allow-volume-overdrive=false
 
 [org/buddiesofbudgie/budgie-desktop/screenshot]
 delay=0
+last-save-directory=3
 screenshot-mode='Selection'
 
 [org/buddiesofbudgie/control-center]
@@ -240,7 +246,7 @@ numlock-state=false
 
 [org/gnome/desktop/peripherals/touchpad]
 edge-scrolling-enabled=false
-natural-scroll=true
+natural-scroll=false
 speed=-0.014285714285714235
 two-finger-scrolling-enabled=true
 
@@ -284,7 +290,11 @@ num-workspaces=4
 titlebar-font='Noto Sans 11'
 
 [org/gnome/eog/ui]
-sidebar=true
+image-gallery=false
+sidebar=false
+
+[org/gnome/evince/default]
+window-ratio=(2.2336134453781513, 0.86579572446555819)
 
 [org/gnome/evolution-data-server]
 migrated=true
@@ -315,13 +325,13 @@ maximized=true
 network-total-in-bits=false
 show-dependencies=false
 show-whose-processes='user'
-window-state=(1920, 1080, 0, 0)
+window-state=(1366, 743, 0, 25)
 
 [org/gnome/gnome-system-monitor/disktreenew]
 col-0-visible=true
 col-0-width=382
 col-6-visible=true
-col-6-width=1228
+col-6-width=0
 
 [org/gnome/mutter]
 attach-modal-dialogs=false
@@ -329,7 +339,7 @@ center-new-windows=true
 edge-tiling=true
 
 [org/gnome/nautilus/compression]
-default-compression-format='tar.xz'
+default-compression-format='zip'
 
 [org/gnome/nautilus/icon-view]
 default-zoom-level='small'
@@ -363,6 +373,10 @@ ignore-ca-cert=false
 ignore-phase2-ca-cert=false
 
 [org/gnome/nm-applet/eap/e4d5423d-a886-4b2f-ac17-5d090c1749a7]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[org/gnome/nm-applet/eap/eedb04ac-6864-4619-9e0a-23dc4048f24c]
 ignore-ca-cert=false
 ignore-phase2-ca-cert=false
 
@@ -448,22 +462,23 @@ document-type='text'
 save-directory='file:///mnt/files/documents/school/college/semestr-7/PZ/'
 text-dpi=600
 
-[org/gnome/terminal/legacy/profiles:]
-list=['b1dcc9dd-5262-4d8d-a863-c897e6d979b9', '1c0212c0-b651-4133-852a-9928b95edafb']
+[org/gnome/terminal/legacy]
+default-show-menubar=false
 
-[org/gnome/terminal/legacy/profiles:/:1c0212c0-b651-4133-852a-9928b95edafb]
-custom-command='bash -c "curl -s https://wttr.in/stargard | head -n -3 | head -c -1; read -rsn1"'
-default-size-columns=125
-default-size-rows=36
-exit-action='close'
-login-shell=false
-scrollbar-policy='never'
-title='Weather - Stargard'
-use-custom-command=true
-visible-name='Weather'
+[org/gnome/terminal/legacy/profiles:]
+list=['b1dcc9dd-5262-4d8d-a863-c897e6d979b9']
 
 [org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+background-color='rgb(40,40,40)'
+background-transparency-percent=12
+custom-command=''
+foreground-color='rgb(235,219,178)'
+palette=['rgb(0,0,0)', 'rgb(205,0,0)', 'rgb(0,205,0)', 'rgb(205,205,0)', 'rgb(0,0,238)', 'rgb(205,0,205)', 'rgb(0,205,205)', 'rgb(229,229,229)', 'rgb(127,127,127)', 'rgb(255,0,0)', 'rgb(0,255,0)', 'rgb(255,255,0)', 'rgb(92,92,255)', 'rgb(255,0,255)', 'rgb(0,255,255)', 'rgb(255,255,255)']
+scrollback-unlimited=false
 scrollbar-policy='never'
+use-custom-command=false
+use-theme-colors=false
+use-transparent-background=false
 visible-name='Default'
 
 [org/gtk/gtk4/settings/file-chooser]
@@ -481,8 +496,8 @@ view-type='list'
 window-size=(760, 327)
 
 [org/gtk/settings/color-chooser]
-custom-colors=[(0.0, 0.83137254901960789, 0.0, 1.0), (0.66274509803921566, 0.37647058823529411, 0.2196078431372549, 1.0), (0.19215686274509805, 0.41568627450980394, 0.074509803921568626, 1.0), (0.2196078431372549, 0.55686274509803924, 0.23529411764705882, 1.0), (0.098039215686274508, 0.46274509803921571, 0.82352941176470584, 1.0), (0.5607843137254902, 0.12941176470588237, 0.84705882352941175, 1.0), (0.22352941176470589, 0.81568627450980391, 0.72156862745098038, 1.0)]
-selected-color=(true, 0.0, 0.83137254901960789, 0.0, 1.0)
+custom-colors=[(0.15686274509803921, 0.15686274509803921, 0.15686274509803921, 1.0), (0.92156862745098034, 0.85882352941176465, 0.69803921568627447, 1.0), (0.0, 0.83137254901960789, 0.0, 1.0), (0.66274509803921566, 0.37647058823529411, 0.2196078431372549, 1.0), (0.19215686274509805, 0.41568627450980394, 0.074509803921568626, 1.0), (0.2196078431372549, 0.55686274509803924, 0.23529411764705882, 1.0), (0.098039215686274508, 0.46274509803921571, 0.82352941176470584, 1.0), (0.5607843137254902, 0.12941176470588237, 0.84705882352941175, 1.0)]
+selected-color=(true, 0.15686274509803921, 0.15686274509803921, 0.15686274509803921, 1.0)
 
 [org/gtk/settings/file-chooser]
 date-format='regular'
@@ -490,10 +505,10 @@ location-mode='path-bar'
 show-hidden=true
 show-size-column=true
 show-type-column=true
-sidebar-width=149
+sidebar-width=152
 sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-window-position=(891, 156)
+window-position=(187, 0)
 window-size=(990, 682)

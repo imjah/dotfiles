@@ -61,16 +61,16 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+l move right
-bindsym $mod+Shift+Up exec light -A 10
-bindsym $mod+Shift+Down exec light -U 10
-bindsym XF86MonBrightnessUp exec light -A 10
-bindsym XF86MonBrightnessDown exec light -U 10
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioPrev exec playerctl previous
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioMute exec amixer -D pulse sset Master toggle-mute
-bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+
-bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-
+bindsym $mod+Shift+Up exec --no-startup-id light -A 5
+bindsym $mod+Shift+Down exec --no-startup-id light -U 5
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioMute exec --no-startup-id amixer -D pulse sset Master toggle-mute
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 10%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 10%-
 
 # Actions
 focus_follows_mouse no

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+curl -s https://wttr.in/Stargard | head -n -3
