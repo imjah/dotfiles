@@ -16,6 +16,7 @@ endif
 
 call plug#begin(s:dir)
 
+Plug 'NoahTheDuke/vim-just'
 Plug 'ackyshake/VimCompletesMe'
 Plug 'godlygeek/tabular'
 Plug 'jiangmiao/auto-pairs'
