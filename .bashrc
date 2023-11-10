@@ -5,7 +5,6 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 
 alias ls="eza -1a --git --group-directories-first --icons"
-alias serve="python3 -m http.server"
 alias vi="neovim"
 
 cd() {
