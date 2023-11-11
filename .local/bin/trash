@@ -15,7 +15,7 @@ main() {
 			mv "$trash_dir/${2:-?}" "./${2#*---}"
 		;;
 		-e)
-			rm -rf "$trash_dir" && mkdir -p "$trash_dir"
+			rm -rf "$trash_dir" && mkdir "$trash_dir"
 		;;
 		-u)
 			du -hs "$trash_dir"
@@ -35,7 +35,7 @@ main() {
 		;;
 		*)
 			for file in "$@"; do
-				mv "$file" "$trash_dir/$date$file"
+				mv "$file" "$trash_dir/$date$(basename $file)"
 			done
 		;;
 	esac
