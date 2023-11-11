@@ -20,14 +20,14 @@ $exec /usr/lib64/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # Modes
 # ------------------------------------------------------------------------------
-set $power "[e]xit  [l]ock  [s]leep  [r]eboot  [p]oweroff"
+set $power "[e]xit  [l]ock  [s]leep  [r]eboot  [o]ff"
 
 mode $power {
 	bindsym e $exec i3-msg exit
 	bindsym l $exec i3lock -f; mode "default"
 	bindsym s $exec systemctl suspend; mode "default"
 	bindsym r $exec systemctl reboot
-	bindsym p $exec systemctl poweroff
+	bindsym o $exec systemctl poweroff
 
 	bindsym Escape mode "default"
 }
