@@ -1,9 +1,10 @@
 #!/bin/bash
 
 init() {
+	date=`date +"%Y-%m-%d-%T---"`
 	trash_dir="${XDG_DATA_HOME:-$HOME/.local/share}/trash"
 
-	mkdir -p $trash_dir
+	mkdir -p "$trash_dir"
 }
 
 main() {
@@ -11,29 +12,31 @@ main() {
 	
 	case "$1" in
 		-r)
-			mv -t . "$trash_dir/${2:-?}"
+			mv "$trash_dir/${2:-?}" "./${2#*---}"
 		;;
-		-p)
-			rm -rf $trash_dir/*
+		-e)
+			rm -rf "$trash_dir" && mkdir -p "$trash_dir"
 		;;
 		-u)
 			du -hs "$trash_dir"
 		;;
 		-l | "")
-			ls "$trash_dir"
+			ls -1 "$trash_dir"
 		;;
 		-h)
 			echo "Usage: $(basename $0) [<option>] [file]"
 			echo
 			echo "Options:"
 			echo "  -r  Restore trashed file"
-			echo "  -p  Purge trash"
+			echo "  -e  Empty trash"
 			echo "  -u  Show trash usage"
 			echo "  -l  Show trashed files (default)"
 			echo "  -h  Show help"
 		;;
 		*)
-			mv -t "$trash_dir" $@
+			for file in "$@"; do
+				mv "$file" "$trash_dir/$date$file"
+			done
 		;;
 	esac
 }; main $@

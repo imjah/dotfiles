@@ -5,6 +5,7 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 
 alias ls="eza -1a --git --group-directories-first --icons"
+alias rm="trash"
 alias vi="neovim"
 
 cd() {
