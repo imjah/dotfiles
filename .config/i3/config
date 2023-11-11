@@ -1,24 +1,98 @@
+set $mod         Mod4
+set $font        Hack
+set $size        9
+set $bg          #282828
+set $fg          #ebdbb2
+set $red         #cc241d
+set $green       #689d6a
+set $yellow      #d79921
+set $blue        #458588
+set $purple      #b16286
+set $aqua        #689d68
+set $gray        #a89984
+set $darkgray    #928374
+set $exec        exec --no-startup-id
+set $exec_always exec_always --no-startup-id
+
 # Autostart
+# ------------------------------------------------------------------------------
+$exec /usr/lib64/polkit-gnome/polkit-gnome-authentication-agent-1
 
-exec --no-startup-id /usr/lib64/polkit-gnome/polkit-gnome-authentication-agent-1
+# Modes
+# ------------------------------------------------------------------------------
+set $power "[e]xit  [l]ock  [s]leep  [r]eboot  [p]oweroff"
 
-# Style
+mode $power {
+	bindsym e $exec i3-msg exit
+	bindsym l $exec i3lock -f; mode "default"
+	bindsym s $exec systemctl suspend; mode "default"
+	bindsym r $exec systemctl reboot
+	bindsym p $exec systemctl poweroff
 
-set $font     Hack
-set $fontsize 9
-set $bg       #282828
-set $fg       #ebdbb2
-set $red      #cc241d
-set $green    #689d6a
-set $yellow   #d79921
-set $blue     #458588
-set $purple   #b16286
-set $aqua     #689d68
-set $gray     #a89984
-set $darkgray #928374
+	bindsym Escape mode "default"
+}
 
-font pango:$font $fontsize
+# Keybinds
+# ------------------------------------------------------------------------------
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+bindsym $mod+i $exec firefox
+bindsym $mod+d $exec dmenu_run -i -l 5 -fn "$font-$size" -nb "$bg" -nf "$fg" -sb "$green" -sf "$fg"
+bindsym $mod+p $exec passmenu -i -l 5 -fn "$font-$size" -nb "$bg" -nf "$fg" -sb "$green" -sf "$fg"
+bindsym $mod+b $exec budget
+bindsym $mod+q kill
+bindsym $mod+e layout toggle split
+bindsym $mod+w layout tabbed
+bindsym $mod+f fullscreen toggle
+bindsym $mod+v split v
+bindsym $mod+k focus up
+bindsym $mod+j focus down
+bindsym $mod+h focus left
+bindsym $mod+l focus right
+bindsym $mod+Up resize shrink height 50 px
+bindsym $mod+Down resize grow height 50 px
+bindsym $mod+Left resize shrink width 100 px
+bindsym $mod+Right resize grow width 100 px
+bindsym $mod+Escape mode $power
+bindsym $mod+Return $exec gnome-terminal
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+Up $exec light -A 5
+bindsym $mod+Shift+Down $exec light -U 5
+bindsym XF86MonBrightnessUp $exec light -A 5
+bindsym XF86MonBrightnessDown $exec light -U 5
+bindsym XF86AudioPrev $exec playerctl previous
+bindsym XF86AudioNext $exec playerctl next
+bindsym XF86AudioPlay $exec playerctl play-pause
+bindsym XF86AudioStop $exec playerctl stop
+bindsym XF86AudioMute $exec amixer -D pulse sset Master toggle-mute
+bindsym XF86AudioLowerVolume $exec amixer -D pulse sset Master 10%-
+bindsym XF86AudioRaiseVolume $exec amixer -D pulse sset Master 10%+
+floating_modifier $mod
 
+# Style: bar
+# ------------------------------------------------------------------------------
 bar {
 	status_command i3status
 	position top
@@ -35,8 +109,13 @@ bar {
 	}
 }
 
+# Style: window
+# ------------------------------------------------------------------------------
 smart_borders on
+focus_follows_mouse no
 for_window [class="^.*"] border pixel 1
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
 client.focused          $aqua $aqua $fg $blue $aqua
 client.focused_inactive #333333 #5f676a $fg #484e50 #5f676a
 client.unfocused        $aqua $bg $gray $purple #222222
@@ -44,85 +123,10 @@ client.urgent           $red $red $fg $red  $red
 client.placeholder      $bg $darkgray $fg $bg $darkgray
 client.background       $bg
 
-exec_always --no-startup-id feh --no-fehbg --bg-fill "$XDG_CONFIG_HOME/wallpaper.png"
+# Style: font
+# ------------------------------------------------------------------------------
+font pango:$font $size
 
-# Modes
-
-set $power "[e]xit  [l]ock  [s]leep  [r]eboot  [p]oweroff"
-
-mode $power {
-	bindsym e exec i3-msg exit
-	bindsym l exec i3lock -f; mode "default"
-	bindsym s exec systemctl suspend; mode "default"
-	bindsym r exec systemctl reboot
-	bindsym p exec systemctl poweroff
-
-	bindsym Escape mode "default"
-}
-
-# Keybinds
-
-set $mod Mod4
-
-bindsym $mod+1 workspace "1"
-bindsym $mod+2 workspace "2"
-bindsym $mod+3 workspace "3"
-bindsym $mod+4 workspace "4"
-bindsym $mod+5 workspace "5"
-bindsym $mod+6 workspace "6"
-bindsym $mod+7 workspace "7"
-bindsym $mod+8 workspace "8"
-bindsym $mod+9 workspace "9"
-bindsym $mod+0 workspace "10"
-bindsym $mod+i exec --no-startup-id firefox
-bindsym $mod+d exec --no-startup-id dmenu_run -i -l 5 -fn '$font-$fontsize' -nb '$bg' -nf '$fg' -sb '$green' -sf '$fg'
-bindsym $mod+p exec --no-startup-id passmenu -i -l 5 -fn '$font-$fontsize' -nb '$bg' -nf '$fg' -sb '$green' -sf '$fg'
-bindsym $mod+b exec --no-startup-id budget
-bindsym $mod+q kill
-bindsym $mod+e layout toggle split
-bindsym $mod+w layout tabbed
-bindsym $mod+f fullscreen toggle
-bindsym $mod+v split v
-bindsym $mod+k focus up
-bindsym $mod+j focus down
-bindsym $mod+h focus left
-bindsym $mod+l focus right
-bindsym $mod+Up resize shrink height 50 px
-bindsym $mod+Down resize grow height 50 px
-bindsym $mod+Left resize shrink width 100 px
-bindsym $mod+Right resize grow width 100 px
-bindsym $mod+Escape mode $power
-bindsym $mod+Return exec gnome-terminal
-bindsym $mod+Shift+1 move container to workspace "1"
-bindsym $mod+Shift+2 move container to workspace "2"
-bindsym $mod+Shift+3 move container to workspace "3"
-bindsym $mod+Shift+4 move container to workspace "4"
-bindsym $mod+Shift+5 move container to workspace "5"
-bindsym $mod+Shift+6 move container to workspace "6"
-bindsym $mod+Shift+7 move container to workspace "7"
-bindsym $mod+Shift+8 move container to workspace "8"
-bindsym $mod+Shift+9 move container to workspace "9"
-bindsym $mod+Shift+0 move container to workspace "10"
-bindsym $mod+Shift+r restart
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+l move right
-bindsym $mod+Shift+Up exec --no-startup-id light -A 5
-bindsym $mod+Shift+Down exec --no-startup-id light -U 5
-bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5
-bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5
-bindsym XF86AudioPrev exec --no-startup-id playerctl previous
-bindsym XF86AudioNext exec --no-startup-id playerctl next
-bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
-bindsym XF86AudioStop exec --no-startup-id playerctl stop
-bindsym XF86AudioMute exec --no-startup-id amixer -D pulse sset Master toggle-mute
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 10%-
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 10%+
-
-# Behavior
-
-focus_follows_mouse no
-floating_modifier $mod
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="task_dialog"] floating enable
+# Style: wallpaper
+# ------------------------------------------------------------------------------
+$exec_always feh --no-fehbg --bg-fill "$XDG_CONFIG_HOME/wallpaper.png"
