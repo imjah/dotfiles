@@ -2,7 +2,6 @@ source /usr/share/defaults/etc/profile
 
 # Default applications
 export BROWSER="firefox"
-export GTK_THEME="Adwaita-dark"
 export PAGER="less"
 
 # XDG
