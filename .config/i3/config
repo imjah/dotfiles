@@ -45,7 +45,7 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 bindsym $mod+i $exec firefox
-bindsym $mod+d $exec dmenu_run -i -l 5 -fn "$font-$size" -nb "$bg" -nf "$fg" -sb "$green" -sf "$fg"
+bindsym $mod+o $exec dmenu_run -i -l 5 -fn "$font-$size" -nb "$bg" -nf "$fg" -sb "$green" -sf "$fg"
 bindsym $mod+p $exec passmenu -i -l 5 -fn "$font-$size" -nb "$bg" -nf "$fg" -sb "$green" -sf "$fg"
 bindsym $mod+b $exec budget
 bindsym $mod+q kill
