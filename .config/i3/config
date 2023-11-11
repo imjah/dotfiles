@@ -4,6 +4,8 @@ exec --no-startup-id /usr/lib64/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # Style
 
+set $font     Hack
+set $fontsize 9
 set $bg       #282828
 set $fg       #ebdbb2
 set $red      #cc241d
@@ -15,7 +17,7 @@ set $aqua     #689d68
 set $gray     #a89984
 set $darkgray #928374
 
-font pango:Hack 9
+font pango:$font $fontsize
 
 bar {
 	status_command i3status
@@ -72,10 +74,10 @@ bindsym $mod+7 workspace "7"
 bindsym $mod+8 workspace "8"
 bindsym $mod+9 workspace "9"
 bindsym $mod+0 workspace "10"
-bindsym $mod+i exec firefox
-bindsym $mod+d exec dmenu_run -nb "$bg" -nf "$fg" -sb "$green" -sf "$fg"
-bindsym $mod+p exec passmenu
-bindsym $mod+b exec budget
+bindsym $mod+i exec --no-startup-id firefox
+bindsym $mod+d exec --no-startup-id dmenu_run -i -l 5 -fn '$font-$fontsize' -nb '$bg' -nf '$fg' -sb '$green' -sf '$fg'
+bindsym $mod+p exec --no-startup-id passmenu -i -l 5 -fn '$font-$fontsize' -nb '$bg' -nf '$fg' -sb '$green' -sf '$fg'
+bindsym $mod+b exec --no-startup-id budget
 bindsym $mod+q kill
 bindsym $mod+e layout toggle split
 bindsym $mod+w layout tabbed
