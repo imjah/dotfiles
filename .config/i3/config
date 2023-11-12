@@ -57,6 +57,7 @@ bindsym $mod+k focus up
 bindsym $mod+j focus down
 bindsym $mod+h focus left
 bindsym $mod+l focus right
+bindsym $mod+z $exec systemctl suspend
 bindsym $mod+Up resize shrink height 50 px
 bindsym $mod+Down resize grow height 50 px
 bindsym $mod+Left resize shrink width 100 px
