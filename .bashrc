@@ -7,7 +7,7 @@ export VISUAL="nvim"
 alias ls="eza -1a --git --group-directories-first --icons"
 alias rm="trash"
 alias vi="neovim"
-alias wget="wget --hsts-file='$XDG_CACHE_HOME/wget-hsts'"
+alias wget="wget --no-hsts -P `xdg-user-dir DOWNLOAD`"
 
 cd() {
 	builtin cd "$@" && ls
