@@ -1,5 +1,7 @@
 source /usr/share/defaults/etc/profile
 
+export BULBS_IP="192.168.1.104"
+
 # Default applications
 export BROWSER="firefox"
 export PAGER="less"
