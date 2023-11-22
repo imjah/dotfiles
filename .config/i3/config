@@ -84,8 +84,8 @@ bindsym $mod+Shift+Up $exec light -A 5
 bindsym $mod+Shift+Down $exec light -U 5
 bindsym $mod+Shift+bracketleft $exec bulbs -p "$room_colors"
 bindsym $mod+Shift+bracketright $exec bulbs -n "$room_colors"
-bindsym $mod+Shift+plus $exec bulbs -b +10
-bindsym $mod+Shift+minus $exec bulbs -b -10
+bindsym $mod+Shift+plus $exec bulbs -l +10
+bindsym $mod+Shift+minus $exec bulbs -l -10
 bindsym $mod+Shift+BackSpace $exec bulbs -t
 bindsym XF86MonBrightnessUp $exec light -A 5
 bindsym XF86MonBrightnessDown $exec light -U 5
