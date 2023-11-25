@@ -21,12 +21,12 @@ $exec redshift -l 53:15 -t 6500:3500
 
 # Modes
 # ------------------------------------------------------------------------------
-set $power "[e]xit  [l]ock  [s]leep  [r]eboot  [o]ff"
+set $power "[e]xit  [l]ock  [s]leep  [r]eboot  [p]ower off"
 
 mode $power {
 	bindsym e $exec i3-msg exit
-	bindsym l $exec i3lock -f; mode "default"
-	bindsym s $exec systemctl suspend; mode "default"
+	bindsym l $exec i3lock -c "$bg"; mode "default"
+	bindsym s $exec systemctl suspend; $exec i3lock -c "$bg"; mode "default"
 	bindsym r $exec systemctl reboot
 	bindsym o $exec systemctl poweroff
 
@@ -58,7 +58,6 @@ bindsym $mod+k focus up
 bindsym $mod+j focus down
 bindsym $mod+h focus left
 bindsym $mod+l focus right
-bindsym $mod+z $exec systemctl suspend
 bindsym $mod+BackSpace $exec bulbs -t
 bindsym $mod+bracketleft $exec bulbs -p "$room_colors"
 bindsym $mod+bracketright $exec bulbs -n "$room_colors"
