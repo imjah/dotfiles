@@ -13,7 +13,7 @@ set $gray        #a89984
 set $darkgray    #928374
 set $exec        exec --no-startup-id
 set $exec_always exec_always --no-startup-id
-set $room_colors ffffff:ff1900
+set $room_colors ff0000:0afa0a:0a0afa:ffffff:ff0018:ff1f00:ff0800
 
 # Autostart
 # ------------------------------------------------------------------------------
@@ -59,6 +59,11 @@ bindsym $mod+j focus down
 bindsym $mod+h focus left
 bindsym $mod+l focus right
 bindsym $mod+z $exec systemctl suspend
+bindsym $mod+BackSpace $exec bulbs -t
+bindsym $mod+bracketleft $exec bulbs -p "$room_colors"
+bindsym $mod+bracketright $exec bulbs -n "$room_colors"
+bindsym $mod+minus $exec bulbs -l -10
+bindsym $mod+plus $exec bulbs -l +10
 bindsym $mod+Up resize shrink height 50 px
 bindsym $mod+Down resize grow height 50 px
 bindsym $mod+Left resize shrink width 100 px
@@ -80,13 +85,10 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+l move right
+bindsym $mod+Shift+minus $exec bulbs -l 0
+bindsym $mod+Shift+plus $exec bulbs -l 100
 bindsym $mod+Shift+Up $exec light -A 5
 bindsym $mod+Shift+Down $exec light -U 5
-bindsym $mod+Shift+bracketleft $exec bulbs -p "$room_colors"
-bindsym $mod+Shift+bracketright $exec bulbs -n "$room_colors"
-bindsym $mod+Shift+plus $exec bulbs -l +10
-bindsym $mod+Shift+minus $exec bulbs -l -10
-bindsym $mod+Shift+BackSpace $exec bulbs -t
 bindsym XF86MonBrightnessUp $exec light -A 5
 bindsym XF86MonBrightnessDown $exec light -U 5
 bindsym XF86AudioPrev $exec playerctl previous
