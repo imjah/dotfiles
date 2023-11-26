@@ -1,0 +1,29 @@
+#!/bin/bash
+
+screenshot_window() {
+	IMG="$(xdg-user-dir PICTURES)/screenshot-$(date '+%Y-%m-%d-%T').png"
+
+	import -window root $IMG
+}
+
+screenshot_region() {
+	TMP="/tmp/screenshot-$RANDOM.png"
+
+	import $TMP && xclip -selection clipboard -target image/png -i < $TMP
+}
+
+case "$1" in
+	-w)
+		screenshot_window
+	;;
+	-r)
+		screenshot_region
+	;;
+	*)
+		echo "Usage: $(basename $0) [<command>]"
+		echo
+		echo "  -w  Capture window to file"
+		echo "  -r  Capture region to clipboard"
+		echo "  -h  Show this help"
+	;;
+esac
