@@ -1,7 +1,7 @@
 use_nerdfont = true
 hide_display_names = true
 flip_status_indicators = true
-library_tabs = ["albums", "playlists", "tracks"]
+library_tabs = ["playlists", "artists", "albums", "tracks"]
 
 [theme]
 primary = "#FFFFFF"
