@@ -1,23 +1,41 @@
-set $mod         Mod4
-set $font        Hack
-set $size        9
-set $bg          #282828
-set $fg          #ebdbb2
-set $red         #cc241d
-set $green       #689d6a
-set $yellow      #d79921
-set $blue        #458588
-set $purple      #b16286
-set $aqua        #689d68
-set $gray        #a89984
-set $darkgray    #928374
-set $exec        exec --no-startup-id
-set $exec_always exec_always --no-startup-id
-set $room_colors ff0000:0afa0a:0a0afa:ffffff:ff0018:ff1f00:ff0800
+# Variables: modifier
+# ------------------------------------------------------------------------------
+set $mod Mod4
+
+# Variables: font
+# ------------------------------------------------------------------------------
+set $font Hack
+set $size 9
+
+# Variables: colors
+# ------------------------------------------------------------------------------
+set $bg           #282828
+set $fg           #ebdbb2
+set $red          #cc241d
+set $green        #689d6a
+set $yellow       #d79921
+set $blue         #458588
+set $purple       #b16286
+set $aqua         #689d68
+set $gray         #a89984
+set $darkgray     #928374
+set $room_colors  ff0000:0afa0a:0a0afa:ffffff:ff0018:ff1f00:ff0800
+
+# Variables: aliases
+# ------------------------------------------------------------------------------
+set $exec         exec --no-startup-id
+set $exec_always  exec_always --no-startup-id
+
+# Variables: applications
+# ------------------------------------------------------------------------------
+set $browser  firefox
+set $music    gnome-terminal -- ncspot
 
 # Autostart
 # ------------------------------------------------------------------------------
 $exec redshift -l 53:15 -t 6500:3500
+$exec i3-msg 'workspace 10; exec $music'
+$exec i3-msg 'workspace 1; exec $browser'
 
 # Modes
 # ------------------------------------------------------------------------------
@@ -45,10 +63,11 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
-bindsym $mod+i $exec firefox
+bindsym $mod+i $exec $browser
 bindsym $mod+o $exec i3-dmenu-desktop --dmenu='dmenu -i -l 5 -fn "$font-$size" -nb "$bg" -nf "$fg" -sb "$green" -sf "$fg"'
 bindsym $mod+p $exec passmenu -i -l 5 -fn "$font-$size" -nb "$bg" -nf "$fg" -sb "$green" -sf "$fg"
 bindsym $mod+b $exec budget
+bindsym $mod+m $exec $music
 bindsym $mod+q kill
 bindsym $mod+e layout toggle split
 bindsym $mod+w layout tabbed
