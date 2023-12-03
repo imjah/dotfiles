@@ -35,7 +35,7 @@ set $music    gnome-terminal -- ncspot
 # ------------------------------------------------------------------------------
 $exec redshift -l 53:15 -t 6500:3500
 $exec i3-msg 'workspace 10; exec $music'
-$exec i3-msg 'workspace 1; exec $browser'
+$exec i3-msg 'workspace 1;  exec $browser'
 
 # Modes
 # ------------------------------------------------------------------------------
@@ -149,7 +149,7 @@ for_window [window_role="task_dialog"] floating enable
 client.focused          $aqua $aqua $fg $blue $aqua
 client.focused_inactive #333333 #5f676a $fg #484e50 #5f676a
 client.unfocused        $aqua $bg $gray $purple #222222
-client.urgent           $red $red $fg $red  $red 
+client.urgent           $red $red $fg $red $red 
 client.placeholder      $bg $darkgray $fg $bg $darkgray
 client.background       $bg
 
