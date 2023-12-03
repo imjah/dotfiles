@@ -3,13 +3,13 @@
 screenshot_window() {
 	IMG="$(xdg-user-dir PICTURES)/screenshot-$(date '+%Y-%m-%d-%H-%M-%S').png"
 
-	import -window root $IMG
+	import -window root "$IMG"
 }
 
 screenshot_region() {
-	TMP="/tmp/screenshot-$RANDOM.png"
+	IMG="/tmp/screenshot-$RANDOM.png"
 
-	import $TMP && xclip -selection clipboard -target image/png -i < $TMP
+	import "$IMG" && xclip -selection clipboard -t image/png -i "$IMG"
 }
 
 case "$1" in
@@ -20,7 +20,7 @@ case "$1" in
 		screenshot_region
 	;;
 	*)
-		echo "Usage: $(basename $0) [<command>]"
+		echo "Usage: $(basename '$0') [<command>]"
 		echo
 		echo "  -w  Capture window to file"
 		echo "  -r  Capture region to clipboard"
