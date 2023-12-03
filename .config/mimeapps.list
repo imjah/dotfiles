@@ -1,8 +1,8 @@
 [Default Applications]
-application/pdf=org.gnome.Evince.desktop
-image/gif=org.gnome.eog.desktop
-image/jpeg=org.gnome.eog.desktop
-image/jpg=org.gnome.eog.desktop
-image/png=org.gnome.eog.desktop
+application/pdf=org.pwmt.zathura.desktop
+image/gif=feh.desktop
+image/jpeg=feh.desktop
+image/jpg=feh.desktop
+image/png=feh.desktop
 text/plain=nvim.desktop
 video/mp4=mpv.desktop
