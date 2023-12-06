@@ -159,4 +159,4 @@ font pango:$font $size
 
 # Style: wallpaper
 # ------------------------------------------------------------------------------
-$exec_always feh --no-fehbg --bg-fill "$XDG_CONFIG_HOME/wallpaper.png"
+$exec_always feh --no-fehbg --bg-fill "$XDG_CONFIG_HOME/wallpaper"
