@@ -82,6 +82,7 @@ bindsym $mod+bracketleft $exec bulbs -p "$room_colors"
 bindsym $mod+bracketright $exec bulbs -n "$room_colors"
 bindsym $mod+minus $exec bulbs -l -10
 bindsym $mod+plus $exec bulbs -l +10
+bindsym $mod+space floating toggle
 bindsym $mod+Up resize shrink height 50 px
 bindsym $mod+Down resize grow height 50 px
 bindsym $mod+Left resize shrink width 100 px
