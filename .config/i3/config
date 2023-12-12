@@ -88,7 +88,7 @@ bindsym $mod+Down resize grow height 50 px
 bindsym $mod+Left resize shrink width 100 px
 bindsym $mod+Right resize grow width 100 px
 bindsym $mod+Escape mode $power
-bindsym --release $mod+Print $exec screenshot -r
+bindsym $mod+Print $exec screenshot -w
 bindsym $mod+Return $exec gnome-terminal
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
@@ -109,7 +109,7 @@ bindsym $mod+Shift+minus $exec bulbs -l 0
 bindsym $mod+Shift+plus $exec bulbs -l 100
 bindsym $mod+Shift+Up $exec light -A 5
 bindsym $mod+Shift+Down $exec light -U 5
-bindsym Print $exec screenshot -w
+bindsym --release Print $exec screenshot -r
 bindsym XF86MonBrightnessUp $exec light -A 5
 bindsym XF86MonBrightnessDown $exec light -U 5
 bindsym XF86AudioPrev $exec playerctl previous
