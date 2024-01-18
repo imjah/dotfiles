@@ -9,6 +9,7 @@ alias ls="eza -1a --git --group-directories-first --icons"
 alias rm="trash"
 alias vi="neovim"
 alias wget="wget --no-hsts -P `xdg-user-dir DOWNLOAD`"
+alias untar="tar -xf"
 
 cd() {
 	builtin cd "$@" && ls
