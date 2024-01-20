@@ -1,7 +1,7 @@
 XDG_DOCUMENTS_DIR="$HOME/documents"
 XDG_DOWNLOAD_DIR="$HOME/downloads"
 XDG_GAMES_DIR="$HOME/games"
-XDG_MUSIC_DIR="$HOME/songs"
+XDG_MUSIC_DIR="$HOME/music"
 XDG_PICTURES_DIR="$HOME/pictures"
 XDG_PROJECTS_DIR="$HOME/projects"
 XDG_REPOSITORIES_DIR="$HOME/repositories"
