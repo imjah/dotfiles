@@ -34,7 +34,7 @@ set $music    gnome-terminal -- ncspot
 # Autostart
 # ------------------------------------------------------------------------------
 $exec redshift -l 53:15 -t 6500:3500
-$exec i3-msg 'workspace 1;  exec $browser'
+$exec i3-msg 'workspace 1; exec $browser'
 
 # Modes
 # ------------------------------------------------------------------------------
