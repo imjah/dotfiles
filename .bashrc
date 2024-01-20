@@ -14,3 +14,15 @@ alias untar="tar -xf"
 cd() {
 	builtin cd "$@" && ls
 }
+
+
+# Convert WebP memes to PNG and trash it
+
+ee() {
+	dir="$(xdg-user-dir PICTURES)/memes"
+
+	for meme in $dir/*.webp; do
+		dwebp $meme -o ${meme/.webp/.png}
+		trash $meme
+	done
+}
