@@ -29,7 +29,7 @@ set $exec_always  exec_always --no-startup-id
 # Variables: applications
 # ------------------------------------------------------------------------------
 set $browser  firefox
-set $music    gnome-terminal -- ncspot
+set $music    gnome-terminal -- cmus
 
 # Autostart
 # ------------------------------------------------------------------------------
