@@ -26,3 +26,35 @@ ee() {
 		trash $meme
 	done
 }
+
+
+ffmpeg-flac-to-opus() {
+	dir=${1:-.}
+
+	for file in $dir/*.flac; do
+		ffmpeg -i "$file" -c:a libopus -b:a 192k "${file/.flac/.opus}"
+	done
+}
+
+
+save-music-as() {
+	music_dir="$(xdg-user-dir MUSIC)"
+	album_dir="${1:-other}"
+
+	# Music storage
+	storage_dir="$music_dir/$album_dir"
+
+	mkdir -p "$storage_dir"
+	mv -t "$storage_dir" *.opus
+	cp -t "$storage_dir" cover.*
+
+	# Music archive
+	archive_dir="$music_dir/.archive/$album_dir"
+
+	mkdir -p "$archive_dir"
+	mv -t "$archive_dir" *.flac cover.*
+}
+
+sync-music-with() {
+	rsync -av --exclude=".archive" "$(xdg-user-dir MUSIC)/" ${1:-.}
+}
