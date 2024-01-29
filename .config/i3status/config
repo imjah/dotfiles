@@ -12,6 +12,7 @@ order += "cpu_usage"
 order += "wireless _first_"
 order += "battery all"
 order += "volume master"
+order += "read_file BREAK_COUNTDOWN"
 order += "time"
 
 disk / {
@@ -47,6 +48,12 @@ volume master {
 	format_muted = "󰝟 Muted"
 	mixer = "Master"
 	mixer_idx = 0
+}
+
+read_file BREAK_COUNTDOWN {
+	format = "󱎫 %content"
+	format_bad = ""
+	path = "/tmp/break-countdown"
 }
 
 time {

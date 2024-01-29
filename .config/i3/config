@@ -34,6 +34,7 @@ set $music    gnome-terminal -- cmus
 # Autostart
 # ------------------------------------------------------------------------------
 $exec redshift -l 53:15 -t 6500:3500
+$exec countdown 45m /tmp/break-countdown
 $exec i3-msg 'workspace 1; exec $browser'
 
 # Modes
@@ -90,6 +91,8 @@ bindsym $mod+Right resize grow width 100 px
 bindsym $mod+Escape mode $power
 bindsym $mod+Print $exec screenshot -w
 bindsym $mod+Return $exec gnome-terminal
+bindsym $mod+F1 $exec pactl set-card-profile alsa_card.pci-0000_09_00.3 output:iec958-stereo
+bindsym $mod+F2 $exec pactl set-card-profile alsa_card.pci-0000_09_00.3 output:analog-stereo
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
 bindsym $mod+Shift+3 move container to workspace 3
