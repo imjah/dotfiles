@@ -29,7 +29,9 @@ set $exec_always  exec_always --no-startup-id
 # Variables: applications
 # ------------------------------------------------------------------------------
 set $browser  firefox
-set $music    gnome-terminal -- cmus
+set $editor   neovim
+set $music    cmus
+set $terminal gnome-terminal --
 
 # Autostart
 # ------------------------------------------------------------------------------
@@ -68,7 +70,7 @@ bindsym $mod+o $exec i3-dmenu-desktop --dmenu='dmenu -i -l 5 -fn "$font-$size" -
 bindsym $mod+p $exec passmenu -i -l 5 -fn "$font-$size" -nb "$bg" -nf "$fg" -sb "$green" -sf "$fg"
 bindsym $mod+m $exec mememenu -i -l 5 -fn "$font-$size" -nb "$bg" -nf "$fg" -sb "$green" -sf "$fg"
 bindsym $mod+b $exec budget
-bindsym $mod+s $exec $music
+bindsym $mod+s $exec $terminal $music
 bindsym $mod+q kill
 bindsym $mod+e layout toggle split
 bindsym $mod+w layout tabbed
@@ -90,7 +92,8 @@ bindsym $mod+Left resize shrink width 100 px
 bindsym $mod+Right resize grow width 100 px
 bindsym $mod+Escape mode $power
 bindsym $mod+Print $exec screenshot -w
-bindsym $mod+Return $exec gnome-terminal
+bindsym $mod+Return $exec $terminal
+bindsym $mod+backslash $exec $terminal $editor
 bindsym $mod+F1 $exec pactl set-card-profile alsa_card.pci-0000_09_00.3 output:iec958-stereo
 bindsym $mod+F2 $exec pactl set-card-profile alsa_card.pci-0000_09_00.3 output:analog-stereo
 bindsym $mod+Shift+1 move container to workspace 1
@@ -112,7 +115,7 @@ bindsym $mod+Shift+minus $exec bulbs -l 0
 bindsym $mod+Shift+plus $exec bulbs -l 100
 bindsym $mod+Shift+Up $exec light -A 5
 bindsym $mod+Shift+Down $exec light -U 5
-bindsym --release Print $exec screenshot -r
+bindsym Print --release $exec screenshot -r
 bindsym XF86MonBrightnessUp $exec light -A 5
 bindsym XF86MonBrightnessDown $exec light -U 5
 bindsym XF86AudioPrev $exec playerctl previous
