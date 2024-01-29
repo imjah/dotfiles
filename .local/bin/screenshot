@@ -20,7 +20,7 @@ case "$1" in
 		screenshot_region
 	;;
 	*)
-		echo "Usage: $(basename '$0') [<command>]"
+		echo "Usage: $(basename "$0") [<command>]"
 		echo
 		echo "  -w  Capture window to file"
 		echo "  -r  Capture region to clipboard"
