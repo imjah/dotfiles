@@ -36,7 +36,7 @@ set $terminal gnome-terminal --
 # Autostart
 # ------------------------------------------------------------------------------
 $exec redshift -l 53:15 -t 6500:3500
-$exec countdown 45m /tmp/break-countdown
+$exec env OUTPUT="/tmp/break-countdown" countdown 45m
 $exec i3-msg 'workspace 1; exec $browser'
 
 # Modes
