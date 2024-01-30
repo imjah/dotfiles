@@ -41,7 +41,7 @@ $exec i3-msg 'workspace 1; exec $browser'
 
 # Modes
 # ------------------------------------------------------------------------------
-set $power "[e]xit  [l]ock  [s]leep  [r]eboot  [p]ower off"
+set $power "[e]xit  [l]ock  [s]leep  [r]eboot  [p]ower off  [t]imer  [c]ancel timer"
 
 mode $power {
 	bindsym e $exec i3-msg exit
@@ -49,6 +49,8 @@ mode $power {
 	bindsym s $exec systemctl suspend; $exec i3lock -c "$bg"; mode "default"
 	bindsym r $exec systemctl reboot
 	bindsym p $exec systemctl poweroff
+	bindsym t $exec shutdown 60; mode "default"
+	bindsym c $exec shutdown -c; mode "default"
 
 	bindsym Escape mode "default"
 }
