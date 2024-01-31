@@ -1,9 +1,0 @@
-#!/bin/bash
-
-GIT=lazygit
-
-if [ $1 ]; then
-	GIT=git
-fi
-
-$GIT --git-dir=`xdg-user-dir PROJECTS`/dotfiles --work-tree=$HOME $@

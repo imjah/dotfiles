@@ -1,3 +1,0 @@
-#!/bin/bash
-
-read line; echo $line | fold -w 1 | cat -n
