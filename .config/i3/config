@@ -71,7 +71,7 @@ bindsym $mod+i $exec $browser
 bindsym $mod+o $exec i3-dmenu-desktop --dmenu='dmenu -i -l 5 -fn "$font-$size" -nb "$bg" -nf "$fg" -sb "$green" -sf "$fg"'
 bindsym $mod+p $exec passmenu -i -l 5 -fn "$font-$size" -nb "$bg" -nf "$fg" -sb "$green" -sf "$fg"
 bindsym $mod+b $exec budget
-bindsym $mod+s $exec $terminal $music
+bindsym $mod+m $exec $terminal $music
 bindsym $mod+q kill
 bindsym $mod+e layout toggle split
 bindsym $mod+w layout tabbed
