@@ -104,14 +104,6 @@ me() {
 	[ "$FILE" ] && xdg-open "$DIR/$FILE"
 }
 
-# Pick twitch channel
-# ------------------------------------------------------------------------------
-ttv() {
-	CHANNEL=$(cat "$XDG_CONFIG_HOME/ttv/channels" | fzf)
-
-	[ "$CHANNEL" ] && mpv "https://twitch.tv/$CHANNEL"
-}
-
 # Format files and directories names with my style
 # ------------------------------------------------------------------------------
 format() {
