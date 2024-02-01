@@ -67,20 +67,22 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
+bindsym $mod+q kill
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+t $exec ttvmenu -i -l 5 -fn "$font-$size" -nb "$bg" -nf "$fg" -sb "$green" -sf "$fg"
+bindsym $mod+y $exec mememenu -i -l 5 -fn "$font-$size" -nb "$bg" -nf "$fg" -sb "$green" -sf "$fg"
 bindsym $mod+i $exec $browser
 bindsym $mod+o $exec i3-dmenu-desktop --dmenu='dmenu -i -l 5 -fn "$font-$size" -nb "$bg" -nf "$fg" -sb "$green" -sf "$fg"'
 bindsym $mod+p $exec passmenu -i -l 5 -fn "$font-$size" -nb "$bg" -nf "$fg" -sb "$green" -sf "$fg"
+bindsym $mod+f fullscreen toggle
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+v split v
 bindsym $mod+b $exec budget
 bindsym $mod+m $exec $terminal $music
-bindsym $mod+q kill
-bindsym $mod+e layout toggle split
-bindsym $mod+w layout tabbed
-bindsym $mod+f fullscreen toggle
-bindsym $mod+v split v
-bindsym $mod+k focus up
-bindsym $mod+j focus down
-bindsym $mod+h focus left
-bindsym $mod+l focus right
 bindsym $mod+BackSpace $exec bulbs -t
 bindsym $mod+bracketleft $exec bulbs -p "$room_colors"
 bindsym $mod+bracketright $exec bulbs -n "$room_colors"

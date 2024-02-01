@@ -1,0 +1,5 @@
+#!/bin/bash
+
+CHANNEL="$(cat "$XDG_CONFIG_HOME/ttv/channels" | dmenu $@)"
+
+[ "$CHANNEL" ] && mpv "https://twitch.tv/$CHANNEL"

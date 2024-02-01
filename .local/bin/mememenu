@@ -1,0 +1,6 @@
+#!/bin/bash
+
+DIR="$(xdg-user-dir PICTURES)/memes"
+FILE="$(ls "$DIR" | dmenu $@)"
+
+[ "$FILE" ] && xdg-open "$DIR/$FILE"
