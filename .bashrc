@@ -9,7 +9,6 @@ alias ls="eza -1a --git --group-directories-first --icons"
 alias rm="trash"
 alias vi="neovim"
 alias wget="wget --no-hsts -P `xdg-user-dir DOWNLOAD`"
-alias untar="tar -xf"
 
 # Auto cd
 # ------------------------------------------------------------------------------
@@ -72,6 +71,14 @@ mv-music() {
 # ------------------------------------------------------------------------------
 rsync-music() {
 	rsync -av --exclude=".archive" "$(xdg-user-dir MUSIC)/" ${1:-.}
+}
+
+# Extract tar archives into directory
+# ------------------------------------------------------------------------------
+untar() {
+	DIR="${1%.tar*}"
+
+	mkdir "$DIR" && tar -xC "$DIR" -f "$@"
 }
 
 # Manage config
