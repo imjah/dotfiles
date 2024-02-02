@@ -1,5 +1,5 @@
 #!/bin/bash
 
-CHANNEL="$(ttv | dmenu $@ | cut -d " " -f 2)"
+CHANNEL="$(ttv | dmenu $@ | cut -d " " -f 1)"
 
 [ "$CHANNEL" ] && mpv "https://twitch.tv/$CHANNEL"
