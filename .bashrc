@@ -23,8 +23,10 @@ dwebp-memes() {
 	dir="$(xdg-user-dir PICTURES)/memes"
 
 	for meme in $dir/*.webp; do
-		dwebp $meme -o ${meme/.webp/.png}
-		trash $meme
+		if [[ -e $meme ]]; then
+			dwebp $meme -o ${meme/.webp/.png}
+			trash $meme
+		fi
 	done
 }
 
