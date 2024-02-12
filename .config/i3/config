@@ -57,9 +57,9 @@ mode $power {
 set $countdown "[1]h  [2]h  [w]ork  [k]ill"
 
 mode $countdown {
-	bindsym 1 $exec env OUTPUT="/tmp/i3-countdown" countdown 1h; mode "default"
-	bindsym 2 $exec env OUTPUT="/tmp/i3-countdown" countdown 2h; mode "default"
-	bindsym w $exec env OUTPUT="/tmp/i3-countdown" countdown 1h 5m 1h 5m 1h 20m; mode "default"
+	bindsym 1 $exec countdown -o "/tmp/i3-countdown" 1h; mode "default"
+	bindsym 2 $exec countdown -o "/tmp/i3-countdown" 2h; mode "default"
+	bindsym w $exec countdown -o "/tmp/i3-countdown" 1h 5m 1h 5m 1h 20m; mode "default"
 	bindsym k $exec pkill countdown; mode "default"
 
 	bindsym Escape mode "default"
