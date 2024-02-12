@@ -36,7 +36,6 @@ set $terminal gnome-terminal --
 # Autostart
 # ------------------------------------------------------------------------------
 $exec redshift -l 53:15 -t 6500:3500
-$exec env OUTPUT="/tmp/break-countdown" countdown 45m
 $exec i3-msg 'workspace 1; exec $browser'
 
 # Modes
@@ -51,6 +50,17 @@ mode $power {
 	bindsym p $exec systemctl poweroff
 	bindsym t $exec shutdown 60; mode "default"
 	bindsym c $exec shutdown -c; mode "default"
+
+	bindsym Escape mode "default"
+}
+
+set $countdown "[1]h  [2]h  [w]ork  [k]ill"
+
+mode $countdown {
+	bindsym 1 $exec env OUTPUT="/tmp/i3-countdown" countdown 1h; mode "default"
+	bindsym 2 $exec env OUTPUT="/tmp/i3-countdown" countdown 2h; mode "default"
+	bindsym w $exec env OUTPUT="/tmp/i3-countdown" countdown 1h 5m 1h 5m 1h 20m; mode "default"
+	bindsym k $exec pkill countdown; mode "default"
 
 	bindsym Escape mode "default"
 }
@@ -80,6 +90,7 @@ bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
+bindsym $mod+c mode $countdown
 bindsym $mod+v split v
 bindsym $mod+b $exec budget
 bindsym $mod+m $exec $terminal $music

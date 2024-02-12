@@ -53,7 +53,7 @@ volume master {
 read_file BREAK_COUNTDOWN {
 	format = "󱎫 %content"
 	format_bad = ""
-	path = "/tmp/break-countdown"
+	path = "/tmp/i3-countdown"
 }
 
 time {
