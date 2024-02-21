@@ -140,7 +140,7 @@ enum() {
 # Create simple HTTP server
 # ------------------------------------------------------------------------------
 serve() {
-	python -m http.server
+	python3 -m http.server
 }
 
 # Download weather forecast
