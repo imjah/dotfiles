@@ -23,7 +23,7 @@ set $room_colors  ff0000:0afa0a:0a0afa:ffffff:ff0018:ff1f00:ff0800
 
 # Variables: sounds
 # ------------------------------------------------------------------------------
-set $notification  ~/.config/sounds/synth-notification.mp3
+set $sound  ~/.config/sounds/synth-notification.mp3
 
 # Variables: aliases
 # ------------------------------------------------------------------------------
@@ -40,12 +40,11 @@ set $terminal  gnome-terminal --
 # Autostart
 # ------------------------------------------------------------------------------
 $exec redshift -l 53:15 -t 6500:3500
-$exec xset s off
 $exec i3-msg 'workspace 1; exec $browser'
 
 # Modes
 # ------------------------------------------------------------------------------
-set $power "[e]xit  [l]ock  [s]leep  [r]eboot  [p]ower off  [t]imer  [c]ancel timer"
+set $power "[e]xit  [l]ock  [s]leep  [r]eboot  [p]ower off  [t]imed power off"
 
 mode $power {
 	bindsym e $exec i3-msg exit
@@ -54,17 +53,15 @@ mode $power {
 	bindsym r $exec systemctl reboot
 	bindsym p $exec systemctl poweroff
 	bindsym t $exec shutdown 60; mode default
-	bindsym c $exec shutdown -c; mode default
 
 	bindsym Escape mode default
 }
 
-set $countdown "[1]h  [2]h  [w]ork  [k]ill"
+set $countdown "[1]h  [w]ork  [k]ill"
 
 mode $countdown {
-	bindsym 1 $exec countdown -o /tmp/i3-countdown -m "$notification" 1h; mode default
-	bindsym 2 $exec countdown -o /tmp/i3-countdown -m "$notification" 2h; mode default
-	bindsym w $exec countdown -o /tmp/i3-countdown -m "$notification" 1h 5m 1h 5m 1h 20m; mode default
+	bindsym 1 $exec countdown -o /tmp/i3-countdown -m "$sound" 1h; mode default
+	bindsym w $exec countdown -o /tmp/i3-countdown -m "$sound" 1h 5m 1h 5m 1h 20m; mode default
 	bindsym k $exec pkill countdown; mode default
 
 	bindsym Escape mode default
