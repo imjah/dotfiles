@@ -1,3 +1,15 @@
+# APIs
+
+safetwitch:
+  - https://stbackend.drgns.space
+  - https://safetwitch-api.lunar.icu
+  - https://api.safetwitch.eu.projectsegfau.lt
+
+piped:
+  - https://pipedapi.kavin.rocks
+  - https://pipedapi.adminforge.de
+  - https://api.piped.projectsegfau.lt
+
 # Channels
 
 twitch:
