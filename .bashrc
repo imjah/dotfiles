@@ -70,6 +70,12 @@ mv-music() {
 	mv -t "$archive_dir" *.flac cover.*
 }
 
+# Add (format, convert and move) flac album to music directory
+# ------------------------------------------------------------------------------
+add-flac-album() {
+	format *.flac && ffmpeg-flac-to-opus &&	mv-music $1
+}
+
 # Sync music storage
 # ------------------------------------------------------------------------------
 rsync-music() {
@@ -134,6 +140,7 @@ format() {
 		f=${f//"_"/$s}
 		f=${f//"("/}
 		f=${f//")"/}
+		f=${f//"'"/}
 
 		mv -n "$file" "$f"
 	done
