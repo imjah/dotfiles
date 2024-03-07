@@ -78,10 +78,18 @@ rsync-music() {
 
 # Extract tar archives into directory
 # ------------------------------------------------------------------------------
-untar() {
+ut() {
 	DIR="${1%.tar*}"
 
-	mkdir "$DIR" && tar -xC "$DIR" -f "$@"
+	mkdir "$DIR" && tar -xC "$DIR" -f "$1"
+}
+
+# Extract zip archives into directory
+# ------------------------------------------------------------------------------
+uz() {
+	DIR="${1%.zip*}"
+
+	mkdir "$DIR" && unzip -d "$DIR" "$1"
 }
 
 # Manage config
