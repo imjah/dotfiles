@@ -98,6 +98,7 @@ bindsym $mod+c mode $countdown
 bindsym $mod+v split v
 bindsym $mod+b $exec budget
 bindsym $mod+m $exec $terminal $music
+bindsym $mod+z $exec systemctl suspend; $exec i3lock -c "$bg"
 bindsym $mod+BackSpace $exec bulbs -t
 bindsym $mod+bracketleft $exec bulbs -p "$room_colors"
 bindsym $mod+bracketright $exec bulbs -n "$room_colors"
