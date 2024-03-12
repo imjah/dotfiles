@@ -40,8 +40,7 @@ set $terminal  gnome-terminal --
 # Autostart
 # ------------------------------------------------------------------------------
 $exec redshift -l 53:15 -t 6500:3500
-$exec xset s off && xset -dpms
-$exec i3-msg 'workspace 9; exec $terminal $music'
+$exec easyeffects --gapplication-service
 $exec i3-msg 'workspace 1; exec $browser'
 
 # Modes
