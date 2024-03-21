@@ -21,10 +21,6 @@ set $gray         #a89984
 set $darkgray     #928374
 set $room_colors  ff0000:0afa0a:0a0afa:ffffff:ff0018:ff1f00:ff0800
 
-# Variables: sounds
-# ------------------------------------------------------------------------------
-set $sound  ~/.config/sounds/synth-notification.mp3
-
 # Variables: aliases
 # ------------------------------------------------------------------------------
 set $exec         exec --no-startup-id
@@ -39,6 +35,9 @@ set $terminal  gnome-terminal --
 
 # Autostart
 # ------------------------------------------------------------------------------
+$exec xset -dpms
+$exec xset s off
+$exec xset r rate 250 30
 $exec redshift -l 53:15 -t 6500:3500
 $exec easyeffects --gapplication-service
 $exec i3-msg 'workspace 1; exec $browser'
@@ -61,8 +60,8 @@ mode $power {
 set $countdown "[1]h  [w]ork  [k]ill"
 
 mode $countdown {
-	bindsym 1 $exec countdown -o /tmp/i3-countdown -m "$sound" 1h; mode default
-	bindsym w $exec countdown -o /tmp/i3-countdown -m "$sound" 1h 5m 1h 5m 1h 20m; mode default
+	bindsym 1 $exec countdown -o /tmp/i3-countdown -m ~/.config/sounds/synth-notification.mp3 3s; mode default
+	bindsym w $exec countdown -o /tmp/i3-countdown -m ~/.config/sounds/synth-notification.mp3 1h 5m 1h 5m 1h 20m; mode default
 	bindsym k $exec pkill countdown; mode default
 
 	bindsym Escape mode default
@@ -83,7 +82,7 @@ bindsym $mod+0 workspace 10
 bindsym $mod+q kill
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
-bindsym $mod+t $exec ttvmenu -i -l 10 -fn "$font-$size" -nb "$bg" -nf "$fg" -sb "$green" -sf "$fg"
+bindsym $mod+t $exec MENU="dmenu" ttvmenu -i -l 10 -fn "$font-$size" -nb "$bg" -nf "$fg" -sb "$green" -sf "$fg"
 bindsym $mod+y $exec mememenu -i -l 5 -fn "$font-$size" -nb "$bg" -nf "$fg" -sb "$green" -sf "$fg"
 bindsym $mod+i $exec $browser
 bindsym $mod+o $exec i3-dmenu-desktop --dmenu='dmenu -i -l 5 -fn "$font-$size" -nb "$bg" -nf "$fg" -sb "$green" -sf "$fg"'
