@@ -79,6 +79,7 @@ nnoremap <silent> \     :NERDTreeToggle<CR>:NERDTreeRefreshRoot<CR>:NERDTreeRefr
 set clipboard=unnamedplus
 set colorcolumn=81
 set list
+set number
 set shiftwidth=4
 set shortmess+=c
 set smartindent
