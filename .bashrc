@@ -11,6 +11,7 @@ alias vi="neovim"
 alias wget="wget --no-hsts -P `xdg-user-dir DOWNLOAD`"
 alias ee="dwebp-memes"
 alias pu="publish"
+alias keycode='xev'
 
 # Auto cd
 # ------------------------------------------------------------------------------
