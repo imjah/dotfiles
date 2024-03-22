@@ -10,11 +10,18 @@ alias rm="trash"
 alias vi="neovim"
 alias wget="wget --no-hsts -P `xdg-user-dir DOWNLOAD`"
 alias ee="dwebp-memes"
+alias pu="publish"
 
 # Auto cd
 # ------------------------------------------------------------------------------
 cd() {
 	builtin cd "$@" && ls
+}
+
+# Push branch to github
+# ------------------------------------------------------------------------------
+publish() {
+	git push github
 }
 
 # Convert WebP memes to PNG and trash it
@@ -162,4 +169,12 @@ serve() {
 # ------------------------------------------------------------------------------
 weather() {
 	curl -s https://wttr.in/Stargard | head -n -3
+}
+
+# Run program in endless loop
+# ------------------------------------------------------------------------------
+loop() {
+	while true; do
+		$@
+	done
 }
