@@ -121,7 +121,7 @@ config() {
 # ------------------------------------------------------------------------------
 nt() {
 	DIR="`xdg-user-dir DOCUMENTS`/notes"
-	FILE=`find "$DIR" -type f | sed "s~$DIR/~~" | fzf --preview "cat $DIR/{}"`
+	FILE=`find "$DIR" -type f | sed "s~$DIR/~~" | sort | fzf --preview "cat $DIR/{}"`
 
 	[ "$FILE" ] && ${EDITOR:-nvim} "$DIR/$FILE"
 }
@@ -130,7 +130,7 @@ nt() {
 # ------------------------------------------------------------------------------
 me() {
 	DIR="`xdg-user-dir PICTURES`/memes"
-	FILE=`find "$DIR" -type f | sed "s~$DIR/~~" | fzf`
+	FILE=`find "$DIR" -type f | sed "s~$DIR/~~" | sort | fzf`
 
 	[ "$FILE" ] && xdg-open "$DIR/$FILE"
 }

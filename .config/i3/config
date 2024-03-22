@@ -31,6 +31,7 @@ set $exec_always  exec_always --no-startup-id
 set $browser   firefox
 set $editor    neovim
 set $music     cmus
+set $notes     bash -ic "loop nt"
 set $terminal  gnome-terminal --
 
 # Autostart
@@ -40,6 +41,8 @@ $exec xset s off
 $exec xset r rate 250 30
 $exec redshift -l 53:15 -t 6500:3500
 $exec easyeffects --gapplication-service
+$exec i3-msg 'workspace 9; exec $terminal $music'
+$exec i3-msg 'workspace 8; exec $terminal $notes'
 $exec i3-msg 'workspace 1; exec $browser'
 
 # Modes
