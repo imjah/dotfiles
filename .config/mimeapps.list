@@ -1,5 +1,5 @@
 [Default Applications]
-application/pdf=org.pwmt.zathura.desktop
+application/pdf=firefox.desktop
 image/gif=mpv.desktop
 image/jpeg=feh.desktop
 image/jpg=feh.desktop
