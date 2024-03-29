@@ -55,7 +55,7 @@ mode $power {
 	bindsym s $exec systemctl suspend; $exec i3lock -c "$bg"; mode default
 	bindsym r $exec systemctl reboot
 	bindsym p $exec systemctl poweroff
-	bindsym t $exec shutdown 60; mode default
+	bindsym t $exec shutdown 45; mode default
 
 	bindsym Escape mode default
 }
