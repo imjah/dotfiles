@@ -9,9 +9,6 @@ alias ls="eza -1a --git --group-directories-first --icons"
 alias rm="trash"
 alias vi="neovim"
 alias wget="wget --no-hsts -P `xdg-user-dir DOWNLOAD`"
-alias ee="dwebp-memes"
-alias pu="publish"
-alias keycode='xev'
 
 # Auto cd
 # ------------------------------------------------------------------------------
@@ -19,16 +16,26 @@ cd() {
 	builtin cd "$@" && ls
 }
 
-# Rename basename of the file/directory
+# Move file/directory without repeating it's path (aka rename)
 # ------------------------------------------------------------------------------
 rn() {
 	mv $1 ${1/$(basename $1)/$2}
 }
 
-# Push branch to github
+# Extract tar archives into directory
 # ------------------------------------------------------------------------------
-publish() {
-	git push github
+ut() {
+	DIR="${1%.tar*}"
+
+	mkdir "$DIR" && tar -xC "$DIR" -f "$1" && trash "$1"
+}
+
+# Extract zip archives into directory
+# ------------------------------------------------------------------------------
+uz() {
+	DIR="${1%.zip*}"
+
+	mkdir "$DIR" && unzip -d "$DIR" "$1" && trash "$1"
 }
 
 # Convert WebP memes to PNG and trash it
@@ -44,7 +51,7 @@ dwebp-memes() {
 	done
 }
 
-# Concat DV tapes and convert them to MP4
+# Concat DV files and convert them to MP4
 # ------------------------------------------------------------------------------
 ffmpeg-concat-dv-convert-mp4() {
 	DIR="${1:-'.'}"
@@ -56,60 +63,12 @@ ffmpeg-concat-dv-convert-mp4() {
 	ffmpeg -i "concat:${FILES:0:-1}" -vf yadif "$DIR/tape.mp4"
 }
 
-# Convert FLAC files to OPUS files
+# Convert FLAC files to OPUS
 # ------------------------------------------------------------------------------
 ffmpeg-flac-to-opus() {
-	dir=${1:-.}
-
-	for file in $dir/*.flac; do
-		ffmpeg -i "$file" -c:a libopus -b:a 192k "${file/.flac/.opus}"
+	for file in ${1:-.}/*.flac; do
+		ffmpeg -i "$file" -c:a libopus -b:a 192k "${2:-.}/$(basename ${file/.flac/.opus})"
 	done
-}
-
-# Move FLAC and OPUS album files to music directory
-# ------------------------------------------------------------------------------
-mv-music() {
-	music_dir="$(xdg-user-dir MUSIC)"
-	album_dir="${1:-other}"
-
-	storage_dir="$music_dir/$album_dir"
-
-	mkdir -p "$storage_dir"
-	mv -t "$storage_dir" *.opus
-	cp -t "$storage_dir" cover.*
-
-	archive_dir="$music_dir/.archive/$album_dir"
-
-	mkdir -p "$archive_dir"
-	mv -t "$archive_dir" *.flac cover.*
-}
-
-# Add (format, convert and move) flac album to music directory
-# ------------------------------------------------------------------------------
-add-flac-album() {
-	format *.flac && ffmpeg-flac-to-opus &&	mv-music $1
-}
-
-# Sync music storage
-# ------------------------------------------------------------------------------
-rsync-music() {
-	rsync -av --exclude=".archive" "$(xdg-user-dir MUSIC)/" ${1:-.}
-}
-
-# Extract tar archives into directory
-# ------------------------------------------------------------------------------
-ut() {
-	DIR="${1%.tar*}"
-
-	mkdir "$DIR" && tar -xC "$DIR" -f "$1"
-}
-
-# Extract zip archives into directory
-# ------------------------------------------------------------------------------
-uz() {
-	DIR="${1%.zip*}"
-
-	mkdir "$DIR" && unzip -d "$DIR" "$1"
 }
 
 # Manage config
@@ -124,7 +83,29 @@ config() {
 	$GIT --git-dir=`xdg-user-dir PROJECTS`/dotfiles --work-tree=$HOME $@
 }
 
-# Pick note
+# Copy and format FLAC album into music archive
+# make clone of it with OPUS compression into music storage
+# ------------------------------------------------------------------------------
+music-add-album() {
+	test -z "$1" && echo "No artist name given" && return 1
+
+	storage="$(xdg-user-dir MUSIC)/$1"
+	archive="$(xdg-user-dir MUSIC)/.archive/$1"
+
+	mkdir -p "$archive" "$storage"
+	cp -t "$archive" cover.* *.flac
+	cp -t "$storage" cover.*
+	format $archive/*
+	ffmpeg-flac-to-opus "$archive" "$storage"
+}
+
+# Sync music storage
+# ------------------------------------------------------------------------------
+music-sync-storage() {
+	rsync -av --exclude=".archive" "$(xdg-user-dir MUSIC)/" ${1:-.}
+}
+
+# Pick a note
 # ------------------------------------------------------------------------------
 nt() {
 	DIR="`xdg-user-dir DOCUMENTS`/notes"
@@ -133,16 +114,15 @@ nt() {
 	[ "$FILE" ] && ${EDITOR:-nvim} "$DIR/$FILE"
 }
 
-# Pick meme
+# Run program in endless loop
 # ------------------------------------------------------------------------------
-me() {
-	DIR="`xdg-user-dir PICTURES`/memes"
-	FILE=`find "$DIR" -type f | sed "s~$DIR/~~" | sort | fzf`
-
-	[ "$FILE" ] && xdg-open "$DIR/$FILE"
+loop() {
+	while true; do
+		$@
+	done
 }
 
-# Format files and directories names with my style
+# Format files/directories names with my style
 # ------------------------------------------------------------------------------
 format() {
 	s="-"
@@ -155,6 +135,7 @@ format() {
 		f=${f//"("/}
 		f=${f//")"/}
 		f=${f//"'"/}
+		f=${f//","/}
 
 		mv -n "$file" "$f"
 	done
@@ -176,12 +157,4 @@ serve() {
 # ------------------------------------------------------------------------------
 weather() {
 	curl -s https://wttr.in/Stargard | head -n -3
-}
-
-# Run program in endless loop
-# ------------------------------------------------------------------------------
-loop() {
-	while true; do
-		$@
-	done
 }
