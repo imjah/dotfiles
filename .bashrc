@@ -109,7 +109,7 @@ music-sync-storage() {
 # ------------------------------------------------------------------------------
 nt() {
 	DIR="`xdg-user-dir DOCUMENTS`/notes"
-	FILE=`find "$DIR" -type f | sed "s~$DIR/~~" | sort | fzf --preview "cat $DIR/{}"`
+	FILE=`find "$DIR" -type f | sed "s~$DIR/~~" | sort -r | fzf --preview "cat $DIR/{}"`
 
 	[ "$FILE" ] && ${EDITOR:-nvim} "$DIR/$FILE"
 }
