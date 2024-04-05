@@ -139,7 +139,9 @@ bind common 4 view queue
 bind common 5 view browser
 bind common 6 view filters
 bind common 7 view settings
+bind common < player-prev
 bind common = vol +10%
+bind common > player-next
 bind common ? search-b-start
 bind common C toggle continue
 bind common D win-remove
