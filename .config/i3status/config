@@ -6,25 +6,25 @@ general {
 	color_bad      = "#cc241d"
 }
 
-order += "disk /"
-order += "memory"
 order += "cpu_usage"
+order += "memory"
+order += "disk /"
 order += "wireless _first_"
 order += "battery all"
 order += "volume master"
 order += "read_file BREAK_COUNTDOWN"
 order += "time"
 
-disk / {
-	format = "󰋊 %percentage_used"
+cpu_usage {
+	format = "󰻠 %usage"
 }
 
 memory {
 	format = "󰍛 %percentage_used"
 }
 
-cpu_usage {
-	format = "󰻠 %usage"
+disk / {
+	format = "󰋊 %percentage_used"
 }
 
 wireless _first_ {
