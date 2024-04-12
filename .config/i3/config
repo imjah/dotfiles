@@ -43,7 +43,6 @@ $exec easyeffects --gapplication-service
 $exec i3-msg 'workspace 9; exec $terminal $music'
 $exec i3-msg 'workspace 8; exec $terminal $notes'
 $exec i3-msg 'workspace 1; exec $browser'
-
 $exec_always xset r rate 250 30
 
 # Modes

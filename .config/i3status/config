@@ -1,9 +1,9 @@
 general {
 	colors         = true
-	interval       = 1
 	color_good     = "#ebdbb2"
 	color_degraded = "#d79921"
 	color_bad      = "#cc241d"
+	interval       = 1
 }
 
 order += "cpu_usage"
@@ -12,7 +12,7 @@ order += "disk /"
 order += "wireless _first_"
 order += "battery all"
 order += "volume master"
-order += "read_file BREAK_COUNTDOWN"
+order += "read_file COUNTDOWN"
 order += "time"
 
 cpu_usage {
@@ -50,7 +50,7 @@ volume master {
 	mixer_idx = 0
 }
 
-read_file BREAK_COUNTDOWN {
+read_file COUNTDOWN {
 	format = "󱎫 %content"
 	format_bad = ""
 	path = "/tmp/i3-countdown"
