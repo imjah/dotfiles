@@ -1,0 +1,6 @@
+{
+    "device": "alsa_output.pci-0000_09_00.3.analog-stereo.6",
+    "device-description": "Family 17h (Models 00h-0fh) HD Audio Controller Analog Stereo",
+    "device-profile": "analog-output-lineout",
+    "preset-name": "Default"
+}
