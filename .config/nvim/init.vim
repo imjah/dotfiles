@@ -20,6 +20,8 @@ Plug 'NoahTheDuke/vim-just'
 Plug 'ackyshake/VimCompletesMe'
 Plug 'godlygeek/tabular'
 Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'kdheepak/lazygit.vim'
 Plug 'leafOfTree/vim-vue-plugin'
 Plug 'morhetz/gruvbox'
@@ -27,7 +29,6 @@ Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
 Plug 'voldikss/vim-floaterm'
 
 call plug#end()
@@ -71,9 +72,7 @@ let g:NERDTreeWinPos                = 'right'
 let g:NERDTreeWinSize               = 30
 
 nnoremap          <C-o> :NERDTree /home/rafal/projects/
-nnoremap <silent> <C-\> :NERDTreeFocus<CR>
-nnoremap <silent> \     :NERDTreeToggle<CR>:NERDTreeRefreshRoot<CR>:NERDTreeRefreshRoot<CR>
-
+nnoremap <silent> <C-\> :NERDTreeToggle<CR>:NERDTreeRefreshRoot<CR>:NERDTreeRefreshRoot<CR>
 " Editor:
 " ------------------------------------------------------------------------------
 set clipboard=unnamedplus
@@ -96,6 +95,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-s> :w<CR>
+nnoremap <silent> \    :FZF<CR>
 nnoremap <silent> <F8> :!gnome-terminal<CR><Enter>
 nnoremap <silent> <C-Up>    :resize +5<CR>
 nnoremap <silent> <C-Down>  :resize -5<CR>
