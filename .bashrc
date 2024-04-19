@@ -10,6 +10,44 @@ alias rm="trash"
 alias vi="neovim"
 alias wget="wget --no-hsts -P `xdg-user-dir DOWNLOAD`"
 
+# Mount Backup drive
+# ------------------------------------------------------------------------------
+mb() {
+	sudo mount /mnt/backup
+}
+
+# Unmount Backup drive
+# ------------------------------------------------------------------------------
+ub() {
+	sudo umount /mnt/backup
+}
+
+# Mount USB drive
+# ------------------------------------------------------------------------------
+mu() {
+	test -z "$1" && echo "No device name given" && return 1
+
+	for i in {1..3}; do
+		slot="/mnt/usb-$i"
+
+		if [ -z `findmnt $slot` ]; then
+			sudo mount -m --target $slot $@
+
+			return
+		fi
+	done
+
+	echo "No available slot"
+}
+
+# Unmount USB drive
+# ------------------------------------------------------------------------------
+uu() {
+	test -z "$1" && echo "No slot number given" && return 1
+
+	sudo umount "/mnt/usb-$1"
+}
+
 # Auto cd
 # ------------------------------------------------------------------------------
 cd() {
