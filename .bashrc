@@ -10,16 +10,48 @@ alias rm="trash"
 alias vi="neovim"
 alias wget="wget --no-hsts -P `xdg-user-dir DOWNLOAD`"
 
-# Mount Backup drive
+# Mount, unmount or create backup
 # ------------------------------------------------------------------------------
-mb() {
-	sudo mount /mnt/backup
-}
+backup() {
+	mountpoint='/mnt/backup'
 
-# Unmount Backup drive
-# ------------------------------------------------------------------------------
-ub() {
-	sudo umount /mnt/backup
+	if [[ $1 == '-m' ]]; then
+		sudo mount $mountpoint
+
+		return
+	fi
+
+	if [[ $1 == '-u' ]]; then
+		sudo umount $mountpoint
+
+		return
+	fi
+
+	if [[ -z $(findmnt $mountpoint) ]]; then
+		sudo mount $mountpoint
+
+		if [[ -z $(findmnt $mountpoint) ]]; then
+			echo "Unable to mount backup drive"
+
+			return 1
+		fi
+	fi
+
+	src=(
+		"$(xdg-user-dir DOCUMENTS)"
+		"$(xdg-user-dir DOWNLOAD)"
+		# "$(xdg-user-dir GAMES)"
+		"$(xdg-user-dir MUSIC)"
+		"$(xdg-user-dir PICTURES)"
+		"$(xdg-user-dir PROJECTS)"
+		"$(xdg-user-dir REPOSITORIES)"
+		"$(xdg-user-dir VIDEOS)"
+	)
+
+	rsync -ah --info=progress2 --delete "${src[@]}" "$mountpoint/$(uname -n)/"
+
+	echo "Unmounting..."
+	sudo umount $mountpoint
 }
 
 # Mount USB drive
