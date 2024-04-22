@@ -40,7 +40,7 @@ backup() {
 	src=(
 		"$(xdg-user-dir DOCUMENTS)"
 		"$(xdg-user-dir DOWNLOAD)"
-		# "$(xdg-user-dir GAMES)"
+		"$(xdg-user-dir GAMES)"
 		"$(xdg-user-dir MUSIC)"
 		"$(xdg-user-dir PICTURES)"
 		"$(xdg-user-dir PROJECTS)"
@@ -48,7 +48,11 @@ backup() {
 		"$(xdg-user-dir VIDEOS)"
 	)
 
-	rsync -ah --info=progress2 --delete "${src[@]}" "$mountpoint/$(uname -n)/"
+	filter=(
+		".steam"
+	)
+
+	rsync -ahv --delete --filter="- ${filter[@]}" "${src[@]}" "$mountpoint/$(uname -n)/"
 
 	echo "Unmounting..."
 	sudo umount $mountpoint
