@@ -179,9 +179,16 @@ music-sync-storage() {
 # ------------------------------------------------------------------------------
 nt() {
 	DIR="`xdg-user-dir DOCUMENTS`/notes"
+
+	if [[ -n "$1" ]]; then
+		${EDITOR:-nvim} "$DIR/$1"
+
+		return
+	fi
+
 	FILE=`find "$DIR" -type f | sed "s~$DIR/~~" | sort -r | fzf --preview "cat $DIR/{}"`
 
-	[ "$FILE" ] && ${EDITOR:-nvim} "$DIR/$FILE"
+	[[ -n "$FILE" ]] && ${EDITOR:-nvim} "$DIR/$FILE"
 }
 
 # Run program in endless loop
