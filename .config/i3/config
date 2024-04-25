@@ -47,7 +47,7 @@ $exec_always xset r rate 250 30
 
 # Modes
 # ------------------------------------------------------------------------------
-set $power "[e]xit  [l]ock  [s]leep  [r]eboot  [p]ower off  [t]imed power off"
+set $power "[e]xit  [l]ock  [s]leep  [r]eboot  [p]ower off  [t]imer"
 
 mode $power {
 	bindsym e $exec i3-msg exit
@@ -55,18 +55,17 @@ mode $power {
 	bindsym s $exec systemctl suspend; $exec i3lock -c "$bg"; mode default
 	bindsym r $exec systemctl reboot
 	bindsym p $exec systemctl poweroff
-	bindsym t $exec shutdown 45; mode default
-
+	bindsym t $exec shutdown 30; mode default
 	bindsym Escape mode default
 }
 
-set $countdown "[1]h  [w]ork  [k]ill"
+set $countdown "[1] 15m  [2] 30m  [3] 60m  [c]ancel"
 
 mode $countdown {
-	bindsym 1 $exec countdown -o /tmp/i3-countdown -m ~/.config/sounds/synth-notification.mp3 1h; mode default
-	bindsym w $exec countdown -o /tmp/i3-countdown -m ~/.config/sounds/synth-notification.mp3 1h 5m 1h 5m 1h 20m; mode default
-	bindsym k $exec pkill countdown; mode default
-
+	bindsym 1 $exec countdown -o /tmp/i3-countdown -m ~/.config/sounds/synth-notification.mp3 15m; mode default
+	bindsym 2 $exec countdown -o /tmp/i3-countdown -m ~/.config/sounds/synth-notification.mp3 30m; mode default
+	bindsym 3 $exec countdown -o /tmp/i3-countdown -m ~/.config/sounds/synth-notification.mp3 60m; mode default
+	bindsym c $exec pkill countdown; mode default
 	bindsym Escape mode default
 }
 
