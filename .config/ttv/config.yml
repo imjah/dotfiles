@@ -1,6 +1,7 @@
 twitch:
   - baniakbaniaka
   - jaskol95
+  - kapitanbombatv
   - ornicar2
   - pokochajszachy
   - rockalone
@@ -10,10 +11,9 @@ twitch:
   - zlemyslisz
 
 youtube:
-  - UCxZGztWF3HTYTs3iQlRkWrg # Astrolife
-  - UCpts-8H1DqUaGmUkFhbXMQQ # Kapitan Bomba
-  - UCj0LLFUIn-bjKHRQ6mqCb2w # Krzysztof M. Maj
-  - UCN5seY_Oy_GiJRhF06GfRlw # Sejm RP
+  - "@mateusz_astroLife"
+  - "@krzysztofmmaj"
+  - "@sejmrp_pl"
 
 piped:
   - https://pipedapi.kavin.rocks
