@@ -1,7 +1,6 @@
 twitch:
   - baniakbaniaka
   - jaskol95
-  - kapitanbombatv
   - ornicar2
   - pokochajszachy
   - rockalone
@@ -11,8 +10,10 @@ twitch:
   - zlemyslisz
 
 youtube:
-  - "@mateusz_astroLife"
+  - "@kapitanbomba"
   - "@krzysztofmmaj"
+  - "@mateusz_astroLife"
+  - "@naukowy.belkot"
   - "@sejmrp_pl"
 
 piped:
