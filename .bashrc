@@ -185,14 +185,22 @@ nt() {
 	DIR="`xdg-user-dir DOCUMENTS`/notes"
 
 	if [[ -n "$1" ]]; then
-		${EDITOR:-nvim} "$DIR/$1"
+		nvim "$DIR/$1"
 
 		return
 	fi
 
 	FILE=`find "$DIR" -type f | sed "s~$DIR/~~" | sort -r | fzf --preview "cat $DIR/{}"`
 
-	[[ -n "$FILE" ]] && ${EDITOR:-nvim} "$DIR/$FILE"
+	[[ -n "$FILE" ]] && nvim "$DIR/$FILE"
+}
+
+# Pick a livestream
+# ------------------------------------------------------------------------------
+ttvmenu() {
+	LINK="$(ttv $@ | fzf | grep -oE 'https://[^[:space:]]+')"
+
+	[ "$LINK" ] && mpv "$LINK"
 }
 
 # Run program in endless loop
