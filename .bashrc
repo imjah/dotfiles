@@ -200,7 +200,9 @@ nt() {
 ttvmenu() {
 	LINK="$(ttv $@ | fzf | grep -oE 'https://[^[:space:]]+')"
 
-	[ "$LINK" ] && mpv "$LINK"
+	i3-msg 'move scratchpad'
+
+	[[ "$LINK" ]] && mpv $LINK
 }
 
 # Run program in endless loop

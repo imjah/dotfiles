@@ -99,6 +99,7 @@ bindsym $mod+v split v
 bindsym $mod+b $exec budget
 bindsym $mod+m $exec $terminal $music
 bindsym $mod+z $exec systemctl suspend; $exec i3lock -c "$bg"
+bindsym $mod+grave scratchpad show
 bindsym $mod+BackSpace $exec bulbs -t
 bindsym $mod+bracketleft $exec bulbs -p "$room_colors"
 bindsym $mod+bracketright $exec bulbs -n "$room_colors"
@@ -133,6 +134,7 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+l move right
+bindsym $mod+Shift+grave move scratchpad
 bindsym $mod+Shift+minus $exec bulbs -l 0
 bindsym $mod+Shift+plus $exec bulbs -l 100
 bindsym $mod+Shift+Up $exec light -A 5
@@ -151,9 +153,10 @@ floating_modifier $mod
 
 # Window alignment
 # ------------------------------------------------------------------------------
-for_window [title="Twitch Chat"] resize shrink width 600 px
+for_window [title="Twitch Chat"] move up; resize grow height 400 px
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
+no_focus [title="Twitch Chat"]
 
 # Style: bar
 # ------------------------------------------------------------------------------
