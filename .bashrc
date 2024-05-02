@@ -67,7 +67,7 @@ mu() {
 		slot="/mnt/usb-$i"
 
 		if [ -z `findmnt $slot` ]; then
-			sudo mount -m --target $slot $@
+			sudo mount -m --target $slot $@ && cd $slot
 
 			return
 		fi
@@ -219,16 +219,23 @@ format() {
 	s="-"
 
 	for file in "$@"; do
-		f=${file,,}
+		e=${file##*.}
+		f=$(basename "$file")
+		f=${f%.*}
+		f=${f,,}
 		f=${f//" - "/$s}
 		f=${f//" "/$s}
 		f=${f//"_"/$s}
 		f=${f//"("/}
 		f=${f//")"/}
 		f=${f//"'"/}
+		f=${f//"’"/}
 		f=${f//","/}
+		f=${f//"!"/}
+		f=${f//"?"/}
+		f=${f//"."/}
 
-		mv -n "$file" "$f"
+		mv -n "$file" "$(dirname "$file")/$f.$e"
 	done
 }
 
