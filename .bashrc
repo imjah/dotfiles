@@ -198,9 +198,9 @@ nt() {
 # Pick a livestream
 # ------------------------------------------------------------------------------
 ttvmenu() {
-	LINK="$(ttv $@ | fzf | grep -oE 'https://[^[:space:]]+')"
+	LINK="$(ttv $@ | column -t -s";" | fzf | grep -oE "https://[^[:space:]]+")"
 
-	i3-msg 'move scratchpad'
+	i3-msg "move scratchpad"
 
 	[[ "$LINK" ]] && mpv $LINK
 }

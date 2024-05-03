@@ -1,6 +1,8 @@
 twitch:
   - baniakbaniaka
   - jaskol95
+  - kapitanbombatv
+  - kasia_22
   - ornicar2
   - pokochajszachy
   - rockalone
@@ -10,7 +12,6 @@ twitch:
   - zlemyslisz
 
 youtube:
-  - "@kapitanbomba"
   - "@krzysztofmmaj"
   - "@mateusz_astroLife"
   - "@naukowy.belkot"
@@ -25,3 +26,5 @@ safetwitch:
   - https://stbackend.drgns.space
   - https://safetwitch-api.lunar.icu
   - https://api.safetwitch.eu.projectsegfau.lt
+
+chat-nick-brightness: 50
