@@ -128,11 +128,13 @@ dwebp-memes() {
 # Convert video/s to MKV (HEVC, AAC)
 # ------------------------------------------------------------------------------
 ffmpeg-mkv() {
+	files=""
+
 	for file in "$@"; do
-		FILES="$FILES$file|"
+		files="$files|$file"
 	done
 
-	ffmpeg -i "concat:${FILES:0:-1}" -c:v libx265 -c:a aac ${OUTPUT:-output}.mkv
+	ffmpeg -i "concat:${files:1}" -c:v libx265 -c:a aac ${O:-output}.mkv
 }
 
 # Convert FLAC files to OPUS
