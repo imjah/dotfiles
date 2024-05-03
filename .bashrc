@@ -125,16 +125,14 @@ dwebp-memes() {
 	done
 }
 
-# Concat DV files and convert them to MP4
+# Convert video/s to MKV (HEVC, AAC)
 # ------------------------------------------------------------------------------
-ffmpeg-concat-dv-convert-mp4() {
-	DIR="${1:-'.'}"
-
-	for file in $DIR/*.dv; do
+ffmpeg-mkv() {
+	for file in "$@"; do
 		FILES="$FILES$file|"
 	done
 
-	ffmpeg -i "concat:${FILES:0:-1}" -vf yadif "$DIR/tape.mp4"
+	ffmpeg -i "concat:${FILES:0:-1}" -c:v libx265 -c:a aac ${OUTPUT:-output}.mkv
 }
 
 # Convert FLAC files to OPUS
