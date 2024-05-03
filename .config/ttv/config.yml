@@ -2,13 +2,11 @@ twitch:
   - baniakbaniaka
   - jaskol95
   - kapitanbombatv
-  - kasia_22
   - ornicar2
   - pokochajszachy
   - rockalone
   - szparumen
   - togglebit
-  - wpatka
   - zlemyslisz
 
 youtube:
@@ -26,5 +24,3 @@ safetwitch:
   - https://stbackend.drgns.space
   - https://safetwitch-api.lunar.icu
   - https://api.safetwitch.eu.projectsegfau.lt
-
-chat-nick-brightness: 50
