@@ -190,7 +190,7 @@ nt() {
 		return
 	fi
 
-	FILE=`find "$DIR" -type f | sed "s~$DIR/~~" | sort -r | fzf --preview "cat $DIR/{}"`
+	FILE=`find "$DIR" -type f | sed "s~$DIR/~~" | sort | fzf --preview "cat $DIR/{}"`
 
 	[[ -n "$FILE" ]] && nvim "$DIR/$FILE"
 }
@@ -198,7 +198,7 @@ nt() {
 # Pick a livestream
 # ------------------------------------------------------------------------------
 ttvmenu() {
-	LINK="$(ttv $@ | column -t -s";" | fzf | grep -oE "https://[^[:space:]]+")"
+	LINK="$(ttv $@ | sort | column -t -s";" | fzf | grep -oE "https://[^[:space:]]+")"
 
 	i3-msg "move scratchpad"
 
