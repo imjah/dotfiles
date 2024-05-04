@@ -18,10 +18,9 @@ call plug#begin(s:dir)
 
 Plug 'NoahTheDuke/vim-just'
 Plug 'ackyshake/VimCompletesMe'
+Plug 'dense-analysis/ale'
 Plug 'godlygeek/tabular'
 Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 Plug 'kdheepak/lazygit.vim'
 Plug 'leafOfTree/vim-vue-plugin'
 Plug 'morhetz/gruvbox'
@@ -41,12 +40,17 @@ endif
 " Plugin: floaterm
 " ------------------------------------------------------------------------------
 let g:floaterm_width         = 1.0
-let g:floaterm_height        = 1.0
-let g:floaterm_autoclose     = 2
+let g:floaterm_height        = 0.3
+let g:floaterm_title         = ' $1/$2'
+let g:floaterm_position      = 'bottom'
+let g:floaterm_borderchars   = ''
 let g:floaterm_keymap_new    = '<F7>'
 let g:floaterm_keymap_next   = '<F6>'
 let g:floaterm_keymap_prev   = '<F5>'
+let g:floaterm_keymap_kill   = '<F8>'
 let g:floaterm_keymap_toggle = '<C-Space>'
+
+tnoremap <Esc> <C-\><C-n>
 
 " Plugin: gruvbox
 " ------------------------------------------------------------------------------
@@ -56,7 +60,7 @@ colorscheme gruvbox
 " ------------------------------------------------------------------------------
 let g:lazygit_floating_window_scaling_factor = 1
 
-nnoremap <silent> <Space> :LazyGit<CR>
+nnoremap <silent> \ :LazyGit<CR>
 
 " Plugin: nerdtree
 " ------------------------------------------------------------------------------
@@ -72,7 +76,8 @@ let g:NERDTreeWinPos                = 'right'
 let g:NERDTreeWinSize               = 30
 
 nnoremap          <C-o> :NERDTree /home/rafal/projects/
-nnoremap <silent> <C-\> :NERDTreeToggle<CR>:NERDTreeRefreshRoot<CR>:NERDTreeRefreshRoot<CR>
+nnoremap <silent> <Space> :NERDTreeToggle<CR>:NERDTreeRefreshRoot<CR>:NERDTreeRefreshRoot<CR>
+
 " Editor:
 " ------------------------------------------------------------------------------
 set clipboard=unnamedplus
@@ -96,10 +101,8 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-s> :w<CR>
 nnoremap <silent> \    :FZF<CR>
-nnoremap <silent> <F8> :!gnome-terminal<CR><Enter>
 nnoremap <silent> <C-Up>    :resize +5<CR>
 nnoremap <silent> <C-Down>  :resize -5<CR>
 nnoremap <silent> <C-Left>  :vertical resize +5<CR>
 nnoremap <silent> <C-Right> :vertical resize -5<CR>
-tnoremap <C-q> <C-\><C-n>
 vnoremap <silent> <Space> :sort<CR>
