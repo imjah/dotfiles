@@ -221,9 +221,35 @@ pick-meme() {
 # ------------------------------------------------------------------------------
 pick-project() {
 	DIR=$(xdg-user-dir PROJECTS)
-	FILE=$(find "$DIR" -mindepth 1 -maxdepth 1 -type d | sed "s~$DIR/~~" | sort | fzf)
+	FILE=$(find "$DIR" -mindepth 1 -maxdepth 1 -type d \
+	     | sed "/password-store/d;/dotfiles/d;s~$DIR/~~" \
+	     | sort \
+	     | cat - <(echo 'Clone existing project') \
+	     | cat - <(echo 'Create new project') \
+	     | fzf)
 
-	[[ -n "$FILE" ]] && nvim "$DIR/$FILE"
+	if [[ $FILE == "Clone existing project" ]]; then
+		r="$(xdg-user-dir REPOSITORIES)"
+		p="$(xdg-user-dir PROJECTS)"
+		n=$(find "$r" -mindepth 1 -maxdepth 1 -type d | sed "s~$r/~~" | sort | fzf)
+
+		[[ -n "$n" ]] && git clone "$r/$n" "$p/${n//".git"/}" && cd "$p/${n//".git"/}" && nvim
+
+		return
+	fi
+
+	if [[ $FILE == "Create a new project" ]]; then
+		read -p 'Name: ' n
+
+		r="$(xdg-user-dir REPOSITORIES)/$n.git"
+		p="$(xdg-user-dir PROJECTS)"
+
+		[[ -n "$n" ]] && git init --bare "$r" && git clone "$r" "$p/$n" && cd "$p/$n" && nvim
+
+		return
+	fi
+
+	[[ -n "$FILE" ]] && cd "$DIR/$FILE" && nvim
 }
 
 # Pick a livestream

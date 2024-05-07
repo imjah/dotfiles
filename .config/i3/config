@@ -30,12 +30,12 @@ set $exec_always  exec_always --no-startup-id
 # ------------------------------------------------------------------------------
 set $browser      firefox
 set $music        cmus
-set $notes        bash -ic 'loop nt'
-set $memes        bash -ic 'pick-meme'
-set $projects     bash -ic 'pick-project'
-set $livestreams  bash -ic 'pick-livestream'
-set $budget       bash -ic 'budget'
-set $config       bash -ic 'config'
+set $notes        bash -ic "loop nt"
+set $memes        bash -ic "pick-meme"
+set $projects     bash -ic "pick-project"
+set $livestreams  bash -ic "pick-livestream"
+set $budget       bash -ic "budget"
+set $config       bash -ic "config"
 set $terminal     gnome-terminal --
 
 # Autostart
