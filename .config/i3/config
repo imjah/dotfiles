@@ -28,11 +28,15 @@ set $exec_always  exec_always --no-startup-id
 
 # Variables: applications
 # ------------------------------------------------------------------------------
-set $browser   firefox
-set $editor    neovim
-set $music     cmus
-set $notes     bash -ic "loop nt"
-set $terminal  gnome-terminal --
+set $browser      firefox
+set $music        cmus
+set $notes        bash -ic 'loop nt'
+set $memes        bash -ic 'pick-meme'
+set $projects     bash -ic 'pick-project'
+set $livestreams  bash -ic 'pick-livestream'
+set $budget       bash -ic 'budget'
+set $config       bash -ic 'config'
+set $terminal     gnome-terminal --
 
 # Autostart
 # ------------------------------------------------------------------------------
@@ -84,8 +88,9 @@ bindsym $mod+0 workspace 10
 bindsym $mod+q kill
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
-bindsym $mod+t $exec $terminal bash -ic "ttvmenu"
-bindsym $mod+y $exec mememenu -i -l 5 -fn "$font-$size" -nb "$bg" -nf "$fg" -sb "$green" -sf "$fg"
+bindsym $mod+t $exec $terminal $livestreams
+bindsym $mod+y $exec $terminal $memes
+bindsym $mod+u $exec $terminal $config
 bindsym $mod+i $exec $browser
 bindsym $mod+o $exec i3-dmenu-desktop --dmenu='dmenu -i -l 5 -fn "$font-$size" -nb "$bg" -nf "$fg" -sb "$green" -sf "$fg"'
 bindsym $mod+p $exec passmenu -i -l 5 -fn "$font-$size" -nb "$bg" -nf "$fg" -sb "$green" -sf "$fg"
@@ -96,7 +101,7 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 bindsym $mod+c mode $countdown
 bindsym $mod+v split v
-bindsym $mod+b $exec budget
+bindsym $mod+b $exec $budget
 bindsym $mod+m $exec $terminal $music
 bindsym $mod+z $exec systemctl suspend; $exec i3lock -c "$bg"
 bindsym $mod+grave scratchpad show
@@ -113,7 +118,7 @@ bindsym $mod+Right resize grow width 100 px
 bindsym $mod+Escape mode $power
 bindsym $mod+Print $exec screenshot -w
 bindsym $mod+Return $exec $terminal
-bindsym $mod+backslash $exec $terminal $editor
+bindsym $mod+backslash $exec $terminal $projects
 bindsym $mod+Next $exec i3-msg 'workspace next'
 bindsym $mod+Prior $exec i3-msg 'workspace prev'
 bindsym $mod+F1 $exec pactl set-card-profile alsa_card.pci-0000_09_00.3 output:iec958-stereo

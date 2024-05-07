@@ -13,6 +13,18 @@ alias wget="wget --no-hsts -P `xdg-user-dir DOWNLOAD`"
 
 # Mount, unmount or create backup
 # ------------------------------------------------------------------------------
+budget() {
+	FILE="`xdg-user-dir DOCUMENTS`/sheets/budget.ods"
+
+	if [ -e $FILE ]; then
+		libreoffice $FILE
+	else
+		notify-send "Budget not found"
+	fi
+}
+
+# Mount, unmount or create backup
+# ------------------------------------------------------------------------------
 backup() {
 	mountpoint='/mnt/backup'
 
@@ -146,18 +158,6 @@ ffmpeg-flac-to-opus() {
 	done
 }
 
-# Manage config
-# ------------------------------------------------------------------------------
-config() {
-	GIT=lazygit
-
-	if [ $1 ]; then
-		GIT=git
-	fi
-
-	$GIT --git-dir=`xdg-user-dir PROJECTS`/dotfiles --work-tree=$HOME $@
-}
-
 # Copy and format FLAC album into music archive
 # make clone of it with OPUS compression into music storage
 # ------------------------------------------------------------------------------
@@ -180,6 +180,18 @@ music-sync-storage() {
 	rsync -av --exclude=".archive" "$(xdg-user-dir MUSIC)/" ${1:-.}
 }
 
+# Manage config
+# ------------------------------------------------------------------------------
+config() {
+	GIT=lazygit
+
+	if [ $1 ]; then
+		GIT=git
+	fi
+
+	$GIT --git-dir=`xdg-user-dir PROJECTS`/dotfiles --work-tree=$HOME $@
+}
+
 # Pick a note
 # ------------------------------------------------------------------------------
 nt() {
@@ -196,9 +208,27 @@ nt() {
 	[[ -n "$FILE" ]] && nvim "$DIR/$FILE"
 }
 
+# Pick a meme
+# ------------------------------------------------------------------------------
+pick-meme() {
+	DIR="$(xdg-user-dir PICTURES)/memes"
+	FILE="$(ls "$DIR" | fzf $@)"
+
+	[ "$FILE" ] && xdg-open "$DIR/$FILE"
+}
+
+# Pick a project
+# ------------------------------------------------------------------------------
+pick-project() {
+	DIR=$(xdg-user-dir PROJECTS)
+	FILE=$(find "$DIR" -mindepth 1 -maxdepth 1 -type d | sed "s~$DIR/~~" | sort | fzf)
+
+	[[ -n "$FILE" ]] && nvim "$DIR/$FILE"
+}
+
 # Pick a livestream
 # ------------------------------------------------------------------------------
-ttvmenu() {
+pick-livestream() {
 	LINK="$(ttv $@ | sort | column -t -s";" | fzf | grep -oE "https://[^[:space:]]+")"
 
 	i3-msg "move scratchpad"

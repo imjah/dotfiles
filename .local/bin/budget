@@ -1,9 +1,0 @@
-#!/bin/bash
-
-FILE="`xdg-user-dir DOCUMENTS`/sheets/budget.ods"
-
-if [ -e $FILE ]; then
-	libreoffice $FILE
-else
-	notify-send "Budget not found"
-fi
