@@ -50,7 +50,7 @@ let g:floaterm_keymap_prev   = '<F5>'
 let g:floaterm_keymap_kill   = '<F8>'
 let g:floaterm_keymap_toggle = '<C-Space>'
 
-tnoremap <Esc> <C-\><C-n>
+tnoremap <C-q> <C-\><C-n>
 
 " Plugin: gruvbox
 " ------------------------------------------------------------------------------
@@ -60,7 +60,7 @@ colorscheme gruvbox
 " ------------------------------------------------------------------------------
 let g:lazygit_floating_window_scaling_factor = 1
 
-nnoremap <silent> \ :LazyGit<CR>
+nnoremap <silent> <Enter> :LazyGit<CR>
 
 " Plugin: nerdtree
 " ------------------------------------------------------------------------------
@@ -75,8 +75,11 @@ let g:NERDTreeShowHidden            = 1
 let g:NERDTreeWinPos                = 'right'
 let g:NERDTreeWinSize               = 30
 
-nnoremap          <C-o> :NERDTree /home/rafal/projects/
-nnoremap <silent> <Space> :NERDTreeToggle<CR>:NERDTreeRefreshRoot<CR>:NERDTreeRefreshRoot<CR>
+nnoremap <silent> \ :NERDTreeToggle<CR>:NERDTreeRefreshRoot<CR>:NERDTreeRefreshRoot<CR>
+
+" Plugin: fzf:
+" ------------------------------------------------------------------------------
+nnoremap <silent> <Space> :FZF<CR>
 
 " Editor:
 " ------------------------------------------------------------------------------
@@ -100,7 +103,6 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-s> :w<CR>
-nnoremap <silent> \    :FZF<CR>
 nnoremap <silent> <C-Up>    :resize +5<CR>
 nnoremap <silent> <C-Down>  :resize -5<CR>
 nnoremap <silent> <C-Left>  :vertical resize +5<CR>
