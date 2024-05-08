@@ -238,7 +238,7 @@ pick-project() {
 		return
 	fi
 
-	if [[ $FILE == "Create a new project" ]]; then
+	if [[ $FILE == "Create new project" ]]; then
 		read -p 'Name: ' n
 
 		r="$(xdg-user-dir REPOSITORIES)/$n.git"
@@ -259,7 +259,7 @@ pick-livestream() {
 
 	i3-msg "move scratchpad"
 
-	[[ "$LINK" ]] && mpv $LINK
+	[[ "$LINK" ]] && streamlink --twitch-disable-ads --player mpv $LINK best
 }
 
 # Run program in endless loop
