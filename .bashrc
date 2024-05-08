@@ -212,7 +212,7 @@ nt() {
 # ------------------------------------------------------------------------------
 pick-meme() {
 	DIR="$(xdg-user-dir PICTURES)/memes"
-	FILE="$(ls "$DIR" | fzf $@)"
+	FILE="$(find "$DIR" -type f | sed "s~$DIR/~~" | sort | fzf $@)"
 
 	[ "$FILE" ] && xdg-open "$DIR/$FILE"
 }
