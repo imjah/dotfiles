@@ -1,5 +1,0 @@
-#!/bin/bash
-
-HOME="$XDG_DATA_HOME/steam-home"
-
-mkdir -p $HOME && exec /usr/bin/steam "$@"
