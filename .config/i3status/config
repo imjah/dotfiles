@@ -6,74 +6,56 @@ general {
 	interval       = 1
 }
 
-order += "cpu_usage"
-order += "memory"
 order += "disk /"
 order += "disk /mnt/backup"
 order += "disk /mnt/usb-1"
 order += "disk /mnt/usb-2"
 order += "disk /mnt/usb-3"
-order += "wireless _first_"
-order += "battery all"
+order += "memory"
+order += "cpu_usage"
 order += "volume master"
-order += "read_file COUNTDOWN"
+order += "read_file countdown"
 order += "time"
 
-cpu_usage {
-	format = "󰻠 %usage"
-}
-
-memory {
-	format = "󰍛 %percentage_used"
+read_file countdown {
+	format = "CNT %content"
+	format_bad = ""
+	path = "/tmp/i3-countdown"
 }
 
 disk / {
-	format = "󰋊 %percentage_used"
+	format = "DSK %percentage_used"
 }
 
 disk /mnt/backup {
-	format = "󰁯 %percentage_used"
+	format = "BAK %percentage_used"
 }
 
 disk /mnt/usb-1 {
-	format = "󱊞 %percentage_used"
+	format = "USB %percentage_used"
 }
 
 disk /mnt/usb-2 {
-	format = "󱊞 %percentage_used"
+	format = "USB %percentage_used"
 }
 
 disk /mnt/usb-3 {
-	format = "󱊞 %percentage_used"
+	format = "USB %percentage_used"
 }
 
-wireless _first_ {
-	format_up = "󰖩%quality"
-	format_down = ""
+memory {
+	format = "RAM %percentage_used"
 }
 
-battery all {
-	format = "%status %percentage"
-	format_down = ""
-	format_percentage = "%.00f%s"
-	status_chr = "󰂄"
-	status_bat = "󰁹"
-	status_full = "󰚥"
-	low_threshold = 20
-	last_full_capacity = true
+cpu_usage {
+	format = "CPU %usage"
 }
 
 volume master {
-	format = "󰕾 %volume"
-	format_muted = "󰝟 Muted"
+	format = "VOL %volume"
+	format_muted = "VOL %volume"
 	mixer = "Master"
 	mixer_idx = 0
-}
-
-read_file COUNTDOWN {
-	format = "󱎫 %content"
-	format_bad = ""
-	path = "/tmp/i3-countdown"
 }
 
 time {
