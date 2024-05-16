@@ -16,19 +16,14 @@ endif
 
 call plug#begin(s:dir)
 
-Plug 'NoahTheDuke/vim-just'
-Plug 'ackyshake/VimCompletesMe'
-Plug 'dense-analysis/ale'
-Plug 'godlygeek/tabular'
-Plug 'jiangmiao/auto-pairs'
-Plug 'kdheepak/lazygit.vim'
-Plug 'leafOfTree/vim-vue-plugin'
 Plug 'morhetz/gruvbox'
-Plug 'preservim/nerdtree'
-Plug 'ryanoasis/vim-devicons'
+Plug 'junegunn/fzf'
+Plug 'kdheepak/lazygit.vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'dense-analysis/ale'
+Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
-Plug 'voldikss/vim-floaterm'
+Plug 'godlygeek/tabular'
 
 call plug#end()
 
@@ -37,74 +32,46 @@ if (s:IsMissingPlugin())
 	finish
 endif
 
-" Plugin: floaterm
-" ------------------------------------------------------------------------------
-let g:floaterm_width         = 1.0
-let g:floaterm_height        = 0.3
-let g:floaterm_title         = ' $1/$2'
-let g:floaterm_position      = 'bottom'
-let g:floaterm_borderchars   = ''
-let g:floaterm_keymap_new    = '<F7>'
-let g:floaterm_keymap_next   = '<F6>'
-let g:floaterm_keymap_prev   = '<F5>'
-let g:floaterm_keymap_kill   = '<F8>'
-let g:floaterm_keymap_toggle = '<C-Space>'
-
-tnoremap <C-q> <C-\><C-n>
-
 " Plugin: gruvbox
 " ------------------------------------------------------------------------------
 colorscheme gruvbox
+
+" Plugin: fzf
+" ------------------------------------------------------------------------------
+nnoremap <silent> <Space> :FZF<CR>
 
 " Plugin: lazygit
 " ------------------------------------------------------------------------------
 let g:lazygit_floating_window_scaling_factor = 1
 
-nnoremap <silent> <Enter> :LazyGit<CR>
+nnoremap <silent> <C-Space> :LazyGit<CR>
 
-" Plugin: nerdtree
+" Plugin: commentary
 " ------------------------------------------------------------------------------
-let g:NERDTreeBookmarksFile         = ''
-let g:NERDTreeCascadeSingleChildDir = 0
-let g:NERDTreeChDirMode             = 1
-let g:NERDTreeDirArrowCollapsible   = ''
-let g:NERDTreeDirArrowExpandable    = ''
-let g:NERDTreeMinimalMenu           = 1
-let g:NERDTreeMinimalUI             = 1
-let g:NERDTreeShowHidden            = 1
-let g:NERDTreeWinPos                = 'right'
-let g:NERDTreeWinSize               = 30
+nnoremap <silent> <C-c> :Commentary<CR>
+vnoremap <silent> <C-c> :Commentary<CR>
 
-nnoremap <silent> \ :NERDTreeToggle<CR>:NERDTreeRefreshRoot<CR>:NERDTreeRefreshRoot<CR>
-
-" Plugin: fzf:
+" Plugin: tabular
 " ------------------------------------------------------------------------------
-nnoremap <silent> <Space> :FZF<CR>
+vnoremap <C-t> :Tabularize /
 
 " Editor:
 " ------------------------------------------------------------------------------
-set clipboard=unnamedplus
+set clipboard=unnamedplus " sync with system clipboard
 set colorcolumn=81
-set list
-set number
-set shiftwidth=4
-set shortmess+=c
-set smartindent
-set softtabstop=4
-set splitbelow
-set splitright
-set tabstop=4
-set title
-set updatetime=500
+set list                  " display invisible characters
+set number                " display line numbers
+set shortmess+=c          " hide completion message
+set autoindent
+set tabstop=4             " set hard tab width (when displays)
+set softtabstop=4         " set hard tab width (when types)
 
-nnoremap <C-f> :%s///g<Left><Left><Left>
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-nnoremap <C-s> :w<CR>
-nnoremap <silent> <C-Up>    :resize +5<CR>
-nnoremap <silent> <C-Down>  :resize -5<CR>
-nnoremap <silent> <C-Left>  :vertical resize +5<CR>
-nnoremap <silent> <C-Right> :vertical resize -5<CR>
+nnoremap <silent> <C-h>   <C-w>h
+nnoremap <silent> <C-j>   <C-w>j
+nnoremap <silent> <C-k>   <C-w>k
+nnoremap <silent> <C-l>   <C-w>l
+nnoremap <silent> <C-q>   :q<CR>
+nnoremap <silent> <C-s>   :w<CR>
+nnoremap <silent> <Enter> :!gnome-terminal<CR><Enter>
 vnoremap <silent> <Space> :sort<CR>
+inoremap <silent> <Tab>   <C-n>
