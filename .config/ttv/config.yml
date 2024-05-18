@@ -7,10 +7,11 @@ twitch:
   - togglebit
 
 youtube:
-  - "@usalivestreamtv"
   - "@kapitanbomba"
   - "@krzysztofmmaj"
+  - "@nasa"
   - "@sejmrp_pl"
+  - "@usalivestreamtv"
 
 piped:
   - https://pipedapi.kavin.rocks
