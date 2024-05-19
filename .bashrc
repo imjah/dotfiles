@@ -1,74 +1,58 @@
 source /usr/share/defaults/etc/profile
 
-export PS1="\[\e[38;5;108m\]\w\[\033[0m\] "
-export EDITOR="nvim"
-export VISUAL="nvim"
-
-alias du="du -h"
-alias feh="feh --scale-down --auto-zoom"
-alias ls="eza -1a --git --group-directories-first --icons"
-alias rm="trash"
-alias vi="neovim"
-alias wget="wget --no-hsts -P `xdg-user-dir DOWNLOAD`"
-
-# Mount, unmount or create backup
+# Theme
 # ------------------------------------------------------------------------------
-budget() {
-	FILE="`xdg-user-dir DOCUMENTS`/sheets/budget.ods"
+export BG="#282828"
+export FG="#ebdbb2"
+export RED="#cc241d"
+export GREEN="#98971a"
+export YELLOW="#d79921"
+export BLUE="#458588"
+export PURPLE="#b16286"
+export AQUA="#689d6a"
+export GRAY="#a89984"
+export FONT_TYPE="hack"
+export FONT_SIZE="9"
 
-	if [ -e $FILE ]; then
-		libreoffice $FILE
-	else
-		notify-send "Budget not found"
-	fi
+# Prompt
+# ------------------------------------------------------------------------------
+export PS1="\[\e[38;2;$(printf "%d;%d;%d" 0x${AQUA:1:2} 0x${AQUA:3:2} 0x${AQUA:5:2})m\]\w\[\033[0m\] "
+
+# Programs
+# ------------------------------------------------------------------------------
+export SHELL="/bin/bash"
+export PAGER="/bin/less"
+export EDITOR="/bin/nvim"
+export VISUAL="/bin/nvim"
+export BROWSER="/bin/firefox"
+
+alias ls="eza -a1 --icons --group-directories-first"
+alias rm="trash"
+alias vi="nvim"
+alias feh="feh -B \"$BG\""
+alias qrencode="qrencode --background=${BG:1} --foreground=${FG:1} -s 6"
+alias dmenu="dmenu -i -l 5 -fn '$FONT_TYPE-$FONT_SIZE' -nb '$BG' -nf '$FG' -sb '$AQUA' -sf '$FG'"
+
+# Move file without repeating it's path
+# ------------------------------------------------------------------------------
+rn() {
+	mv $1 ${1/$(basename $1)/$2}
 }
 
-# Mount, unmount or create backup
+# Extract tar archives into directory
 # ------------------------------------------------------------------------------
-backup() {
-	mountpoint='/mnt/backup'
+ut() {
+	DIR="${1%.tar*}"
 
-	if [[ $1 == '-m' ]]; then
-		sudo mount $mountpoint
+	mkdir "$DIR" && tar -xC "$DIR" -f "$1" && cd "$DIR"
+}
 
-		return
-	fi
+# Extract zip archives into directory
+# ------------------------------------------------------------------------------
+uz() {
+	DIR="${1%.zip*}"
 
-	if [[ $1 == '-u' ]]; then
-		sudo umount $mountpoint
-
-		return
-	fi
-
-	if [[ -z $(findmnt $mountpoint) ]]; then
-		sudo mount $mountpoint
-
-		if [[ -z $(findmnt $mountpoint) ]]; then
-			echo "Unable to mount backup drive"
-
-			return 1
-		fi
-	fi
-
-	src=(
-		"$(xdg-user-dir DOCUMENTS)"
-		"$(xdg-user-dir DOWNLOAD)"
-		"$(xdg-user-dir GAMES)"
-		"$(xdg-user-dir MUSIC)"
-		"$(xdg-user-dir PICTURES)"
-		"$(xdg-user-dir PROJECTS)"
-		"$(xdg-user-dir REPOSITORIES)"
-		"$(xdg-user-dir VIDEOS)"
-	)
-
-	filter=(
-		".steam"
-	)
-
-	rsync -ahv --delete --filter="- ${filter[@]}" "${src[@]}" "$mountpoint/$(uname -n)/"
-
-	echo "Unmounting..."
-	sudo umount $mountpoint
+	mkdir "$DIR" && unzip -d "$DIR" "$1" && cd "$DIR"
 }
 
 # Mount USB drive
@@ -81,7 +65,6 @@ mu() {
 
 		if [ -z `findmnt $slot` ]; then
 			sudo mount -m --target $slot $@ && cd $slot
-
 			return
 		fi
 	done
@@ -97,45 +80,33 @@ uu() {
 	sudo umount "/mnt/usb-$1"
 }
 
-# Auto cd
+# Mount, unmount a backup drive or make a backup
 # ------------------------------------------------------------------------------
-cd() {
-	builtin cd "$@" && ls
-}
+backup() {
+	mountpoint='/mnt/backup'
 
-# Move file/directory without repeating it's path (aka rename)
-# ------------------------------------------------------------------------------
-rn() {
-	mv $1 ${1/$(basename $1)/$2}
-}
+	if [[ $1 == '-m' ]]; then
+		sudo mount $mountpoint
+		return
+	fi
 
-# Extract tar archives into directory
-# ------------------------------------------------------------------------------
-ut() {
-	DIR="${1%.tar*}"
+	if [[ $1 == '-u' ]]; then
+		sudo umount $mountpoint
+		return
+	fi
 
-	mkdir "$DIR" && tar -xC "$DIR" -f "$1" && trash "$1"
-}
+	if [[ -z $(findmnt $mountpoint) ]]; then
+		sudo mount $mountpoint
 
-# Extract zip archives into directory
-# ------------------------------------------------------------------------------
-uz() {
-	DIR="${1%.zip*}"
-
-	mkdir "$DIR" && unzip -d "$DIR" "$1" && trash "$1"
-}
-
-# Convert WebP memes to PNG and trash it
-# ------------------------------------------------------------------------------
-dwebp-memes() {
-	dir="$(xdg-user-dir PICTURES)/memes"
-
-	for meme in $dir/*.webp; do
-		if [[ -e $meme ]]; then
-			dwebp $meme -o ${meme/.webp/.png}
-			trash $meme
+		if [[ -z $(findmnt $mountpoint) ]]; then
+			echo "Unable to mount backup drive"
+			return 1
 		fi
-	done
+	fi
+
+	rsync -ahv --delete $HOME/* "$mountpoint/$(uname -n)/"
+
+	sudo umount $mountpoint
 }
 
 # Convert video/s to MKV (HEVC, AAC)
@@ -174,115 +145,60 @@ music-add-album() {
 	ffmpeg-flac-to-opus "$archive" "$storage"
 }
 
-# Sync music storage
-# ------------------------------------------------------------------------------
-music-sync-storage() {
-	rsync -av --exclude=".archive" "$(xdg-user-dir MUSIC)/" ${1:-.}
-}
-
-# Manage config
-# ------------------------------------------------------------------------------
-config() {
-	GIT=lazygit
-
-	if [ $1 ]; then
-		GIT=git
-	fi
-
-	$GIT --git-dir=`xdg-user-dir PROJECTS`/dotfiles --work-tree=$HOME $@
-}
-
-# Pick a note
+# Note launcher
 # ------------------------------------------------------------------------------
 nt() {
-	DIR="`xdg-user-dir DOCUMENTS`/notes"
+	d="$(xdg-user-dir DOCUMENTS)/notes"
 
 	if [[ -n "$1" ]]; then
-		nvim "$DIR/$1"
-
+		$EDITOR "$d/$1"
 		return
 	fi
 
-	FILE=`find "$DIR" -type f | sed "s~$DIR/~~" | sort | fzf --preview "cat $DIR/{}"`
-
-	[[ -n "$FILE" ]] && nvim "$DIR/$FILE"
-}
-
-# Pick a meme
-# ------------------------------------------------------------------------------
-pick-meme() {
-	DIR="$(xdg-user-dir PICTURES)/memes"
-	FILE="$(find "$DIR" -type f | sed "s~$DIR/~~" | sort | fzf $@)"
-
-	[ "$FILE" ] && xdg-open "$DIR/$FILE"
-}
-
-# Pick a project
-# ------------------------------------------------------------------------------
-pick-project() {
-	DIR=$(xdg-user-dir PROJECTS)
-	FILE=$(find "$DIR" -mindepth 1 -maxdepth 1 -type d \
-	     | sed "/password-store/d;/dotfiles/d;s~$DIR/~~" \
-	     | sort \
-	     | cat - <(echo 'Clone existing project') \
-	     | cat - <(echo 'Create new project') \
-	     | fzf)
-
-	if [[ $FILE == "Clone existing project" ]]; then
-		r="$(xdg-user-dir REPOSITORIES)"
-		p="$(xdg-user-dir PROJECTS)"
-		n=$(find "$r" -mindepth 1 -maxdepth 1 -type d | sed "s~$r/~~" | sort | fzf)
-
-		[[ -n "$n" ]] && git clone "$r/$n" "$p/${n//".git"/}" && cd "$p/${n//".git"/}" && nvim
-
-		return
-	fi
-
-	if [[ $FILE == "Create new project" ]]; then
-		read -p 'Name: ' n
-
-		r="$(xdg-user-dir REPOSITORIES)/$n.git"
-		p="$(xdg-user-dir PROJECTS)"
-
-		[[ -n "$n" ]] && git init --bare "$r" && git clone "$r" "$p/$n" && cd "$p/$n" && nvim
-
-		return
-	fi
-
-	[[ -n "$FILE" ]] && cd "$DIR/$FILE" && nvim
-}
-
-# Pick a livestream
-# ------------------------------------------------------------------------------
-pick-livestream() {
-	LINK="$(ttv $@ | sort | column -t -s";" | fzf | grep -oE "https://[^[:space:]]+")"
-
-	i3-msg "move scratchpad"
-
-	[[ "$LINK" ]] && streamlink --twitch-disable-ads --player mpv $LINK best
-}
-
-# Run program in endless loop
-# ------------------------------------------------------------------------------
-loop() {
 	while true; do
-		$@
+		f=$(find "$d" -type f | sed "s~$d/~~" | sort | fzf --preview "cat $d/{}")
+
+		test -n "$f" && nvim "$d/$f" || return
 	done
 }
 
-# Format files/directories names with my style
+# TTV launcher
 # ------------------------------------------------------------------------------
-format() {
-	s="-"
+ttvmenu() {
+	ttv | sort | column -t -s";" | fzf -m | grep -oE "https://[^[:space:]]+" | \
 
+	while read -r url; do
+		gnome-terminal -t "TTV Log" -- streamlink --twitch-disable-ads --player mpv $url best
+	done
+}
+
+# Pass launcher
+# ------------------------------------------------------------------------------
+passmenu() {
+	f="$(find "$PASSWORD_STORE_DIR" -type f | grep -oE "[^/]+.gpg$" | grep -oE ".+[^\.gpg]" | sort | dmenu)"
+
+	if [[ -z "$f" ]]; then
+		return
+	fi
+
+	if [[ "$1" == "-q" ]]; then
+		pass "$f" | head -n 1 | qrencode -o /tmp/pass.png && feh /tmp/pass.png
+	else
+		pass -c "$f"
+	fi
+}
+
+# Filenames fixer
+# ------------------------------------------------------------------------------
+fix() {
 	for file in "$@"; do
 		e=${file##*.}
 		f=$(basename "$file")
 		f=${f%.*}
 		f=${f,,}
-		f=${f//" - "/$s}
-		f=${f//" "/$s}
-		f=${f//"_"/$s}
+		f=${f//" - "/-}
+		f=${f//" "/-}
+		f=${f//"_"/-}
 		f=${f//"("/}
 		f=${f//")"/}
 		f=${f//"'"/}
@@ -296,20 +212,28 @@ format() {
 	done
 }
 
-# Enumerate characters
+# Dotfiles manager
 # ------------------------------------------------------------------------------
-enum() {
-	read line; echo $line | fold -w 1 | cat -n
+config() {
+	test -z "$1" && git=lazygit || git=git
+
+	$git --git-dir="$(xdg-user-dir PROJECTS)/.dotfiles" --work-tree=$HOME $@
 }
 
-# Create simple HTTP server
+# Enumerate first line characters
+# ------------------------------------------------------------------------------
+enum() {
+	head -n 1 | fold -w 1 | cat -n
+}
+
+# Run a simple HTTP server
 # ------------------------------------------------------------------------------
 serve() {
 	python3 -m http.server
 }
 
-# Download weather forecast
+# Auto ls
 # ------------------------------------------------------------------------------
-weather() {
-	curl -s https://wttr.in/Stargard | head -n -3
+cd() {
+	builtin cd "$@" && ls
 }

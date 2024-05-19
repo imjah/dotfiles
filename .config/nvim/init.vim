@@ -72,6 +72,8 @@ nnoremap <silent> <C-k>   <C-w>k
 nnoremap <silent> <C-l>   <C-w>l
 nnoremap <silent> <C-q>   :q<CR>
 nnoremap <silent> <C-s>   :w<CR>
+nnoremap          <C-f>   :%s///g<Left><Left><Left>
+vnoremap          <C-f>   :s///g<Left><Left><Left>
 nnoremap <silent> <Enter> :!gnome-terminal<CR><Enter>
 vnoremap <silent> <Space> :sort<CR>
 inoremap <silent> <Tab>   <C-n>

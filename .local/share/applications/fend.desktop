@@ -1,0 +1,5 @@
+[Desktop Entry]
+
+Type=Application
+Name=Fend
+Exec=gnome-terminal -t Fend --role=pop-up -- fend

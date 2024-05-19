@@ -1,0 +1,5 @@
+[Desktop Entry]
+
+Type=Application
+Name=Cinny
+Exec=firefox --kiosk -P cinny

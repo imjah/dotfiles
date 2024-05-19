@@ -1,0 +1,5 @@
+[Desktop Entry]
+
+Type=Application
+Name=Tuta
+Exec=firefox --kiosk -P tuta

@@ -1,0 +1,5 @@
+[Desktop Entry]
+
+Type=Application
+Name=Notes
+Exec=gnome-terminal -t Notes --role=pop-up --geometry=180x50 -- bash -ic nt

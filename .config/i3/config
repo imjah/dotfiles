@@ -1,57 +1,91 @@
-# Variables: modifier
+# Theme
 # ------------------------------------------------------------------------------
-set $mod Mod4
+set $bg        "#282828"
+set $fg        "#ebdbb2"
+set $red       "#cc241d"
+set $green     "#98971a"
+set $yellow    "#d79921"
+set $blue      "#458588"
+set $purple    "#b16286"
+set $aqua      "#689d6a"
+set $gray      "#a89984"
+set $font_type hack
+set $font_size 9
 
-# Variables: font
+# Aliases
 # ------------------------------------------------------------------------------
-set $font Hack
-set $size 9
+set $mod         Mod4
+set $exec        exec        --no-startup-id
+set $exec_always exec_always --no-startup-id
 
-# Variables: colors
+# Startup
 # ------------------------------------------------------------------------------
-set $bg           #282828
-set $fg           #ebdbb2
-set $red          #cc241d
-set $green        #689d6a
-set $yellow       #d79921
-set $blue         #458588
-set $purple       #b16286
-set $aqua         #689d68
-set $gray         #a89984
-set $darkgray     #928374
-set $room_colors  ff0000:0afa0a:0a0afa:ffffff:ff0018:ff1f00:ff0800
+$exec xset r rate 250 50
 
-# Variables: aliases
+# Keybinds
 # ------------------------------------------------------------------------------
-set $exec         exec --no-startup-id
-set $exec_always  exec_always --no-startup-id
-
-# Variables: applications
-# ------------------------------------------------------------------------------
-set $browser      firefox
-set $music        cmus
-set $notes        bash -ic "loop nt"
-set $memes        bash -ic "pick-meme"
-set $projects     bash -ic "pick-project"
-set $livestreams  bash -ic "pick-livestream"
-set $budget       bash -ic "budget"
-set $config       bash -ic "config"
-set $terminal     gnome-terminal --
-
-# Autostart
-# ------------------------------------------------------------------------------
-$exec xset -dpms
-$exec xset s off
-$exec redshift -l 53:15 -t 6500:3500
-$exec easyeffects --gapplication-service
-$exec i3-msg 'workspace 9; exec $terminal $music'
-$exec i3-msg 'workspace 8; exec $terminal $notes'
-$exec i3-msg 'workspace 1; exec $browser'
-$exec_always xset r rate 250 30
+floating_modifier $mod
+bindsym $mod+1               workspace 1
+bindsym $mod+2               workspace 2
+bindsym $mod+3               workspace 3
+bindsym $mod+4               workspace 4
+bindsym $mod+5               workspace 5
+bindsym $mod+6               workspace 6
+bindsym $mod+7               workspace 7
+bindsym $mod+8               workspace 8
+bindsym $mod+9               workspace 9
+bindsym $mod+0               workspace 10
+bindsym $mod+Shift+1         move container to workspace 1
+bindsym $mod+Shift+2         move container to workspace 2
+bindsym $mod+Shift+3         move container to workspace 3
+bindsym $mod+Shift+4         move container to workspace 4
+bindsym $mod+Shift+5         move container to workspace 5
+bindsym $mod+Shift+6         move container to workspace 6
+bindsym $mod+Shift+7         move container to workspace 7
+bindsym $mod+Shift+8         move container to workspace 8
+bindsym $mod+Shift+9         move container to workspace 9
+bindsym $mod+Shift+0         move container to workspace 10
+bindsym $mod+h               focus left
+bindsym $mod+j               focus down
+bindsym $mod+k               focus up
+bindsym $mod+l               focus right
+bindsym $mod+Shift+h         move left
+bindsym $mod+Shift+j         move down
+bindsym $mod+Shift+k         move up
+bindsym $mod+Shift+l         move right
+bindsym $mod+Left            resize grow width 100 px
+bindsym $mod+Down            resize shrink height 50 px
+bindsym $mod+Up              resize grow height 50 px
+bindsym $mod+Right           resize shrink width 100 px
+bindsym $mod+space           split toggle
+bindsym $mod+w               layout toggle tabbed split
+bindsym $mod+e               floating toggle
+bindsym $mod+f               fullscreen toggle
+bindsym $mod+q               kill
+bindsym $mod+r               restart
+bindsym $mod+grave           scratchpad show
+bindsym $mod+Shift+grave     move scratchpad
+bindsym XF86Calculator       $exec gtk-launch fend
+bindsym XF86Tools            $exec gtk-launch cmus
+bindsym XF86AudioPrev        $exec playerctl previous
+bindsym XF86AudioNext        $exec playerctl next
+bindsym XF86AudioPlay        $exec playerctl play-pause
+bindsym XF86AudioStop        $exec playerctl stop
+bindsym XF86AudioMute        $exec amixer -D pulse sset Master toggle-mute
+bindsym XF86AudioLowerVolume $exec amixer -D pulse sset Master 10%-
+bindsym XF86AudioRaiseVolume $exec amixer -D pulse sset Master 10%+
+bindsym Print                $exec screenshot -w
+bindsym $mod+Print --release $exec screenshot -r
+bindsym $mod+u               $exec gtk-launch nt
+bindsym $mod+i               $exec firefox
+bindsym $mod+o               $exec i3-dmenu-desktop --dmenu='dmenu -i -l 5 -fn "$font_type-$font_size" -nb "$bg" -nf "$fg" -sb "$aqua" -sf "$fg"'
+bindsym $mod+p               $exec bash -ic "passmenu"
+bindsym $mod+Shift+p         $exec bash -ic "passmenu -q"
+bindsym $mod+Return          $exec gnome-terminal
 
 # Modes
 # ------------------------------------------------------------------------------
-set $power "[e]xit  [l]ock  [s]leep  [r]eboot  [p]ower off  [t]imer"
+set $power "[e]xit  [l]ock  [s]leep  [r]eboot  [p]ower off"
 
 mode $power {
 	bindsym e $exec i3-msg exit
@@ -59,109 +93,32 @@ mode $power {
 	bindsym s $exec systemctl suspend; $exec i3lock -c "$bg"; mode default
 	bindsym r $exec systemctl reboot
 	bindsym p $exec systemctl poweroff
-	bindsym t $exec shutdown 30; mode default
 	bindsym Escape mode default
 }
 
-set $countdown "[1] 15m  [2] 30m  [3] 60m  [c]ancel"
+bindsym $mod+Escape mode $power
+
+set $countdown "[1] 5m  [2] 15m  [3] 30m  [4] 60m  [c]ancel"
 
 mode $countdown {
-	bindsym 1 $exec countdown -o /tmp/i3-countdown -m ~/.config/sounds/synth-notification.mp3 15m; mode default
-	bindsym 2 $exec countdown -o /tmp/i3-countdown -m ~/.config/sounds/synth-notification.mp3 30m; mode default
-	bindsym 3 $exec countdown -o /tmp/i3-countdown -m ~/.config/sounds/synth-notification.mp3 60m; mode default
+	bindsym 1 $exec countdown -o /tmp/i3-countdown -m ~/music/.ringtones/notification.ogg 5m; mode default
+	bindsym 2 $exec countdown -o /tmp/i3-countdown -m ~/music/.ringtones/notification.ogg 15m; mode default
+	bindsym 3 $exec countdown -o /tmp/i3-countdown -m ~/music/.ringtones/notification.ogg 30m; mode default
+	bindsym 4 $exec countdown -o /tmp/i3-countdown -m ~/music/.ringtones/notification.ogg 60m; mode default
 	bindsym c $exec pkill countdown; mode default
 	bindsym Escape mode default
 }
 
-# Keybinds
-# ------------------------------------------------------------------------------
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
-bindsym $mod+q kill
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-bindsym $mod+t $exec $terminal $livestreams
-bindsym $mod+y $exec $terminal $memes
-bindsym $mod+u $exec $terminal $config
-bindsym $mod+i $exec $browser
-bindsym $mod+o $exec i3-dmenu-desktop --dmenu='dmenu -i -l 5 -fn "$font-$size" -nb "$bg" -nf "$fg" -sb "$green" -sf "$fg"'
-bindsym $mod+p $exec passmenu -i -l 5 -fn "$font-$size" -nb "$bg" -nf "$fg" -sb "$green" -sf "$fg"
-bindsym $mod+f fullscreen toggle
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
 bindsym $mod+c mode $countdown
-bindsym $mod+v split v
-bindsym $mod+b $exec $budget
-bindsym $mod+m $exec $terminal $music
-bindsym $mod+z $exec systemctl suspend; $exec i3lock -c "$bg"
-bindsym $mod+grave scratchpad show
-bindsym $mod+BackSpace $exec bulbs -t
-bindsym $mod+bracketleft $exec bulbs -p "$room_colors"
-bindsym $mod+bracketright $exec bulbs -n "$room_colors"
-bindsym $mod+minus $exec bulbs -l -10
-bindsym $mod+plus $exec bulbs -l +10
-bindsym $mod+space floating toggle
-bindsym $mod+Up resize shrink height 50 px
-bindsym $mod+Down resize grow height 50 px
-bindsym $mod+Left resize shrink width 100 px
-bindsym $mod+Right resize grow width 100 px
-bindsym $mod+Escape mode $power
-bindsym $mod+Print $exec screenshot -w
-bindsym $mod+Return $exec $terminal
-bindsym $mod+backslash $exec $terminal $projects
-bindsym $mod+Next $exec i3-msg 'workspace next'
-bindsym $mod+Prior $exec i3-msg 'workspace prev'
-bindsym $mod+F1 $exec pactl set-card-profile alsa_card.pci-0000_09_00.3 output:iec958-stereo
-bindsym $mod+F2 $exec pactl set-card-profile alsa_card.pci-0000_09_00.3 output:analog-stereo
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
-bindsym $mod+Shift+i $exec $browser --private-window
-bindsym $mod+Shift+r restart
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+l move right
-bindsym $mod+Shift+grave move scratchpad
-bindsym $mod+Shift+minus $exec bulbs -l 0
-bindsym $mod+Shift+plus $exec bulbs -l 100
-bindsym $mod+Shift+Up $exec light -A 5
-bindsym $mod+Shift+Down $exec light -U 5
-bindsym Print --release $exec screenshot -r
-bindsym XF86MonBrightnessUp $exec light -A 5
-bindsym XF86MonBrightnessDown $exec light -U 5
-bindsym XF86AudioPrev $exec playerctl previous
-bindsym XF86AudioNext $exec playerctl next
-bindsym XF86AudioPlay $exec playerctl play-pause
-bindsym XF86AudioStop $exec playerctl stop
-bindsym XF86AudioMute $exec amixer -D pulse sset Master toggle-mute
-bindsym XF86AudioLowerVolume $exec amixer -D pulse sset Master 10%-
-bindsym XF86AudioRaiseVolume $exec amixer -D pulse sset Master 10%+
-floating_modifier $mod
 
 # Window alignment
 # ------------------------------------------------------------------------------
-for_window [title="Twitch Chat"] move up; resize grow height 400 px
-for_window [window_role="pop-up"] floating enable
+for_window [title="TTV Log"]           move scratchpad
+for_window [title="TTV Chat"]          resize shrink width 600 px
+no_focus   [title="TTV Chat"]
+for_window [title="/tmp/pass.png"]     floating enable, move position 1717 5
+for_window [window_role="pop-up"]      floating enable
 for_window [window_role="task_dialog"] floating enable
-no_focus [title="Twitch Chat"]
 
 # Style: bar
 # ------------------------------------------------------------------------------
@@ -173,9 +130,9 @@ bar {
 	colors {
 		statusline $fg
 		background $bg
-		separator $darkgray
-		active_workspace $darkgray $bg $darkgray
-		inactive_workspace $bg $bg $darkgray
+		separator $gray
+		active_workspace $gray $bg $gray
+		inactive_workspace $bg $bg $gray
 		focused_workspace $aqua $aqua $fg
 		urgent_workspace $red $red $fg
 	}
@@ -190,13 +147,13 @@ client.focused          $aqua $aqua $fg $blue $aqua
 client.focused_inactive #333333 #5f676a $fg #484e50 #5f676a
 client.unfocused        $aqua $bg $gray $purple #222222
 client.urgent           $red $red $fg $red $red 
-client.placeholder      $bg $darkgray $fg $bg $darkgray
+client.placeholder      $bg $gray $fg $bg $gray
 client.background       $bg
 
 # Style: font
 # ------------------------------------------------------------------------------
-font pango:$font $size
+font pango:$font_type $font_size
 
 # Style: wallpaper
 # ------------------------------------------------------------------------------
-$exec_always feh --no-fehbg --bg-fill "$XDG_CONFIG_HOME/wallpaper"
+$exec_always feh --no-fehbg --bg-fill "$(xdg-user-dir PICTURES)/wallpapers/the-invincible-1.jpg"
