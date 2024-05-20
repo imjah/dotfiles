@@ -1,6 +1,5 @@
 [Desktop Entry]
 
 Type=Application
-Terminal=true
 Name=Cmus
-Exec=gnome-terminal -t Cmus --role=pop-up -- cmus
+Exec=gnome-terminal -t Cmus -- cmus

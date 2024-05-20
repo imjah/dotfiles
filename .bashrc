@@ -32,6 +32,7 @@ alias vi="nvim"
 alias feh="feh -B \"$BG\""
 alias qrencode="qrencode --background=${BG:1} --foreground=${FG:1} -s 6"
 alias dmenu="dmenu -i -l 5 -fn '$FONT_TYPE-$FONT_SIZE' -nb '$BG' -nf '$FG' -sb '$AQUA' -sf '$FG'"
+alias i3-dmenu-desktop="i3-dmenu-desktop --dmenu='dmenu -i -l 5 -fn "$FONT_TYPE-$FONT_SIZE" -nb "$BG" -nf "$FG" -sb "$AQUA" -sf "$FG"'"
 
 # Move file without repeating it's path
 # ------------------------------------------------------------------------------

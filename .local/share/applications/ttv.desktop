@@ -2,4 +2,4 @@
 
 Type=Application
 Name=TTV
-Exec=gnome-terminal -t TTV --role=pop-up --geometry=170x20 -- bash -ic ttvmenu
+Exec=gnome-terminal -t TTV --role=pop-up --geometry=180x25 -- bash -ic ttvmenu
