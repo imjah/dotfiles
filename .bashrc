@@ -156,11 +156,9 @@ nt() {
 		return
 	fi
 
-	while true; do
-		f=$(find "$d" -type f | sed "s~$d/~~" | sort | fzf --preview "cat $d/{}")
+	f=$(find "$d" -type f | sed "s~$d/~~" | sort | fzf --preview "cat $d/{}")
 
-		test -n "$f" && nvim "$d/$f" || return
-	done
+	test -n "$f" && nvim "$d/$f"
 }
 
 # TTV launcher
