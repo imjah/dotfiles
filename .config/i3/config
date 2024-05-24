@@ -1,14 +1,14 @@
 # Theme
 # ------------------------------------------------------------------------------
-set $bg        "#282828"
-set $fg        "#ebdbb2"
-set $red       "#cc241d"
-set $green     "#98971a"
-set $yellow    "#d79921"
-set $blue      "#458588"
-set $purple    "#b16286"
-set $aqua      "#689d6a"
-set $gray      "#a89984"
+set $bg     "#282828"
+set $fg     "#ebdbb2"
+set $red    "#cc241d"
+set $green  "#98971a"
+set $yellow "#d79921"
+set $blue   "#458588"
+set $purple "#b16286"
+set $aqua   "#689d6a"
+set $gray   "#a89984"
 
 # Aliases
 # ------------------------------------------------------------------------------
@@ -30,8 +30,7 @@ $exec xset -dpms
 $exec xset s off
 $exec xset r rate 250 50
 $exec redshift -l 53:15 -t 6500:3500
-$exec_always easyeffects --gapplication-service
-$exec firefox
+$exec easyeffects --gapplication-service
 
 # Keybinds
 # ------------------------------------------------------------------------------
@@ -100,7 +99,7 @@ bindsym $mod+Return          $exec gnome-terminal
 
 # Power menu
 # ------------------------------------------------------------------------------
-set $power "[e]xit  [l]ock  [s]leep  [r]eboot  [p]ower off  [2]0 min"
+set $power "[e]xit  [l]ock  [s]leep  [r]eboot  [p]ower off"
 
 mode $power {
 	bindsym e exit
@@ -108,7 +107,6 @@ mode $power {
 	bindsym s $exec systemctl suspend; $exec i3lock -c "$bg"; mode default
 	bindsym r $exec systemctl reboot
 	bindsym p $exec systemctl poweroff
-	bindsym 2 $exec shutdown 20; mode default
 	bindsym Escape mode default
 }
 

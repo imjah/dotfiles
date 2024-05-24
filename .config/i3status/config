@@ -6,14 +6,13 @@ general {
 	interval       = 1
 }
 
-order += "disk /"
-order += "disk /mnt/backup"
 order += "disk /mnt/usb-1"
 order += "disk /mnt/usb-2"
 order += "disk /mnt/usb-3"
+order += "disk /mnt/backup"
+order += "disk /"
 order += "memory"
 order += "cpu_usage"
-order += "volume master"
 order += "read_file countdown"
 order += "time"
 
@@ -49,13 +48,6 @@ memory {
 
 cpu_usage {
 	format = "CPU %usage"
-}
-
-volume master {
-	format = "VOL %volume"
-	format_muted = "VOL %volume"
-	mixer = "Master"
-	mixer_idx = 0
 }
 
 time {
