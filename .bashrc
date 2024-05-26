@@ -81,13 +81,13 @@ uu() {
 	sudo umount "/mnt/usb-$1"
 }
 
-# Mount, unmount a backup drive or make a backup
+# Mount, unmount backup drive or make a backup
 # ------------------------------------------------------------------------------
 backup() {
 	mountpoint='/mnt/backup'
 
 	if [[ $1 == '-m' ]]; then
-		sudo mount $mountpoint
+		sudo mount $mountpoint && cd $mountpoint
 		return
 	fi
 
@@ -105,7 +105,7 @@ backup() {
 		fi
 	fi
 
-	rsync -ahv --delete $HOME/* "$mountpoint/$(uname -n)/"
+	rsync -ah --info=progress2 --delete $HOME/ "$mountpoint/$(uname -n)"
 
 	sudo umount $mountpoint
 }
