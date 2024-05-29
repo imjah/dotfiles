@@ -31,6 +31,7 @@ $exec xset s off
 $exec xset r rate 250 50
 $exec redshift -l 53:15 -t 6500:3500
 $exec easyeffects --gapplication-service
+$exec firefox
 
 # Keybinds
 # ------------------------------------------------------------------------------
@@ -154,6 +155,7 @@ bar {
 	status_command i3status
 	position top
 	separator_symbol ""
+	modifier none
 
 	colors {
 		statusline $fg
