@@ -174,7 +174,7 @@ ttvmenu() {
 # Pass launcher
 # ------------------------------------------------------------------------------
 passmenu() {
-	f="$(find "$PASSWORD_STORE_DIR" -type f | grep -oE "[^/]+.gpg$" | grep -oE ".+[^\.gpg]" | sort | dmenu)"
+	f="$(find "$PASSWORD_STORE_DIR" -type f | grep -oE "[^/]+.gpg$" | sed "s/.gpg//" | sort | dmenu)"
 
 	if [[ -z "$f" ]]; then
 		return
