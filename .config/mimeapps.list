@@ -1,8 +1,5 @@
 [Default Applications]
 application/pdf=firefox.desktop
 image/gif=mpv.desktop
-image/jpeg=feh.desktop
-image/jpg=feh.desktop
-image/png=feh.desktop
 text/plain=nvim.desktop
 video/mp4=mpv.desktop
