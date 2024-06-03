@@ -21,7 +21,6 @@ set $mod Mod4
 exec {
 	foot --server
 	gammastep -l 53:15 -t 6500:3500
-	gpg-connect-agent /bye
 	mako
 	pulseaudio -D
 	swayidle -w \
