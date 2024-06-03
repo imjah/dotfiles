@@ -70,7 +70,6 @@ bindsym {
 	$mod+w               layout toggle tabbed split
 	$mod+e               floating toggle
 	$mod+f               fullscreen toggle
-	$mod+d               bar mode toggle
 	$mod+q               kill
 	$mod+r               reload
 	$mod+grave           scratchpad show
@@ -108,21 +107,6 @@ mode $power {
 }
 
 bindsym $mod+Escape mode $power
-
-set $countdown "[1] 5m  [2] 15m  [3] 30m  [4] 60m  [c]ancel"
-
-mode $countdown {
-	bindsym {
-		1 exec countdown -o /tmp/countdown -m ~/music/.ringtones/notification.ogg 5m; mode default
-		2 exec countdown -o /tmp/countdown -m ~/music/.ringtones/notification.ogg 15m; mode default
-		3 exec countdown -o /tmp/countdown -m ~/music/.ringtones/notification.ogg 30m; mode default
-		4 exec countdown -o /tmp/countdown -m ~/music/.ringtones/notification.ogg 60m; mode default
-		c exec pkill countdown; mode default
-		Escape mode default
-	}
-}
-
-bindsym $mod+c mode $countdown
 
 # Mouse
 # ------------------------------------------------------------------------------
@@ -172,16 +156,14 @@ client.background       $bg
 bar {
 	status_command i3status
 	position top
-	modifier none
-	separator_symbol ""
 
 	colors {
-		statusline $fg
-		background $bg
-		separator $gray
-		active_workspace $gray $bg $gray
+		background         $bg
+		statusline         $fg
+        separator          $gray
+		focused_workspace  $aqua $aqua $fg
+		active_workspace   $gray $gray $fg
 		inactive_workspace $bg $bg $gray
-		focused_workspace $aqua $aqua $fg
-		urgent_workspace $red $red $fg
+		urgent_workspace   $red $red $fg
 	}
 }

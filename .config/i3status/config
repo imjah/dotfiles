@@ -1,54 +1,8 @@
 general {
-	colors         = true
-	color_good     = "#ebdbb2"
-	color_degraded = "#d79921"
-	color_bad      = "#cc241d"
-	interval       = 1
+	interval = 1
 }
 
-order += "disk /mnt/usb-1"
-order += "disk /mnt/usb-2"
-order += "disk /mnt/usb-3"
-order += "disk /mnt/backup"
-order += "disk /"
-order += "memory"
-order += "cpu_usage"
-order += "read_file countdown"
 order += "time"
-
-read_file countdown {
-	format = "CNT %content"
-	format_bad = ""
-	path = "/tmp/countdown"
-}
-
-disk / {
-	format = "DSK %percentage_used"
-}
-
-disk /mnt/backup {
-	format = "BAK %percentage_used"
-}
-
-disk /mnt/usb-1 {
-	format = "USB %percentage_used"
-}
-
-disk /mnt/usb-2 {
-	format = "USB %percentage_used"
-}
-
-disk /mnt/usb-3 {
-	format = "USB %percentage_used"
-}
-
-memory {
-	format = "RAM %percentage_used"
-}
-
-cpu_usage {
-	format = "CPU %usage"
-}
 
 time {
 	format = "%a %d %b %H:%M "
