@@ -1,38 +1,13 @@
-source /usr/share/defaults/etc/profile
-
-# Theme
-# ------------------------------------------------------------------------------
-export BG="#282828"
-export FG="#ebdbb2"
-export RED="#cc241d"
-export GREEN="#98971a"
-export YELLOW="#d79921"
-export BLUE="#458588"
-export PURPLE="#b16286"
-export AQUA="#689d6a"
-export GRAY="#a89984"
-export FONT_TYPE="hack"
-export FONT_SIZE="9"
-
 # Prompt
 # ------------------------------------------------------------------------------
 export PS1="\[\e[38;2;$(printf "%d;%d;%d" 0x${AQUA:1:2} 0x${AQUA:3:2} 0x${AQUA:5:2})m\]\w\[\033[0m\] "
 
 # Programs
 # ------------------------------------------------------------------------------
-export SHELL="/bin/bash"
-export PAGER="/bin/less"
-export EDITOR="/bin/nvim"
-export VISUAL="/bin/nvim"
-export BROWSER="/bin/firefox"
-
 alias ls="eza -a1 --icons --group-directories-first"
 alias rm="trash"
 alias vi="nvim"
-alias feh="feh -B \"$BG\""
-alias qrencode="qrencode --background=${BG:1} --foreground=${FG:1} -s 6"
-alias dmenu="dmenu -i -l 5 -fn '$FONT_TYPE-$FONT_SIZE' -nb '$BG' -nf '$FG' -sb '$AQUA' -sf '$FG'"
-alias i3-dmenu-desktop="i3-dmenu-desktop --dmenu='dmenu -i -l 5 -fn "$FONT_TYPE-$FONT_SIZE" -nb "$BG" -nf "$FG" -sb "$AQUA" -sf "$FG"'"
+alias fuzzel="fuzzel -I -b ${BG:1}ff -t ${FG:1}ff -s ${AQUA:1}ff -S ${FG:1}ff -m ${GREEN:1}ff -C ${BG:1}ff"
 
 # Move file without repeating it's path
 # ------------------------------------------------------------------------------
@@ -167,22 +142,16 @@ ttvmenu() {
 	ttv | sort | column -t -s";" | fzf -m | grep -oE "https://[^[:space:]]+" | \
 
 	while read -r url; do
-		gnome-terminal -t "TTV Log" -- streamlink --twitch-disable-ads --player mpv $url best
+		foot -T "TTV Log" -- streamlink --twitch-disable-ads --player mpv $url best &
 	done
 }
 
 # Pass launcher
 # ------------------------------------------------------------------------------
 passmenu() {
-	f="$(find "$PASSWORD_STORE_DIR" -type f | grep -oE "[^/]+.gpg$" | sed "s/.gpg//" | sort | dmenu)"
+	f="$(find "$PASSWORD_STORE_DIR" -type f | grep -oE "[^/]+.gpg$" | sed "s/.gpg//" | sort | fuzzel -d)"
 
-	if [[ -z "$f" ]]; then
-		return
-	fi
-
-	if [[ "$1" == "-q" ]]; then
-		pass "$f" | head -n 1 | qrencode -o /tmp/pass.png && feh /tmp/pass.png
-	else
+	if [[ -n "$f" ]]; then
 		pass -c "$f"
 	fi
 }

@@ -2,4 +2,4 @@
 
 Type=Application
 Name=Fend
-Exec=gnome-terminal -t Fend --role=pop-up -- fend
+Exec=footclient -a pop-up -T Fend -W 80x20 -- fend

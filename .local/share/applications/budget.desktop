@@ -2,4 +2,4 @@
 
 Type=Application
 Name=Budget
-Exec=libreoffice /home/rafal/documents/sheets/budget.ods
+Exec=libreoffice /home/imjah/documents/sheets/budget.ods

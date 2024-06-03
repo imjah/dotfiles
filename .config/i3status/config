@@ -19,7 +19,7 @@ order += "time"
 read_file countdown {
 	format = "CNT %content"
 	format_bad = ""
-	path = "/tmp/i3-countdown"
+	path = "/tmp/countdown"
 }
 
 disk / {

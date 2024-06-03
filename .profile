@@ -1,11 +1,21 @@
-source /usr/share/defaults/etc/profile
+# Path
+# ------------------------------------------------------------------------------
+export PATH="$PATH:$HOME/.local/bin"
 
-# XDG
+# Programs
+# ------------------------------------------------------------------------------
+export SHELL="/bin/bash"
+export PAGER="/bin/less"
+export EDITOR="/bin/nvim"
+export VISUAL="/bin/nvim"
+export BROWSER="/bin/firefox"
+
+# Dotfiles
+# ------------------------------------------------------------------------------
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
-
-# Dotfiles
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export HISTFILE="$XDG_DATA_HOME/bash/history"
@@ -14,8 +24,26 @@ export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export PASSWORD_STORE_DIR="`xdg-user-dir PROJECTS`/.password-store"
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
 
-# Move xsession-errors
-if [ -e "$HOME/.xsession-errors" ]; then
-	mkdir -p "$XDG_CACHE_HOME/x11"
-	mv -f "$HOME/.xsession-errors" "$XDG_CACHE_HOME/x11/xsession-errors"
-fi
+# Theme
+# ------------------------------------------------------------------------------
+export BG="#282828"
+export FG="#ebdbb2"
+export RED="#cc241d"
+export GREEN="#98971a"
+export YELLOW="#d79921"
+export BLUE="#458588"
+export PURPLE="#b16286"
+export AQUA="#689d6a"
+export GRAY="#a89984"
+export FONT_TYPE="hack nerd font"
+export FONT_SIZE="9"
+export GTK_THEME="Adwaita:dark"
+
+# Window manager
+# ------------------------------------------------------------------------------
+# export WLR_RENDERER=vulkan
+# export WLR_NO_HARDWARE_CURSORS=1
+# export GBM_BACKEND=nvidia-drm
+# export __GLX_VENDOR_LIBRARY_NAME=nvidia
+
+[ "$(tty)" = "/dev/tty1" ] && exec sway #--unsupported-gpu

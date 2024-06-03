@@ -2,4 +2,4 @@
 
 Type=Application
 Name=Notes
-Exec=gnome-terminal -t Notes --role=pop-up --geometry=180x50 -- bash -ic nt
+Exec=footclient -a pop-up -T Notes -W 200x40 -- bash -ic nt

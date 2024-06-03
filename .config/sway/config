@@ -1,0 +1,189 @@
+# Theme
+# ------------------------------------------------------------------------------
+set {
+	$bg     "#282828"
+	$fg     "#ebdbb2"
+	$red    "#cc241d"
+	$green  "#98971a"
+	$yellow "#d79921"
+	$blue   "#458588"
+	$purple "#b16286"
+	$aqua   "#689d6a"
+	$gray   "#a89984"
+}
+
+# Modifier
+# ------------------------------------------------------------------------------
+set $mod Mod4
+
+# Startup
+# ------------------------------------------------------------------------------
+exec {
+	foot --server
+	gammastep -l 53:15 -t 6500:3500
+	gpg-connect-agent /bye
+	mako
+	pulseaudio -D
+	swayidle -w \
+		timeout 300  'swaymsg "output * power off"' \
+		timeout 305  'swaylock -f -c "$bg"' \
+		timeout 10   'if pgrep -x swaylock; then swaymsg "output * power off"; fi'
+		resume       'swaymsg "output * power on"' \
+		before-sleep 'playerctl pause' \
+		before-sleep 'swaylock -f -c "$bg"'
+}
+
+# Keybinds
+# ------------------------------------------------------------------------------
+bindsym {
+	$mod+1               workspace 1
+	$mod+2               workspace 2
+	$mod+3               workspace 3
+	$mod+4               workspace 4
+	$mod+5               workspace 5
+	$mod+6               workspace 6
+	$mod+7               workspace 7
+	$mod+8               workspace 8
+	$mod+9               workspace 9
+	$mod+0               workspace 10
+	$mod+Shift+1         move container to workspace 1
+	$mod+Shift+2         move container to workspace 2
+	$mod+Shift+3         move container to workspace 3
+	$mod+Shift+4         move container to workspace 4
+	$mod+Shift+5         move container to workspace 5
+	$mod+Shift+6         move container to workspace 6
+	$mod+Shift+7         move container to workspace 7
+	$mod+Shift+8         move container to workspace 8
+	$mod+Shift+9         move container to workspace 9
+	$mod+Shift+0         move container to workspace 10
+	$mod+h               focus left
+	$mod+j               focus down
+	$mod+k               focus up
+	$mod+l               focus right
+	$mod+Shift+h         move left
+	$mod+Shift+j         move down
+	$mod+Shift+k         move up
+	$mod+Shift+l         move right
+	$mod+Left            resize grow width 100 px
+	$mod+Down            resize shrink height 50 px
+	$mod+Up              resize grow height 50 px
+	$mod+Right           resize shrink width 100 px
+	$mod+space           split toggle
+	$mod+w               layout toggle tabbed split
+	$mod+e               floating toggle
+	$mod+f               fullscreen toggle
+	$mod+d               bar mode toggle
+	$mod+q               kill
+	$mod+r               reload
+	$mod+grave           scratchpad show
+	$mod+Shift+grave     move scratchpad
+	XF86Calculator       exec gtk-launch fend
+	XF86AudioPrev        exec playerctl previous
+	XF86AudioNext        exec playerctl next
+	XF86AudioPlay        exec playerctl play-pause
+	XF86AudioStop        exec playerctl stop
+	$mod+F1              exec pactl set-card-profile alsa_card.pci-0000_09_00.3 output:iec958-stereo
+	$mod+F2              exec pactl set-card-profile alsa_card.pci-0000_09_00.3 output:analog-stereo
+	Print                exec grim -g "$(slurp)" - | wl-copy
+	$mod+Print           exec grim
+	$mod+u               exec gtk-launch nt
+	$mod+i               exec firefox
+	$mod+Shift+i         exec firefox --private-window
+	$mod+o               exec bash -ic fuzzel
+	$mod+p               exec bash -ic passmenu
+	$mod+Return          exec footclient
+}
+
+floating_modifier $mod
+
+set $power "[e]xit  [l]ock  [s]leep  [r]eboot  [p]ower off"
+
+mode $power {
+	bindsym {
+		e exit
+		l exec swaylock -f -c "$bg"; mode default
+		s exec systemctl suspend; mode default
+		r exec systemctl reboot
+		p exec systemctl poweroff
+		Escape mode default
+	}
+}
+
+bindsym $mod+Escape mode $power
+
+set $countdown "[1] 5m  [2] 15m  [3] 30m  [4] 60m  [c]ancel"
+
+mode $countdown {
+	bindsym {
+		1 exec countdown -o /tmp/countdown -m ~/music/.ringtones/notification.ogg 5m; mode default
+		2 exec countdown -o /tmp/countdown -m ~/music/.ringtones/notification.ogg 15m; mode default
+		3 exec countdown -o /tmp/countdown -m ~/music/.ringtones/notification.ogg 30m; mode default
+		4 exec countdown -o /tmp/countdown -m ~/music/.ringtones/notification.ogg 60m; mode default
+		c exec pkill countdown; mode default
+		Escape mode default
+	}
+}
+
+bindsym $mod+c mode $countdown
+
+# Mouse
+# ------------------------------------------------------------------------------
+seat * {
+    hide_cursor when-typing enable
+}
+
+# Keyboard
+# ------------------------------------------------------------------------------
+input type:keyboard {
+	xkb_layout pl
+	repeat_rate 50
+	repeat_delay 250
+}
+
+# Font
+# ------------------------------------------------------------------------------
+font Hack Nerd Font 9
+
+# Wallpaper
+# ------------------------------------------------------------------------------
+output * bg "$(xdg-user-dir PICTURES)/wallpapers/the-invincible-1.jpg" fill
+
+# Window alignment
+# ------------------------------------------------------------------------------
+for_window [title="TTV Log"]           move scratchpad
+for_window [title="TTV Chat"]          resize shrink width 600 px
+no_focus   [title="TTV Chat"]
+for_window [app_id="pop-up"]           floating enable
+for_window [window_role="pop-up"]      floating enable
+for_window [window_role="task_dialog"] floating enable
+
+# Window style
+# ------------------------------------------------------------------------------
+for_window [all] border pixel 1
+hide_edge_borders smart
+focus_follows_mouse no
+client.focused          $aqua $aqua $fg $blue $aqua
+client.focused_inactive #333333 #5f676a $fg #484e50 #5f676a
+client.unfocused        $aqua $bg $gray $purple #222222
+client.urgent           $red $red $fg $red $red 
+client.placeholder      $bg $gray $fg $bg $gray
+client.background       $bg
+
+# Status bar
+# ------------------------------------------------------------------------------
+bar {
+	status_command i3status
+	position top
+	modifier none
+	separator_symbol ""
+
+	colors {
+		statusline $fg
+		background $bg
+		separator $gray
+		active_workspace $gray $bg $gray
+		inactive_workspace $bg $bg $gray
+		focused_workspace $aqua $aqua $fg
+		urgent_workspace $red $red $fg
+	}
+}
