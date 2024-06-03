@@ -22,7 +22,6 @@ exec {
 	foot --server
 	gammastep -l 53:15 -t 6500:3500
 	mako
-	pulseaudio -D
 	swayidle -w \
 		timeout 300  'swaymsg "output * power off"' \
 		timeout 305  'swaylock -f -c "$bg"' \
