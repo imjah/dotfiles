@@ -12,15 +12,16 @@ set {
 	$gray   "#a89984"
 }
 
-# Modifier
+# Location
 # ------------------------------------------------------------------------------
-set $mod Mod4
+set $latitude  53
+set $longitude 15
 
 # Startup
 # ------------------------------------------------------------------------------
 exec {
 	foot --server
-	gammastep -l 53:15 -t 6500:3500
+	gammastep -l $latitude:$longitude -t 6500:3500
 	mako
 	swayidle -w \
 		timeout 300  'swaymsg "output * power off"' \
@@ -29,10 +30,13 @@ exec {
 		resume       'swaymsg "output * power on"' \
 		before-sleep 'playerctl pause' \
 		before-sleep 'swaylock -fuc "$bg"'
+	watch -n 3600 "weather -l $latitude -L $longitude > /tmp/weather"
 }
 
 # Keybinds
 # ------------------------------------------------------------------------------
+set $mod Mod4
+
 bindsym {
 	$mod+1               workspace 1
 	$mod+2               workspace 2
@@ -156,6 +160,7 @@ client.background       $bg
 bar {
 	status_command i3status
 	position top
+	separator_symbol ""
 
 	colors {
 		background         $bg

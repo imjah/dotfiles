@@ -1,8 +1,18 @@
 general {
-	interval = 1
+	interval       = 1
+	colors         = true
+	color_good     = "#ebdbb2"
+	color_bad      = "#cc241d"
+	color_degraded = "#d79921"
 }
 
+order += "read_file weather"
 order += "time"
+
+read_file weather {
+	path = "/tmp/weather"
+	format_bad = ""
+}
 
 time {
 	format = "%a %d %b %H:%M "
