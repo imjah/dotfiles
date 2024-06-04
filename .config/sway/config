@@ -24,11 +24,11 @@ exec {
 	mako
 	swayidle -w \
 		timeout 300  'swaymsg "output * power off"' \
-		timeout 305  'swaylock -f -c "$bg"' \
+		timeout 305  'swaylock -fuc "$bg"' \
 		timeout 5    'if pgrep -x swaylock; then swaymsg "output * power off"; fi' \
 		resume       'swaymsg "output * power on"' \
 		before-sleep 'playerctl pause' \
-		before-sleep 'swaylock -f -c "$bg"'
+		before-sleep 'swaylock -fuc "$bg"'
 }
 
 # Keybinds
@@ -98,7 +98,7 @@ set $power "[e]xit  [l]ock  [s]leep  [r]eboot  [p]ower off"
 mode $power {
 	bindsym {
 		e exit
-		l exec swaylock -f -c "$bg"; mode default
+		l exec swaylock -fuc "$bg"; mode default
 		s exec systemctl suspend; mode default
 		r exec systemctl reboot
 		p exec systemctl poweroff
