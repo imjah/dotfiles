@@ -25,8 +25,8 @@ exec {
 	mako
 	swayidle -w \
 		timeout 300  'swaymsg "output * power off"' \
-		timeout 305  'swaylock -fuc "$bg"' \
-		timeout 5    'if pgrep -x swaylock; then swaymsg "output * power off"; fi' \
+		timeout 310  'swaylock -fuc "$bg"' \
+		timeout 10   'if pgrep -x swaylock; then swaymsg "output * power off"; fi' \
 		resume       'swaymsg "output * power on"' \
 		before-sleep 'playerctl pause' \
 		before-sleep 'swaylock -fuc "$bg"'
