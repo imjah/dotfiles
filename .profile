@@ -41,9 +41,5 @@ export GTK_THEME="Adwaita:dark"
 
 # Window manager
 # ------------------------------------------------------------------------------
-# export WLR_RENDERER=vulkan
-# export WLR_NO_HARDWARE_CURSORS=1
-# export GBM_BACKEND=nvidia-drm
-# export __GLX_VENDOR_LIBRARY_NAME=nvidia
 
-[ "$(tty)" = "/dev/tty1" ] && exec sway #--unsupported-gpu
+[ "$(tty)" = "/dev/tty1" ] && exec sway
