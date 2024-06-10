@@ -80,7 +80,7 @@ backup() {
 		fi
 	fi
 
-	rsync -ah --info=progress2 --delete $HOME/ "$mountpoint/$(uname -n)"
+	rsync -ahv --delete $HOME/* "$mountpoint/$(uname -n)"
 
 	sudo umount $mountpoint
 }
