@@ -83,8 +83,6 @@ bindsym {
 	XF86AudioNext        exec playerctl next
 	XF86AudioPlay        exec playerctl play-pause
 	XF86AudioStop        exec playerctl stop
-	$mod+F1              exec pactl set-card-profile alsa_card.pci-0000_09_00.3 output:iec958-stereo
-	$mod+F2              exec pactl set-card-profile alsa_card.pci-0000_09_00.3 output:analog-stereo
 	Print                exec grim -g "$(slurp)" - | wl-copy
 	$mod+Print           exec grim
 	$mod+u               exec gtk-launch nt
