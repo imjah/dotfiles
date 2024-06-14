@@ -39,7 +39,13 @@ export FONT_TYPE="hack nerd font"
 export FONT_SIZE="9"
 export GTK_THEME="Adwaita:dark"
 
+# NVIDIA
+# ------------------------------------------------------------------------------
+export WLR_NO_HARDWARE_CURSORS=1
+export LIBVA_DRIVER_NAME=nvidia
+export GBM_BACKEND=nvidia-drm
+export __GLX_VENDOR_LIBRARY_NAME=nvidia
+
 # Window manager
 # ------------------------------------------------------------------------------
-
-[ "$(tty)" = "/dev/tty1" ] && exec sway
+[ "$(tty)" = "/dev/tty1" ] && exec sway --unsupported-gpu
