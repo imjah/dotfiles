@@ -21,7 +21,7 @@ set $longitude 15
 # ------------------------------------------------------------------------------
 exec {
 	foot --server
-	gammastep -l $latitude:$longitude -t 6500:3500
+	wlsunset -l $latitude -L $longitude -t 3500
 	mako
 	swayidle -w \
 		timeout 300  'swaymsg "output * power off"' \
