@@ -15,6 +15,6 @@ piped:
   - https://api.piped.projectsegfau.lt
 
 safetwitch:
-  # - https://stbackend.drgns.space
+  - https://stbackend.drgns.space
   - https://safetwitch-api.lunar.icu
   - https://api.safetwitch.eu.projectsegfau.lt
