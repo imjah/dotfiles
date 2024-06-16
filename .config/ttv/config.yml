@@ -1,9 +1,6 @@
 twitch:
-  - baniakbaniaka
   - jaskol95
   - ornicar2
-  - szparumen
-  - theprimeagen
   - togglebit
   - zlemyslisz
 
@@ -11,7 +8,6 @@ youtube:
   - "@kapitanbomba"
   - "@krzysztofmmaj"
   - "@sejmrp_pl"
-  - "@usalivestreamtv"
 
 piped:
   - https://pipedapi.kavin.rocks
