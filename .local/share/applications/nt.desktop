@@ -1,5 +1,0 @@
-[Desktop Entry]
-
-Type=Application
-Name=Notes
-Exec=footclient -a pop-up -T Notes -W 200x40 -- bash -ic nt

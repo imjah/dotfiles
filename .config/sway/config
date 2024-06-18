@@ -78,7 +78,7 @@ bindsym {
 	$mod+r               reload
 	$mod+grave           scratchpad show
 	$mod+Shift+grave     move scratchpad
-	XF86Calculator       exec gtk-launch fend
+	XF86Calculator       exec footclient -a pop-up -W 80x20 -- fend
 	XF86AudioPrev        exec playerctl previous
 	XF86AudioNext        exec playerctl next
 	XF86AudioPlay        exec playerctl play-pause
@@ -88,7 +88,7 @@ bindsym {
 	XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 	Print                exec grim -g "$(slurp)" - | wl-copy
 	$mod+Print           exec grim
-	$mod+u               exec gtk-launch nt
+	$mod+u               exec footclient -a pop-up -W 200x40 -- bash -ic nt
 	$mod+i               exec firefox
 	$mod+Shift+i         exec firefox --private-window
 	$mod+o               exec bash -ic fuzzel
