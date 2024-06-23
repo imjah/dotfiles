@@ -48,4 +48,4 @@ export __GLX_VENDOR_LIBRARY_NAME=nvidia
 
 # Window manager
 # ------------------------------------------------------------------------------
-[ "$(tty)" = "/dev/tty1" ] && exec sway --unsupported-gpu
+[ "$(tty)" = "/dev/tty1" ] && exec dbus-run-session sway --unsupported-gpu
