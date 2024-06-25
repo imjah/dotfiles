@@ -6,9 +6,16 @@ general {
 	color_degraded = "#d79921"
 }
 
+order += "read_file countdown"
 order += "volume master"
 order += "read_file weather"
 order += "time"
+
+read_file countdown {
+	path = "/tmp/countdown"
+	format = "󱎫 %content"
+	format_bad = ""
+}
 
 read_file weather {
 	path = "/tmp/weather"
