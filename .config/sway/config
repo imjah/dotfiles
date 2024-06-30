@@ -94,6 +94,7 @@ bindsym {
 	$mod+o               exec bash -ic fuzzel
 	$mod+p               exec bash -ic passmenu
 	$mod+Return          exec footclient
+	$mod+F12             exec weather -l $latitude -L $longitude > /tmp/weather
 }
 
 floating_modifier $mod
