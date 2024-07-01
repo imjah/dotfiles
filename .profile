@@ -6,6 +6,10 @@ export PATH="$PATH:$HOME/.local/bin"
 # ------------------------------------------------------------------------------
 export HISTSIZE=
 
+# Theme
+# ------------------------------------------------------------------------------
+export GTK_THEME="Adwaita:dark"
+
 # Programs
 # ------------------------------------------------------------------------------
 export SHELL="/bin/bash"
@@ -27,21 +31,6 @@ export LESSHISTFILE="$XDG_DATA_HOME/less/history"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export PASSWORD_STORE_DIR="`xdg-user-dir PROJECTS`/.password-store"
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
-
-# Theme
-# ------------------------------------------------------------------------------
-export BG="#282828"
-export FG="#ebdbb2"
-export RED="#cc241d"
-export GREEN="#98971a"
-export YELLOW="#d79921"
-export BLUE="#458588"
-export PURPLE="#b16286"
-export AQUA="#689d6a"
-export GRAY="#a89984"
-export FONT_TYPE="hack nerd font"
-export FONT_SIZE="9"
-export GTK_THEME="Adwaita:dark"
 
 # NVIDIA
 # ------------------------------------------------------------------------------

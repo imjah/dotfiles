@@ -91,8 +91,8 @@ bindsym {
 	$mod+u               exec footclient -a pop-up -W 200x40 -- bash -ic nt
 	$mod+i               exec firefox
 	$mod+Shift+i         exec firefox --private-window
-	$mod+o               exec bash -ic fuzzel
-	$mod+p               exec bash -ic passmenu
+	$mod+o               exec fuzzel -I -b $bgff -t $fgff -s $aquaff -S $fgff -m $greenff -C $bgff
+	$mod+p               exec passmenu -I -b $bgff -t $fgff -s $aquaff -S $fgff -m $greenff -C $bgff
 	$mod+Return          exec footclient
 	$mod+F12             exec weather -l $latitude -L $longitude > /tmp/weather
 }
