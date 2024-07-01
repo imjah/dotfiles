@@ -89,7 +89,6 @@ bindsym {
 	XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 	Print                exec grim -g "$(slurp)" - | wl-copy
 	$mod+Print           exec grim
-	$mod+u               exec footclient -a pop-up -W 200x40 -- bash -ic nt
 	$mod+o               exec fuzzel -I -b $bgff -t $fgff -s $aquaff -S $fgff -m $greenff -C $bgff
 	$mod+p               exec passmenu -I -b $bgff -t $fgff -s $aquaff -S $fgff -m $greenff -C $bgff
 	$mod+Return          exec footclient

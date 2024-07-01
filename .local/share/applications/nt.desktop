@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=nt
+Exec=footclient -a pop-up -W 200x40 -- nt
