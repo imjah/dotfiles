@@ -6,7 +6,7 @@ export PS1="\[\e[38;2;$(printf "%d;%d;%d" 0x${AQUA:1:2} 0x${AQUA:3:2} 0x${AQUA:5
 # ------------------------------------------------------------------------------
 alias ls="eza -a1 --icons --group-directories-first"
 alias rm="trash"
-alias vi="nvim"
+alias hx="helix"
 alias fuzzel="fuzzel -I -b ${BG:1}ff -t ${FG:1}ff -s ${AQUA:1}ff -S ${FG:1}ff -m ${GREEN:1}ff -C ${BG:1}ff"
 
 # Move file without repeating it's path

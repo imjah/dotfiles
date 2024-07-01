@@ -10,7 +10,7 @@ export HISTSIZE=
 # ------------------------------------------------------------------------------
 export SHELL="/bin/bash"
 export PAGER="/bin/less"
-export EDITOR="/bin/nvim"
+export EDITOR="/bin/helix"
 export VISUAL="/bin/nvim"
 export BROWSER="/bin/firefox"
 
