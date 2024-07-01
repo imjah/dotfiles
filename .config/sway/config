@@ -30,7 +30,7 @@ exec {
 		resume       'swaymsg "output * power on"' \
 		before-sleep 'playerctl pause' \
 		before-sleep 'swaylock -fuc "$bg"'
-	watch -n 3600 "weather -l $latitude -L $longitude > /tmp/weather"
+	watch -n 900 "weather -l $latitude -L $longitude > /tmp/weather"
 }
 
 # Keybinds
