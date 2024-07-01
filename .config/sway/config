@@ -78,6 +78,7 @@ bindsym {
 	$mod+r               reload
 	$mod+grave           scratchpad show
 	$mod+Shift+grave     move scratchpad
+	XF86HomePage         exec firefox
 	XF86Calculator       exec footclient -a pop-up -W 80x20 -- fend
 	XF86AudioPrev        exec playerctl previous
 	XF86AudioNext        exec playerctl next
@@ -89,8 +90,6 @@ bindsym {
 	Print                exec grim -g "$(slurp)" - | wl-copy
 	$mod+Print           exec grim
 	$mod+u               exec footclient -a pop-up -W 200x40 -- bash -ic nt
-	$mod+i               exec firefox
-	$mod+Shift+i         exec firefox --private-window
 	$mod+o               exec fuzzel -I -b $bgff -t $fgff -s $aquaff -S $fgff -m $greenff -C $bgff
 	$mod+p               exec passmenu -I -b $bgff -t $fgff -s $aquaff -S $fgff -m $greenff -C $bgff
 	$mod+Return          exec footclient
