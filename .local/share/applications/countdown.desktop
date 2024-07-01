@@ -1,5 +1,0 @@
-[Desktop Entry]
-
-Type=Application
-Name=Countdown 60/5
-Exec=countdown -m /home/imjah/music/.ringtones/notification.ogg -o /tmp/countdown 1h 5m

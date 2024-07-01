@@ -1,5 +1,0 @@
-[Desktop Entry]
-
-Type=Application
-Name=Countdown stop
-Exec=pkill countdown
