@@ -147,8 +147,8 @@ for_window [all] border pixel 1
 hide_edge_borders smart
 focus_follows_mouse no
 client.focused          $aqua $aqua $fg $blue $aqua
-client.focused_inactive #333333 #5f676a $fg #484e50 #5f676a
-client.unfocused        $aqua $bg $gray $purple #222222
+client.focused_inactive $aqua $bg $gray $purple $bg
+client.unfocused        $aqua $bg $gray $purple $bg
 client.urgent           $red $red $fg $red $red 
 client.placeholder      $bg $gray $fg $bg $gray
 client.background       $bg
