@@ -138,6 +138,7 @@ output * bg "$(xdg-user-dir PICTURES)/wallpapers/the-invincible-1.jpg" fill
 for_window [title="TTV Log"]           move scratchpad
 for_window [title="TTV Chat"]          resize shrink width 600 px
 no_focus   [title="TTV Chat"]
+for_window [title="gpg"]               floating enable
 for_window [app_id="pop-up"]           floating enable
 for_window [window_role="pop-up"]      floating enable
 for_window [window_role="task_dialog"] floating enable
