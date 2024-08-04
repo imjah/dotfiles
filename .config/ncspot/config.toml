@@ -1,23 +1,21 @@
 use_nerdfont = true
 hide_display_names = true
-flip_status_indicators = true
-library_tabs = ["playlists", "artists", "albums", "tracks"]
+library_tabs = ["playlists", "podcasts", "browse"]
 
 [theme]
-primary = "#FFFFFF"
-secondary = "light black"
-title = "#1DB954"
-playing = "#1DB954"
-playing_selected = "#1ED760"
-playing_bg = "#191414"
-highlight = "#FFFFFF"
-highlight_bg = "#484848"
-error = "#FFFFFF"
-error_bg = "red"
-statusbar = "#191414"
-statusbar_progress = "#1DB954"
-statusbar_bg = "#1DB954"
-cmdline = "#FFFFFF"
-cmdline_bg = "#191414"
-search_match = "light red"
-
+background = "#282828"
+primary = "#EBDBB2"
+secondary = "#A89984"
+title = "#689D6A"
+playing = "#689D6A"
+playing_selected = "#689D6A"
+playing_bg = "#282828"
+highlight = "#689D6A"
+highlight_bg = "#3C3836"
+error = "#EBDBB2"
+error_bg = "#CC241D"
+statusbar = "#282828"
+statusbar_progress = "#689D6A"
+statusbar_bg = "#689D6A"
+cmdline = "#EBDBB2"
+cmdline_bg = "#282828"
