@@ -1,6 +1,7 @@
 alias ls="eza -a1 --icons --group-directories-first"
 alias rm="trash"
 alias hx="helix"
+alias trash-desktop-entries="sudo trash /usr/share/applications/*.desktop"
 
 # Prompt
 # ------------------------------------------------------------------------------

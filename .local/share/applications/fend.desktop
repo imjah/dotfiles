@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=Fend
+Exec=footclient -a pop-up -W 80x20 -- fend

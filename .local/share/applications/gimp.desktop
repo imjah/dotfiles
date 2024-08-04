@@ -1,4 +1,4 @@
 [Desktop Entry]
 Type=Application
 Name=GIMP
-Exec=gimp %F
+Exec=gimp

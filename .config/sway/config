@@ -78,8 +78,9 @@ bindsym {
 	$mod+r               reload
 	$mod+grave           scratchpad show
 	$mod+Shift+grave     move scratchpad
-	XF86HomePage         exec firefox
-	XF86Calculator       exec footclient -a pop-up -W 80x20 -- fend
+	XF86HomePage         exec gtk-launch firefox
+	XF86Calculator       exec gtk-launch fend
+	XF86Tools            exec gtk-launch ncspot
 	XF86AudioPrev        exec playerctl previous
 	XF86AudioNext        exec playerctl next
 	XF86AudioPlay        exec playerctl play-pause

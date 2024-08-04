@@ -1,4 +1,4 @@
 [Desktop Entry]
 Type=Application
 Name=Helix
-Exec=footclient helix %F
+Exec=footclient -- helix

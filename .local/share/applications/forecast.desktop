@@ -1,4 +1,4 @@
 [Desktop Entry]
 Type=Application
-Name=Weather forecast
+Name=Weather Forecast
 Exec=footclient -Ha pop-up -W 125x36 -T "Weather forecast for Stargard" curl https://wttr.in/stargard?FQ
