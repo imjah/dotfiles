@@ -24,36 +24,14 @@ config() {
 	$git --git-dir="$(xdg-user-dir PROJECTS)/.dotfiles" --work-tree=$HOME $@
 }
 
-# Mount, unmount backup drive or make a backup
+# Sync $HOME/* with /mnt/backup/<host>
 # ------------------------------------------------------------------------------
 backup() {
-	mountpoint='/mnt/backup'
+	mountpoint="/mnt/backup"
 
-	if [[ $1 == '-m' ]]; then
-		sudo mount $mountpoint && cd $mountpoint
-		return
-	fi
-
-	if [[ $1 == '-u' ]]; then
-		if [[ $(pwd) == "$mountpoint" ]]; then
-			cd
-		fi
-		
-		sudo umount $mountpoint
-		return
-	fi
-
-	if [[ -z $(findmnt $mountpoint) ]]; then
-		sudo mount $mountpoint
-
-		if [[ -z $(findmnt $mountpoint) ]]; then
-			echo "Unable to mount backup drive"
-			return 1
-		fi
-	fi
-
+	test -z "$(findmnt $mountpoint)" && sudo mount $mountpoint
+	test -z "$(findmnt $mountpoint)" && echo Mount failed >&2 && return 1
 	rsync -ahv --delete $HOME/* "$mountpoint/$(uname -n)"
-
 	sudo umount $mountpoint
 }
 
@@ -97,19 +75,19 @@ fix() {
 	done
 }
 
-# Enumerate first line characters
+# Enumerate characters of the first line
 # ------------------------------------------------------------------------------
 enum() {
 	head -n 1 | fold -w 1 | cat -n
 }
 
-# Run a simple HTTP server
+# HTTP server
 # ------------------------------------------------------------------------------
 serve() {
-	python3 -m http.server
+	python -m http.server
 }
 
-# Auto ls
+# Auto ls on cd
 # ------------------------------------------------------------------------------
 cd() {
 	builtin cd "$@" && ls
