@@ -1,1 +1,4 @@
 theme = "gruvbox"
+
+[editor]
+rulers = [80]
