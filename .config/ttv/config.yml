@@ -18,3 +18,5 @@ safetwitch:
   - https://stbackend.drgns.space
   - https://safetwitch-api.lunar.icu
   - https://api.safetwitch.eu.projectsegfau.lt
+
+youtube_chat_cmd: swaymsg "exec firefox --private-window '%url'"
