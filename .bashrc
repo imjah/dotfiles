@@ -17,6 +17,12 @@ ttvmenu() {
 	done
 }
 
+# Launch mpv with url/path from clipboard
+# ------------------------------------------------------------------------------
+mpv-clipboard() {
+	mpv "$(wl-paste)"
+}
+
 # Dotfiles manager
 # ------------------------------------------------------------------------------
 config() {
