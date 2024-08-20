@@ -17,10 +17,12 @@ ttvmenu() {
 	done
 }
 
-# Launch mpv with url/path from clipboard
+# Open source from clipboard with mpv
 # ------------------------------------------------------------------------------
 mpv-clipboard() {
-	mpv "$(wl-paste)"
+	clipboard="$(wl-paste)"
+
+	mpv "$clipboard" || notify-send -t 3000 "Could not open \"$clipboard\""
 }
 
 # Dotfiles manager
