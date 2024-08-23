@@ -26,6 +26,7 @@ exec {
 	swayidle -w \
 		timeout 300  'swaymsg "output * power off"' \
 		timeout 310  'swaylock -fuc "$bg"' \
+		timeout 600  'systemctl suspend' \
 		timeout 10   'if pgrep -x swaylock; then swaymsg "output * power off"; fi' \
 		resume       'swaymsg "output * power on"' \
 		before-sleep 'playerctl pause' \
