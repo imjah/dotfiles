@@ -7,6 +7,21 @@ alias trash-desktop-entries="sudo trash /usr/share/applications/*.desktop"
 # ------------------------------------------------------------------------------
 export PS1="\[\e[38;2;104;157;106m\]\w\[\033[0m\] "
 
+pic() {
+	dir="${1:-$(xdg-user-dir PICTURES)}"
+	size="${2:-80}"
+	view=`python -c "print(f'{int($(tput cols)*$size/100)-4}x{$(tput lines)-1}')"`
+	FD="fd -t f -c never . --base-directory $dir"
+
+	$FD | fzf \
+		--header="alt-c:copy  alt-o:open  alt-t:trash" \
+		--bind "alt-c:execute-silent(wl-copy < $dir/{})" \
+		--bind "alt-o:execute(xdg-open $dir/{})" \
+		--bind "alt-t:execute-silent(trash $dir/{})+reload($FD)" \
+		--preview "chafa --view-size $view $dir/{}" \
+		--preview-window=$size%
+}
+
 # TTV launcher
 # ------------------------------------------------------------------------------
 ttvmenu() {
