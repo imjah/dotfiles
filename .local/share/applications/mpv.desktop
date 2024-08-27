@@ -1,4 +1,4 @@
 [Desktop Entry]
 Type=Application
 Name=mpv
-Exec=footclient -a hidden -- bash -ic mpv-clipboard
+Exec=mpv --player-operation-mode=pseudo-gui -- %U
