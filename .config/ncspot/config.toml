@@ -1,6 +1,6 @@
 use_nerdfont = true
 hide_display_names = true
-library_tabs = ["albums", "podcasts", "playlists", "tracks"]
+library_tabs = ["albums", "playlists", "tracks"]
 
 [theme]
 background = "#282828"
