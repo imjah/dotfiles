@@ -63,17 +63,18 @@ bindsym {
 	$mod+j               focus down
 	$mod+k               focus up
 	$mod+l               focus right
+	$mod+g               focus mode_toggle
 	$mod+Shift+h         move left
 	$mod+Shift+j         move down
 	$mod+Shift+k         move up
 	$mod+Shift+l         move right
+	$mod+Shift+g         floating toggle
 	$mod+Left            resize grow width 100 px
 	$mod+Down            resize shrink height 50 px
 	$mod+Up              resize grow height 50 px
 	$mod+Right           resize shrink width 100 px
 	$mod+space           split toggle
 	$mod+w               layout toggle tabbed split
-	$mod+e               floating toggle
 	$mod+f               fullscreen toggle
 	$mod+q               kill
 	$mod+r               reload
