@@ -17,6 +17,10 @@ set {
 set $latitude  53
 set $longitude 15
 
+# Prevent computer from going to sleep
+# ------------------------------------------------------------------------------
+set $awake /tmp/awake
+
 # Startup
 # ------------------------------------------------------------------------------
 exec {
@@ -26,7 +30,7 @@ exec {
 	swayidle -w \
 		timeout 300  'swaymsg "output * power off"' \
 		timeout 310  'swaylock -fuc "$bg"' \
-		timeout 600  'systemctl suspend' \
+		timeout 600  'test -e $awake || systemctl suspend' \
 		timeout 10   'if pgrep -x swaylock; then swaymsg "output * power off"; fi' \
 		resume       'swaymsg "output * power on"' \
 		before-sleep 'playerctl pause' \
@@ -99,12 +103,13 @@ bindsym {
 
 floating_modifier $mod
 
-set $power "[e]xit  [l]ock  [s]leep  [r]eboot  [p]ower off"
+set $power "[e]xit  [l]ock  [a]wake  [s]leep  [r]eboot  [p]ower off"
 
 mode $power {
 	bindsym {
 		e exit
 		l exec swaylock -fuc "$bg"; mode default
+		a exec test -e $awake && rm $awake || touch $awake; mode default
 		s exec systemctl suspend; mode default
 		r exec systemctl reboot
 		p exec systemctl poweroff

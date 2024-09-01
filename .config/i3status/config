@@ -7,8 +7,15 @@ general {
 }
 
 order += "volume master"
+order += "read_file awake"
 order += "read_file weather"
 order += "time"
+
+read_file awake {
+	path = "/tmp/awake"
+	format = "󰤄 off"
+	format_bad = ""
+}
 
 read_file weather {
 	path = "/tmp/weather"
