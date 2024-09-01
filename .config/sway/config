@@ -138,7 +138,7 @@ output * bg "$(xdg-user-dir PICTURES)/wallpapers/the-invincible-1.jpg" fill
 
 # Window alignment
 # ------------------------------------------------------------------------------
-for_window [app_id="ttv-chat"]         resize shrink width 600 px
+for_window [app_id="ttv-chat"]         resize shrink width 500 px
 no_focus   [app_id="ttv-chat"]
 for_window [title="gpg"]               floating enable
 for_window [app_id="hidden"]           move scratchpad
