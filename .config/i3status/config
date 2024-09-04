@@ -6,8 +6,8 @@ general {
 	color_degraded = "#d79921"
 }
 
-order += "volume master"
 order += "read_file awake"
+order += "volume master"
 order += "read_file weather"
 order += "time"
 
