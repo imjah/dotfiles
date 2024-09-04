@@ -1,12 +1,42 @@
+export PS1="\[\e[38;2;104;157;106m\]\w\[\033[0m\] "
+
 alias ls="eza -a1 --icons --group-directories-first"
 alias rm="trash"
 alias hx="helix"
 alias rm-desktop-entries="sudo rm /usr/share/applications/*.desktop"
 
-# Prompt
+# Trash
 # ------------------------------------------------------------------------------
-export PS1="\[\e[38;2;104;157;106m\]\w\[\033[0m\] "
+trash() {
+	dir="${XDG_DATA_HOME:-$HOME/.local/share}/trash"
 
+	if [[ -e "$dir" ]]; then
+		test ! -d "$dir" && echo "Cannot make $dir: file exist." >&2 && return
+	else
+		mkdir -p "$dir" || return
+	fi
+
+	if [[ "$1" ]]; then
+		for file in "$@"; do
+			mv "$file" "$dir/$(date +"%Y-%m-%d-%T---")$(basename "$file")" || return
+		done
+	else
+		LS="ls -1 $dir"
+
+		$LS | fzf -m \
+		--header="enter:restore  alt-d:delete  alt-p:purge  alt-u:usage" \
+		--bind "alt-d:execute-silent(rm -r $dir/{})+reload($LS)" \
+		--bind "alt-p:execute-silent(rm -r $dir && mkdir $dir)+reload($LS)" \
+		--bind "alt-u:execute(du -hs $dir; read)" | \
+
+		while read -r file; do
+			mv "$dir/$file" "${file#*---}" || return
+		done
+	fi
+}
+
+# Gallery
+# ------------------------------------------------------------------------------
 pic() {
 	dir="${1:-$(xdg-user-dir PICTURES)}"
 	size="${2:-80}"
