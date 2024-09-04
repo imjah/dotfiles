@@ -56,7 +56,7 @@ pic() {
 # TTV launcher
 # ------------------------------------------------------------------------------
 ttvmenu() {
-	ttv | sort | column -t -s";" | fzf -m | grep -oE "https://[^[:space:]]+" | \
+	ttv | sort | column -tm -s";" -T2 -c186 | fzf -m | grep -oE "https://[^[:space:]]+" | \
 
 	while read -r url; do
 		footclient -a "hidden" -- streamlink --twitch-disable-ads --player mpv $url best &
