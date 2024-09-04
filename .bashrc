@@ -33,14 +33,6 @@ ttvmenu() {
 	done
 }
 
-# Open source from clipboard with mpv
-# ------------------------------------------------------------------------------
-mpv-clipboard() {
-	clipboard="$(wl-paste)"
-
-	mpv "$clipboard" || notify-send -t 3000 "Could not open \"$clipboard\""
-}
-
 # Dotfiles manager
 # ------------------------------------------------------------------------------
 config() {
