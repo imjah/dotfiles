@@ -6,14 +6,14 @@ general {
 	color_degraded = "#d79921"
 }
 
-order += "read_file awake"
+order += "read_file caffeine"
 order += "volume master"
 order += "read_file weather"
 order += "time"
 
-read_file awake {
-	path = "/tmp/awake"
-	format = "󰤄 off"
+read_file caffeine {
+	path = "/tmp/caffeine"
+	format = "󰅶 On"
 	format_bad = ""
 }
 
