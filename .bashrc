@@ -82,6 +82,14 @@ backup() {
 	sudo umount $mountpoint
 }
 
+# Convert WEBP meme/s into PNG
+# ------------------------------------------------------------------------------
+dwebp-memes() {
+	for file in $(xdg-user-dir PICTURES)/memes/*.webp; do
+		dwebp $file -o "${file%.*}.png" && trash $file
+	done
+}
+
 # Convert video/s into MKV (HEVC, AAC)
 # ------------------------------------------------------------------------------
 ffmpeg-mkv() {
