@@ -48,7 +48,7 @@ pic() {
 		--bind "alt-c:execute-silent(wl-copy < $dir/{})" \
 		--bind "alt-o:execute(xdg-open $dir/{})" \
 		--bind "alt-t:execute-silent(trash $dir/{})+reload($FD)" \
-		--bind "alt-p:execute-silent(wl-copy $dir/{})" \
+		--bind "alt-n:execute-silent(wl-copy {})" \
 		--preview "chafa --view-size $view $dir/{}" \
 		--preview-window=$size%
 }
