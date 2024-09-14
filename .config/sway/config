@@ -28,11 +28,13 @@ exec {
 	wlsunset -l $latitude -L $longitude -t 3500
 	mako
 	swayidle -w \
-		timeout 300  'swaymsg "output * power off"' \
-		timeout 310  'swaylock -fuc "$bg"' \
-		timeout 600  'test -e $caffeine || systemctl suspend' \
-		timeout 30   'if pgrep -x swaylock; then swaymsg "output * power off"; fi' \
+		timeout 60   'pgrep -x swaylock && swaymsg "output * power off"' \
 		resume       'swaymsg "output * power on"' \
+		timeout 300  'swaymsg "output * power off"' \
+		resume       'swaymsg "output * power on"' \
+		timeout 305  'swaylock -fuc "$bg"' \
+		timeout 600  'test -e $caffeine || systemctl suspend' \
+		after-resume 'swaymsg "output * power on"' \
 		before-sleep 'playerctl pause' \
 		before-sleep 'swaylock -fuc "$bg"'
 	watch -n 900 "weather -l $latitude -L $longitude > /tmp/weather"
