@@ -30,9 +30,9 @@ exec {
 	swayidle -w \
 		timeout 60   'pgrep -x swaylock && swaymsg "output * power off"' \
 		resume       'swaymsg "output * power on"' \
-		timeout 300  'swaymsg "output * power off"' \
+		timeout 300  'test -e $caffeine || swaymsg "output * power off"' \
 		resume       'swaymsg "output * power on"' \
-		timeout 305  'swaylock -fuc "$bg"' \
+		timeout 305  'test -e $caffeine || swaylock -fuc "$bg"' \
 		timeout 600  'test -e $caffeine || systemctl suspend' \
 		after-resume 'swaymsg "output * power on"' \
 		before-sleep 'playerctl pause' \
