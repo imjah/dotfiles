@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=wttr
+Exec=footclient -HW 125x30 -T Stargard -a pop-up bash -ic "wttr-desktop stargard"

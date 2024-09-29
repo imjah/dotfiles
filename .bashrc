@@ -5,6 +5,20 @@ alias rm="trash"
 alias hx="helix"
 alias rm-desktop-entries="sudo rm /usr/share/applications/*.desktop"
 
+# wttr
+# ------------------------------------------------------------------------------
+wttr() {
+	curl -s https://wttr.in/$1?FQ
+}
+
+wttr-desktop() {
+	# Hide cursor
+	tput civis
+
+	# Print without current weather and trailing line break
+	wttr "$1" | tail -n +6 | head -c -1
+}
+
 # Trash
 # ------------------------------------------------------------------------------
 trash() {
