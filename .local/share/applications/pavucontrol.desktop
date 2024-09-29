@@ -1,4 +1,4 @@
 [Desktop Entry]
 Type=Application
-Name=Volume Control
+Name=volume control
 Exec=pavucontrol
