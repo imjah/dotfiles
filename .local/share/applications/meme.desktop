@@ -1,4 +1,4 @@
 [Desktop Entry]
 Type=Application
 Name=meme
-Exec=footclient -- bash -ic "pic /home/imjah/pictures/memes 80"
+Exec=footclient -- bash -ic meme

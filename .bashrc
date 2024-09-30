@@ -5,12 +5,31 @@ alias rm="trash"
 alias hx="helix"
 alias rm-desktop-entries="sudo rm /usr/share/applications/*.desktop"
 
+meme() {
+	dir="${1:-$(xdg-user-dir PICTURES)}/memes"
+	FD="fd -t f . --base-directory $dir"
+	size="80"
+	view=`python -c "print(f'{int($(tput cols)*$size/100)-4}x{$(tput lines)-1}')"`
+
+	$FD | fzf \
+		--header="enter:copy  alt-t:trash" \
+		--bind "alt-c:execute-silent(wl-copy < $dir/{})" \
+		--bind "alt-t:execute-silent(trash $dir/{})+reload($FD)" \
+		--preview "chafa $dir/{}" \
+		--preview-window=$size% | \
+
+	while read -r file; do
+		wl-copy < "$dir/$file"
+	done
+}
+
 # nt
 # ------------------------------------------------------------------------------
 nt() {
 	dir="${1:-$(xdg-user-dir DOCUMENTS)}/notes"
+	FD="fd -t f . --base-directory $dir"
 
-	${FD:="fd -t f . --base-directory $dir"} | fzf \
+	$FD | fzf \
 		--bind "alt-t:execute-silent(trash $dir/{})+reload($FD)" \
 		--header="enter:open  alt-t:trash" \
 		--preview "${VIEWER:-bat --color=always --style=changes} $dir/{}" \
@@ -63,24 +82,6 @@ trash() {
 			mv "$dir/$file" "${file#*---}" || return
 		done
 	fi
-}
-
-# Gallery
-# ------------------------------------------------------------------------------
-pic() {
-	dir="${1:-$(xdg-user-dir PICTURES)}"
-	size="${2:-80}"
-	view=`python -c "print(f'{int($(tput cols)*$size/100)-4}x{$(tput lines)-1}')"`
-	FD="fd -t f -c never . --base-directory $dir"
-
-	$FD | fzf \
-		--header="alt-c:copy  alt-o:open  alt-t:trash  alt-p:path" \
-		--bind "alt-c:execute-silent(wl-copy < $dir/{})" \
-		--bind "alt-o:execute(xdg-open $dir/{})" \
-		--bind "alt-t:execute-silent(trash $dir/{})+reload($FD)" \
-		--bind "alt-n:execute-silent(wl-copy {})" \
-		--preview "chafa --view-size $view $dir/{}" \
-		--preview-window=$size%
 }
 
 # TTV launcher
