@@ -5,6 +5,22 @@ alias rm="trash"
 alias hx="helix"
 alias rm-desktop-entries="sudo rm /usr/share/applications/*.desktop"
 
+# nt
+# ------------------------------------------------------------------------------
+nt() {
+	dir="${1:-$(xdg-user-dir DOCUMENTS)}/notes"
+
+	${FD:="fd -t f . --base-directory $dir"} | fzf \
+		--bind "alt-t:execute-silent(trash $dir/{})+reload($FD)" \
+		--header="enter:open  alt-t:trash" \
+		--preview "${VIEWER:-bat --color=always --style=changes} $dir/{}" \
+		--preview-window=up,70% | \
+
+	while read -r file; do
+		${EDITOR:-helix} "$dir/$file"
+	done
+}
+
 # wttr
 # ------------------------------------------------------------------------------
 wttr() {
