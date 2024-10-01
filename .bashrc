@@ -1,63 +1,59 @@
 export PS1="\[\e[38;2;104;157;106m\]\w\[\033[0m\] "
 
-alias ls="eza -a1 --icons --group-directories-first"
-alias rm="trash"
 alias hx="helix"
+alias ls="eza -a1 --icons --group-directories-first"
 alias rm-desktop-entries="sudo rm /usr/share/applications/*.desktop"
+alias rm="trash"
 
+# config manager
+# ------------------------------------------------------------------------------
+config() {
+	test -z "$1" && git=lazygit || git=git
+
+	$git --git-dir="$(xdg-user-dir PROJECTS)/.dotfiles" --work-tree=$HOME $@
+}
+
+# memes manager
+# ------------------------------------------------------------------------------
 meme() {
-	dir="${1:-$(xdg-user-dir PICTURES)}/memes"
-	FD="fd -t f . --base-directory $dir"
-	size="80"
-	view=`python -c "print(f'{int($(tput cols)*$size/100)-4}x{$(tput lines)-1}')"`
+	local dir="$(xdg-user-dir PICTURES)/memes"
+	local LS="ls -1 $dir"
+	local window_size=80
+	local image_size=`python -c "print(f'{int($(tput cols)*$window_size/100)-4}x{$(tput lines)-1}')"`
 
-	$FD | fzf \
-		--header="enter:copy  alt-t:trash" \
-		--bind "alt-c:execute-silent(wl-copy < $dir/{})" \
-		--bind "alt-t:execute-silent(trash $dir/{})+reload($FD)" \
-		--preview "chafa $dir/{}" \
-		--preview-window=$size% | \
+	$LS | fzf -m \
+		--bind="alt-t:execute-silent(bash -ic 'trash $dir/{}')+reload($LS)" \
+		--bind="alt-c:execute-silent(bash -ic dwebp-memes)+reload($LS)" \
+		--header="enter:copy  alt-t:trash  alt-c:convert" \
+		--preview="chafa '$dir/{}'" \
+		--preview-window=up,$window_size% | \
 
 	while read -r file; do
-		wl-copy < "$dir/$file"
+		wl-copy < "$dir/$file" || (echo "Failed to copy $file" >&2 && return 1)
 	done
 }
 
-# nt
+# notes manager
 # ------------------------------------------------------------------------------
 nt() {
-	dir="${1:-$(xdg-user-dir DOCUMENTS)}/notes"
-	FD="fd -t f . --base-directory $dir"
+	local dir="$(xdg-user-dir DOCUMENTS)/notes"
+	local LS="ls -1 $dir"
 
-	$FD | fzf \
-		--bind "alt-t:execute-silent(trash $dir/{})+reload($FD)" \
-		--header="enter:open  alt-t:trash" \
-		--preview "${VIEWER:-bat --color=always --style=changes} $dir/{}" \
-		--preview-window=up,70% | \
+	$LS | fzf -m \
+		--bind="alt-t:execute-silent(bash -ic 'trash $dir/{}')+reload($LS)" \
+		--header="enter:edit  alt-t:trash" \
+		--preview="bat --color=always --style=changes '$dir/{}'" \
+		--preview-window=up,80% | \
 
 	while read -r file; do
-		${EDITOR:-helix} "$dir/$file"
+		$EDITOR "$dir/$file" || return
 	done
 }
 
-# wttr
-# ------------------------------------------------------------------------------
-wttr() {
-	curl -s https://wttr.in/$1?FQ
-}
-
-wttr-desktop() {
-	# Hide cursor
-	tput civis
-
-	# Print without current weather and trailing line break
-	wttr "$1" | tail -n +6 | head -c -1
-}
-
-# Trash
+# trash manager
 # ------------------------------------------------------------------------------
 trash() {
-	dir="${XDG_DATA_HOME:-$HOME/.local/share}/trash"
+	local dir="$XDG_DATA_HOME/trash"
 
 	if [[ -e "$dir" ]]; then
 		test ! -d "$dir" && echo "Cannot make $dir: file exist." >&2 && return
@@ -70,7 +66,7 @@ trash() {
 			mv "$file" "$dir/$(date +"%Y-%m-%d-%T---")$(basename "$file")" || return
 		done
 	else
-		LS="ls -1 $dir"
+		local LS="ls -1 $dir"
 
 		$LS | fzf -m \
 		--header="enter:restore  alt-d:delete  alt-p:purge  alt-u:usage" \
@@ -84,44 +80,50 @@ trash() {
 	fi
 }
 
-# TTV launcher
+# ttv launcher
 # ------------------------------------------------------------------------------
 ttvmenu() {
 	ttv | sort | column -tm -s";" -T2 -c186 | fzf -m | grep -oE "https://[^[:space:]]+" | \
 
 	while read -r url; do
-		footclient -a "hidden" -- streamlink --twitch-disable-ads --player mpv $url best &
+		footclient -a hidden -- streamlink --twitch-disable-ads --player mpv "$url" best &
 	done
 }
 
-# Dotfiles manager
-# ------------------------------------------------------------------------------
-config() {
-	test -z "$1" && git=lazygit || git=git
-
-	$git --git-dir="$(xdg-user-dir PROJECTS)/.dotfiles" --work-tree=$HOME $@
-}
-
-# Sync $HOME/* with /mnt/backup/<host>
+# sync $HOME/* with /mnt/backup/<host>
 # ------------------------------------------------------------------------------
 backup() {
-	mountpoint="/mnt/backup"
+	local mountpoint="/mnt/backup"
 
 	test -z "$(findmnt $mountpoint)" && sudo mount $mountpoint
-	test -z "$(findmnt $mountpoint)" && echo Mount failed >&2 && return 1
+	test -z "$(findmnt $mountpoint)" && echo "Mount failed" >&2 && return 1
 	rsync -ahv --delete $HOME/* "$mountpoint/$(uname -n)"
 	sudo umount $mountpoint
 }
 
-# Convert WEBP meme/s into PNG
+# weather
+# ------------------------------------------------------------------------------
+wttr() {
+	curl -s "https://wttr.in/$1?FQ"
+}
+
+wttr-desktop() {
+	# hide cursor
+	tput civis
+
+	# remove current weather and last line break
+	wttr "$1" | tail -n +6 | head -c -1
+}
+
+# convert WEBP meme/s into PNG
 # ------------------------------------------------------------------------------
 dwebp-memes() {
 	for file in $(xdg-user-dir PICTURES)/memes/*.webp; do
-		dwebp $file -o "${file%.*}.png" && trash $file
+		dwebp "$file" -o "${file%.*}.png" && trash "$file"
 	done
 }
 
-# Convert video/s into MKV (HEVC, AAC)
+# convert video/s into MKV (HEVC, AAC)
 # ------------------------------------------------------------------------------
 ffmpeg-mkv() {
 	for file in "$@"; do
@@ -129,7 +131,7 @@ ffmpeg-mkv() {
 	done
 }
 
-# Convert song/s into OPUS
+# convert song/s into OPUS
 # ------------------------------------------------------------------------------
 ffmpeg-opus() {
 	for file in "$@"; do
@@ -137,7 +139,7 @@ ffmpeg-opus() {
 	done
 }
 
-# Filenames fixer
+# fix-filenames-style.sh
 # ------------------------------------------------------------------------------
 fix() {
 	for file in "$@"; do
@@ -162,7 +164,7 @@ fix() {
 	done
 }
 
-# Enumerate characters of the first line
+# enumerate characters of the first line
 # ------------------------------------------------------------------------------
 enum() {
 	head -n 1 | fold -w 1 | cat -n
@@ -174,7 +176,7 @@ serve() {
 	python -m http.server
 }
 
-# Auto ls on cd
+# ls on cd
 # ------------------------------------------------------------------------------
 cd() {
 	builtin cd "$@" && ls
