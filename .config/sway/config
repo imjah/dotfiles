@@ -79,13 +79,15 @@ bindsym {
 	$mod+Down            resize shrink height 50 px
 	$mod+Up              resize grow height 50 px
 	$mod+Right           resize shrink width 100 px
-	$mod+space           split toggle
 	$mod+w               layout toggle tabbed split
+	$mod+e               split toggle
 	$mod+f               fullscreen toggle
 	$mod+q               kill
 	$mod+r               reload
 	$mod+grave           scratchpad show
 	$mod+Shift+grave     move scratchpad
+	$mod+space           exec footclient -HW 80x5 -a pop-up bash -ic "translate-desktop en pl"
+	$mod+Shift+space     exec footclient -HW 80x5 -a pop-up bash -ic "translate-desktop pl en"
 	XF86HomePage         exec gtk-launch firefox
 	XF86Calculator       exec gtk-launch fend
 	XF86Tools            exec gtk-launch ncspot

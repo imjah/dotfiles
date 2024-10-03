@@ -5,6 +5,21 @@ alias ls="eza -a1 --icons --group-directories-first"
 alias rm-desktop-entries="sudo rm /usr/share/applications/*.desktop"
 alias rm="trash"
 
+# translator
+# ------------------------------------------------------------------------------
+translate() {
+	local instance="https://lingva.lunar.icu/api/v1"
+
+	curl -s "$instance/$1/$2/${3:-$(wl-paste -np)}" | cut -d'"' -f4
+}
+
+translate-desktop() {
+	# hide cursor
+	tput civis
+
+	translate $@
+}
+
 # config manager
 # ------------------------------------------------------------------------------
 config() {
@@ -26,7 +41,7 @@ meme() {
 		--bind="alt-c:execute-silent(bash -ic dwebp-memes)+reload($LS)" \
 		--header="enter:copy  alt-t:trash  alt-c:convert" \
 		--preview="chafa '$dir/{}'" \
-		--preview-window=up,$window_size% | \
+		--preview-window=$window_size% | \
 
 	while read -r file; do
 		wl-copy < "$dir/$file" || (echo "Failed to copy $file" >&2 && return 1)
