@@ -86,8 +86,8 @@ bindsym {
 	$mod+r               reload
 	$mod+grave           scratchpad show
 	$mod+Shift+grave     move scratchpad
-	$mod+space           exec footclient -HW 80x5 -a pop-up bash -ic "translate-desktop en pl"
-	$mod+Shift+space     exec footclient -HW 80x5 -a pop-up bash -ic "translate-desktop pl en"
+	$mod+space           exec footclient -HW 80x5 -a pop-up bash -ic "translate-desktop '' en pl"
+	$mod+Shift+space     exec footclient -HW 80x5 -a pop-up bash -ic "translate-desktop '' pl en"
 	XF86HomePage         exec gtk-launch firefox
 	XF86Calculator       exec gtk-launch fend
 	XF86Tools            exec gtk-launch ncspot

@@ -10,7 +10,7 @@ alias rm="trash"
 translate() {
 	local instance="https://lingva.lunar.icu/api/v1"
 
-	curl -s "$instance/$1/$2/${3:-$(wl-paste -np)}" | cut -d'"' -f4
+	curl -s "$instance/${2:-en}/${3:-pl}/${1:-$(wl-paste -np)}" | cut -d'"' -f4
 }
 
 translate-desktop() {
