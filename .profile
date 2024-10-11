@@ -12,11 +12,12 @@ export GTK_THEME="Adwaita:dark"
 
 # Programs
 # ------------------------------------------------------------------------------
-export SHELL="/bin/bash"
-export PAGER="/bin/less"
-export EDITOR="/bin/helix"
-export VISUAL="/bin/nvim"
-export BROWSER="/bin/firefox"
+export SHELL="bash"
+export PAGER="less"
+export EDITOR="helix"
+export VISUAL="nvim"
+export BROWSER="firefox"
+export TERMINAL="footclient"
 
 # Dotfiles
 # ------------------------------------------------------------------------------
