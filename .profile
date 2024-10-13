@@ -15,7 +15,7 @@ export GTK_THEME="Adwaita:dark"
 export SHELL="bash"
 export PAGER="less"
 export EDITOR="helix"
-export VISUAL="nvim"
+export VISUAL="helix"
 export BROWSER="firefox"
 export TERMINAL="footclient"
 
