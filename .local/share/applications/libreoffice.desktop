@@ -1,4 +1,4 @@
 [Desktop Entry]
 Type=Application
 Name=libreoffice
-Exec=libreoffice
+Exec=libreoffice %U

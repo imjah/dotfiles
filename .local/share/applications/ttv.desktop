@@ -1,4 +1,4 @@
 [Desktop Entry]
 Type=Application
 Name=ttv
-Exec=footclient -a pop-up -T ttv -W 190x15 -- bash -ic ttvmenu
+Exec=footclient -a pop-up -W 190x15 -T ttv -- bash -ic ttvmenu

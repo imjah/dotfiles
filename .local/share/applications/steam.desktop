@@ -1,4 +1,4 @@
 [Desktop Entry]
 Type=Application
 Name=steam
-Exec=/usr/bin/steam-runtime %U
+Exec=steam-runtime %U
