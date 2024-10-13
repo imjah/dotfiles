@@ -13,13 +13,6 @@ translate() {
 	curl -s "$instance/${2:-en}/${3:-pl}/${1:-$(wl-paste -np)}" | cut -d'"' -f4
 }
 
-translate-desktop() {
-	# hide cursor
-	tput civis
-
-	translate $@
-}
-
 # config manager
 # ------------------------------------------------------------------------------
 config() {
