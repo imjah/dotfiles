@@ -77,10 +77,12 @@ trash() {
 		local LS="ls -1 $dir"
 
 		$LS | fzf -m \
-		--header="enter:restore  alt-d:delete  alt-p:purge  alt-u:usage" \
 		--bind "alt-d:execute-silent(rm -r $dir/{})+reload($LS)" \
 		--bind "alt-p:execute-silent(rm -r $dir && mkdir $dir)+reload($LS)" \
-		--bind "alt-u:execute(du -hs $dir; read)" | \
+		--bind "alt-u:execute(du -hs $dir; read)" \
+		--header="enter:restore  alt-d:delete  alt-p:purge  alt-u:usage" \
+		--preview="cd $dir && eza -l {}" \
+		--preview-window=up,1% | \
 
 		while read -r file; do
 			mv "$dir/$file" "${file#*---}" || return

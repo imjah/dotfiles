@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=trash
+Exec=footclient -T trash -- bash -ic trash
