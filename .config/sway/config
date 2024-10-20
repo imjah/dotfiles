@@ -24,6 +24,7 @@ set $caffeine /tmp/caffeine
 # Startup
 # ------------------------------------------------------------------------------
 exec {
+	easyeffects --gapplication-service
 	foot --server
 	wlsunset -l $latitude -L $longitude -t 3500
 	mako
@@ -98,6 +99,8 @@ bindsym {
 	XF86AudioMute        exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 	XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 	XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+	$mod+F1              exec pactl set-card-profile alsa_card.pci-0000_09_00.3 output:iec958-stereo
+	$mod+F2              exec pactl set-card-profile alsa_card.pci-0000_09_00.3 output:analog-stereo
 	Print                exec grim -g "$(slurp)" - | wl-copy
 	$mod+Print           exec grim
 	$mod+o               exec fuzzel -I -b $bgff -t $fgff -s $aquaff -S $fgff -m $greenff -C $bgff
