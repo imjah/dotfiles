@@ -149,12 +149,6 @@ ffmpeg-opus() {
 	done
 }
 
-# record output device
-# ------------------------------------------------------------------------------
-ffmpeg-record() {
-	ffmpeg -f pulse -i "${1:-alsa_output.pci-0000_09_00.3.analog-stereo.monitor}" -ac 2 "${2:-recording.m4a}"
-}
-
 # fix-filenames-style.sh
 # ------------------------------------------------------------------------------
 fix() {
