@@ -2,3 +2,15 @@ theme = "gruvbox"
 
 [editor]
 rulers = [80]
+
+[editor.whitespace]
+render = "all"
+
+[editor.soft-wrap]
+enable = true
+
+[keys.normal]
+X = ["extend_line_up", "extend_to_line_bounds"]
+
+[keys.select]
+X = ["extend_line_up", "extend_to_line_bounds"]

@@ -1,6 +1,7 @@
 [[language]]
 name = "python"
 language-servers = ["ruff"]
+formatter = {command = "ruff", args = ["format", "-q", "-"]}
 
 [language-server.ruff]
 command = "ruff"
