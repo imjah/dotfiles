@@ -125,12 +125,6 @@ mode $power {
 
 bindsym $mod+Escape mode $power
 
-# Mouse
-# ------------------------------------------------------------------------------
-seat * {
-    hide_cursor when-typing enable
-}
-
 # Keyboard
 # ------------------------------------------------------------------------------
 input type:keyboard {
