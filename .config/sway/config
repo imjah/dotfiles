@@ -139,7 +139,7 @@ font Hack Nerd Font 9
 
 # Wallpaper
 # ------------------------------------------------------------------------------
-output * bg "$(xdg-user-dir PICTURES)/wallpapers/the-invincible-1.jpg" fill
+output * bg "$(xdg-user-dir PICTURES)/wallpapers/zero-sievert-swamp.jpg" fill
 
 # Window alignment
 # ------------------------------------------------------------------------------
