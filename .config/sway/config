@@ -105,6 +105,8 @@ bindsym {
 	$mod+o               exec fuzzel -I -b $bgff -t $fgff -s $aquaff -S $fgff -m $greenff -C $bgff
 	$mod+p               exec passmenu -I -b $bgff -t $fgff -s $aquaff -S $fgff -m $greenff -C $bgff
 	$mod+Return          exec footclient
+	$mod+Insert          seat * hide_cursor when-typing enable
+	$mod+Shift+Insert    seat * hide_cursor when-typing disable
 }
 
 floating_modifier $mod
@@ -131,6 +133,12 @@ input type:keyboard {
 	xkb_layout pl
 	repeat_rate 50
 	repeat_delay 250
+}
+
+# Keyboard
+# ------------------------------------------------------------------------------
+seat * {
+	hide_cursor when-typing enable
 }
 
 # Font
