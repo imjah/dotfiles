@@ -6,6 +6,7 @@ alias ls="eza -a1 --icons --group-directories-first"
 alias lz="lazygit"
 alias rm-desktop-entries="sudo rm /usr/share/applications/*.desktop"
 alias rm="trash"
+alias t="footclient &"
 
 # translator
 # ------------------------------------------------------------------------------
