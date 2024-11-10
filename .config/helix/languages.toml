@@ -1,8 +1,18 @@
 [[language]]
 name = "python"
-language-servers = ["ruff"]
 formatter = {command = "ruff", args = ["format", "-q", "-"]}
+language-servers = ["ruff"]
 
 [language-server.ruff]
 command = "ruff"
 args = ["server", "--preview"]
+
+[[language]]
+name = "vue"
+formatter = { command = "prettier", args = ["--parser", "vue"] }
+language-servers = ["typescript-language-server"]
+
+[[language-server.typescript-language-server.config.plugins]]
+name = "@vue/typescript-plugin"
+location = "/usr/lib/node_modules/@vue/language-server/"
+languages = ["vue"]
