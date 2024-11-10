@@ -107,6 +107,7 @@ bindsym {
 	$mod+Return          exec footclient
 	$mod+Insert          seat * hide_cursor when-typing enable
 	$mod+Shift+Insert    seat * hide_cursor when-typing disable
+	$mod+x               exec mpv $(wl-paste)
 }
 
 floating_modifier $mod
