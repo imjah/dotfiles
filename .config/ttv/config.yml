@@ -4,10 +4,8 @@ twitch:
   - zlemyslisz
 
 youtube:
-  - "@kapitanbomba"
   - "@krzysztofmmaj"
   - "@mateusz_astrolife"
-  - "@nasa"
 
 piped:
   - https://pipedapi.kavin.rocks
