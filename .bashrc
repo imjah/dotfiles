@@ -99,7 +99,7 @@ ttvmenu() {
 	ttv | sort | column -ts";" -T2 -c180 | fzf -m | grep -oE "https://[^[:space:]]+" | \
 
 	while read -r url; do
-		footclient -a hidden -- streamlink --twitch-disable-ads --player mpv "$url" best &
+		footclient -a hidden -- streamlink --player mpv "$url" best &
 	done
 }
 
