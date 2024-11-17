@@ -75,9 +75,9 @@ bindsym {
 	$mod+Shift+k         move up
 	$mod+Shift+l         move right
 	$mod+Shift+g         floating toggle
-	$mod+Left            resize grow width 100 px
-	$mod+Down            resize shrink height 50 px
 	$mod+Up              resize grow height 50 px
+	$mod+Down            resize shrink height 50 px
+	$mod+Left            resize grow width 100 px
 	$mod+Right           resize shrink width 100 px
 	$mod+w               layout toggle tabbed split
 	$mod+e               split toggle
