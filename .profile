@@ -45,4 +45,6 @@ export __GLX_VENDOR_LIBRARY_NAME=nvidia
 
 # Window manager
 # ------------------------------------------------------------------------------
+export XDG_CURRENT_DESKTOP=sway
+
 [ "$(tty)" = "/dev/tty1" ] && exec dbus-run-session sway --unsupported-gpu

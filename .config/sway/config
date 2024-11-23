@@ -24,6 +24,7 @@ set $caffeine /tmp/caffeine
 # Startup
 # ------------------------------------------------------------------------------
 exec {
+	dbus-update-activation-environment --all
 	easyeffects --gapplication-service
 	foot --server
 	wlsunset -l $latitude -L $longitude -t 3500
