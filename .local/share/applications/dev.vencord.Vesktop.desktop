@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=vesktop
+Exec=flatpak run dev.vencord.Vesktop
