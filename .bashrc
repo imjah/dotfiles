@@ -79,7 +79,7 @@ trash() {
 	else
 		local LS="ls -1 $dir"
 
-		$LS | fzf -m \
+		$LS | fzf -m --tac \
 		--bind "alt-d:execute-silent(rm -r $dir/{})+reload($LS)" \
 		--bind "alt-p:execute-silent(rm -r $dir && mkdir $dir)+reload($LS)" \
 		--bind "alt-u:execute(du -hs $dir; read)" \
