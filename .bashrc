@@ -8,6 +8,12 @@ alias rm-desktop-entries="sudo rm /usr/share/applications/*.desktop"
 alias rm="trash"
 alias t="footclient &"
 
+# sleep timer
+# ------------------------------------------------------------------------------
+sleep-timer() {
+	sleep "$1" && systemctl suspend
+}
+
 # translator
 # ------------------------------------------------------------------------------
 translate() {
