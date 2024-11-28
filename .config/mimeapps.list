@@ -3,3 +3,6 @@ application/pdf=firefox.desktop
 image/gif=mpv.desktop
 text/plain=helix.desktop
 video/mp4=mpv.desktop
+text/html=firefox.desktop
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/https=firefox.desktop
