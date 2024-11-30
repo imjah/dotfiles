@@ -4,3 +4,6 @@ twitch:
 youtube:
   - "@krzysztofmmaj"
   - "@mateusz_astrolife"
+
+piped:
+  - https://api.piped.yt
