@@ -149,7 +149,7 @@ font Hack Nerd Font 9
 
 # Wallpaper
 # ------------------------------------------------------------------------------
-output * bg "$(xdg-user-dir PICTURES)/wallpapers/zero-sievert-swamp.jpg" fill
+output * bg "$(xdg-user-dir PICTURES)/wallpapers/zero-sievert-industrial-area.jpg" fill
 
 # Window alignment
 # ------------------------------------------------------------------------------
