@@ -1,20 +1,6 @@
 twitch:
-  - rockalone
   - togglebit
-  - zlemyslisz
 
 youtube:
   - "@krzysztofmmaj"
   - "@mateusz_astrolife"
-
-piped:
-  - https://pipedapi.kavin.rocks
-  - https://pipedapi.adminforge.de
-  - https://api.piped.projectsegfau.lt
-
-safetwitch:
-  - https://stbackend.drgns.space
-  - https://safetwitch-api.lunar.icu
-  - https://api.safetwitch.eu.projectsegfau.lt
-
-youtube_chat_cmd: swaymsg "exec firefox --private-window '%url'"
