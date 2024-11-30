@@ -82,6 +82,7 @@ bindsym {
 	$mod+Right           resize shrink width 100 px
 	$mod+w               layout toggle tabbed split
 	$mod+e               split toggle
+	$mod+d               bar mode toggle
 	$mod+f               fullscreen toggle
 	$mod+q               kill
 	$mod+r               reload
@@ -180,6 +181,7 @@ bar {
 	position top
 	separator_symbol " "
 	tray_output none
+	modifier none
 
 	colors {
 		background         $bg
