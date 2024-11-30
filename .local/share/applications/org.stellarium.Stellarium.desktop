@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=stellarium
+Exec=flatpak run org.stellarium.Stellarium
