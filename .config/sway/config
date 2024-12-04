@@ -110,6 +110,7 @@ bindsym {
 	$mod+Insert          seat * hide_cursor when-typing enable
 	$mod+Shift+Insert    seat * hide_cursor when-typing disable
 	$mod+x               exec mpv $(wl-paste)
+	$mod+i               exec "weather -l $latitude -L $longitude > /tmp/weather"
 }
 
 floating_modifier $mod
