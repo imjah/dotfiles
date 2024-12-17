@@ -77,7 +77,9 @@ nt() {
 		--bind="alt-t:execute-silent(bash -ic 'trash $dir/{}')+reload($LS)" \
 		--header="enter:edit  alt-t:trash" \
 		--preview="bat --color=always --style=changes '$dir/{}'" \
-		--preview-window=up,80% | \
+		--preview-window=up,80% \
+		--query="$1" \
+		--select-1 | \
 
 	while read -r file; do
 		$EDITOR "$dir/$file" || return
