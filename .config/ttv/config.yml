@@ -8,4 +8,5 @@ youtube:
   - "@mateusz_astrolife"
 
 piped:
+  - https://pipedapi.kavin.rocks
   - https://api.piped.yt
