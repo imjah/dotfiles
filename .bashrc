@@ -42,12 +42,29 @@ meme() {
 		--bind="alt-t:execute-silent(bash -ic 'trash $dir/{}')+reload($LS)" \
 		--bind="alt-c:execute-silent(bash -ic dwebp-memes)+reload($LS)" \
 		--header="enter:copy  alt-t:trash  alt-c:convert" \
-		--preview="chafa '$dir/{}'" \
+		--preview="chafa --view-size $image_size '$dir/{}'" \
 		--preview-window=$window_size% | \
 
 	while read -r file; do
 		wl-copy < "$dir/$file" || (echo "Failed to copy $file" >&2 && return 1)
 	done
+}
+
+# images manager
+# ------------------------------------------------------------------------------
+gallery() {
+	local dir="${1:-$(xdg-user-dir PICTURES)}"
+	local LS="ls -1 $dir"
+	local window_size=80
+	local image_size=`python -c "print(f'{int($(tput cols)*$window_size/100)-4}x{$(tput lines)-1}')"`
+
+	$LS | fzf -m \
+		--bind="alt-t:execute-silent(bash -ic 'trash $dir/{}')+reload($LS)" \
+		--bind="alt-r:execute-silent(convert $dir/{} -rotate  90 $dir/{})+reload($LS)" \
+		--bind="alt-l:execute-silent(convert $dir/{} -rotate -90 $dir/{})+reload($LS)" \
+		--header="alt-t:trash  alt-r:rotate-right  alt-l:rotate-left" \
+		--preview="chafa --view-size $image_size '$dir/{}'" \
+		--preview-window=$window_size%
 }
 
 # notes manager
