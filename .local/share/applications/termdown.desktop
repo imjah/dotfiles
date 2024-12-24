@@ -2,4 +2,4 @@
 Type=Application
 Terminal=true
 Name=termdown
-Exec=termdown
+Exec=termdown -s
