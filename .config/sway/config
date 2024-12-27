@@ -92,7 +92,7 @@ bindsym {
 	$mod+Shift+space     exec footclient -HW 80x5 -a pop-up bash -ic "translate '' pl en"
 	XF86HomePage         exec gtk-launch firefox
 	XF86Calculator       exec gtk-launch fend
-	XF86Tools            exec gtk-launch ncspot
+	XF86Tools            exec gtk-launch spotify-player
 	XF86AudioPrev        exec playerctl previous
 	XF86AudioNext        exec playerctl next
 	XF86AudioPlay        exec playerctl play-pause
