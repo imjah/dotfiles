@@ -27,7 +27,7 @@ translate() {
 config() {
 	test -z "$1" && git=lazygit || git=git
 
-	$git --git-dir="$(xdg-user-dir PROJECTS)/.dotfiles" --work-tree=$HOME $@
+	$git --work-tree="$(xdg-user-dir PROJECTS)/dotfiles" $@
 }
 
 # memes manager
