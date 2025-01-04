@@ -1,5 +1,5 @@
 theme = "gruvbox_dark"
-client_id = "e8416db8839840a1bcdc431ed734144f"
+client_id = "c0c2a1ba6b3c4ee7be3ae9102851544d"
 client_port = 8080
 login_redirect_uri = "http://127.0.0.1:8989/login"
 playback_format = """
