@@ -33,7 +33,7 @@ album_percent = 40
 [device]
 name = "pc"
 device_type = "computer"
-volume = 100
+volume = 70
 bitrate = 320
 audio_cache = true
 normalization = false
