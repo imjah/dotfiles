@@ -9,5 +9,9 @@ youtube:
   - "@mateusz_astrolife"
 
 piped:
+  - https://pipedapi.adminforge.de
   - https://pipedapi.kavin.rocks
-  - https://api.piped.yt
+
+safetwitch:
+  - https://safetwitch-api.lunar.icu
+  - https://stbackend.drgns.space
