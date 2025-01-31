@@ -135,7 +135,7 @@ backup() {
 
 	test -z "$(findmnt $mountpoint)" && sudo mount $mountpoint
 	test -z "$(findmnt $mountpoint)" && echo "Mount failed" >&2 && return 1
-	rsync -ahv --delete $HOME/* "$mountpoint/$(uname -n)"
+	rsync -ahv --delete --exclude=dotfiles/ $HOME/* "$mountpoint/$(uname -n)"
 	sudo umount $mountpoint
 }
 
