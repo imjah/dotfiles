@@ -1,6 +1,7 @@
 export PS1="\[\e[38;2;104;157;106m\]\w\[\033[0m\] "
 
 alias cat="bat"
+alias f=fff
 alias hx="helix"
 alias ls="eza -a1 --icons --group-directories-first"
 alias lz="lazygit"

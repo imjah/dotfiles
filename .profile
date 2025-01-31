@@ -2,23 +2,6 @@
 # ------------------------------------------------------------------------------
 export PATH="$PATH:$HOME/.local/bin"
 
-# Bash
-# ------------------------------------------------------------------------------
-export HISTSIZE=
-
-# Theme
-# ------------------------------------------------------------------------------
-export GTK_THEME="Adwaita:dark"
-
-# Programs
-# ------------------------------------------------------------------------------
-export SHELL="bash"
-export PAGER="less"
-export EDITOR="helix"
-export VISUAL="helix"
-export BROWSER="firefox"
-export TERMINAL="footclient"
-
 # Dotfiles
 # ------------------------------------------------------------------------------
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -36,12 +19,12 @@ export PASSWORD_STORE_DIR="`xdg-user-dir PROJECTS`/.password-store"
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
 export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java"
 
-# NVIDIA
+# Modules
 # ------------------------------------------------------------------------------
-export WLR_NO_HARDWARE_CURSORS=1
-export LIBVA_DRIVER_NAME=nvidia
-export GBM_BACKEND=nvidia-drm
-export __GLX_VENDOR_LIBRARY_NAME=nvidia
+for file in $XDG_CONFIG_HOME/profile/*.sh
+do
+  source $file
+done
 
 # Window manager
 # ------------------------------------------------------------------------------
