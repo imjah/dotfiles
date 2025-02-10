@@ -39,7 +39,6 @@ exec {
 		after-resume 'swaymsg "output * power on"' \
 		before-sleep 'swaylock -fuc "$bg"'
 	watch -n 900 "weather -l $latitude -L $longitude > /tmp/weather"
-	dino
 }
 
 # Keybinds
@@ -158,7 +157,6 @@ output * bg "$(xdg-user-dir PICTURES)/wallpapers/zero-sievert-industrial-area.jp
 # ------------------------------------------------------------------------------
 for_window [app_id="ttv-chat"]         resize shrink width 500 px
 no_focus   [app_id="ttv-chat"]
-for_window [app_id="im.dino.Dino"]     move container to workspace 10
 for_window [title="gpg"]               floating enable
 for_window [app_id="hidden"]           move scratchpad
 for_window [app_id="pop-up"]           floating enable
