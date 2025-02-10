@@ -1,17 +1,11 @@
 twitch:
-  - rockalone
   - togglebit
-  - szparumen
-  - pokochajszachy
 
 youtube:
-  - "@krzysztofmmaj"
   - "@mateusz_astrolife"
 
 piped:
-  - https://pipedapi.adminforge.de
-  - https://pipedapi.kavin.rocks
+  - https://api.piped.private.coffee
 
 safetwitch:
-  - https://safetwitch-api.lunar.icu
-  - https://stbackend.drgns.space
+  - https://api.safetwitch.eu.projectsegfau.lt
