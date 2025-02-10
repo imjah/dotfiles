@@ -15,15 +15,15 @@ export HISTFILE="$XDG_DATA_HOME/bash/history"
 export LESSHISTFILE="$XDG_DATA_HOME/less/history"
 export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
-export PASSWORD_STORE_DIR="`xdg-user-dir PROJECTS`/.password-store"
+export PASSWORD_STORE_DIR="$(xdg-user-dir PROJECTS)/.password-store"
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
 export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java"
 
 # Modules
 # ------------------------------------------------------------------------------
-for file in $XDG_CONFIG_HOME/profile/*.sh
+for file in "$XDG_CONFIG_HOME"/profile/*.sh
 do
-  source $file
+  source "$file"
 done
 
 # Window manager
