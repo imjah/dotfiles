@@ -18,7 +18,7 @@ sleep-timer() {
 # translator
 # ------------------------------------------------------------------------------
 translate() {
-	local instance="https://lingva.lunar.icu/api/v1"
+	instance="https://lingva.lunar.icu/api/v1"
 
 	curl -s "$instance/${2:-en}/${3:-pl}/${1:-$(wl-paste -np)}" | cut -d'"' -f4
 }
@@ -34,10 +34,10 @@ config() {
 # memes manager
 # ------------------------------------------------------------------------------
 meme() {
-	local dir="$(xdg-user-dir PICTURES)/memes"
-	local LS="ls -1 $dir"
-	local window_size=80
-	local image_size=`python -c "print(f'{int($(tput cols)*$window_size/100)-4}x{$(tput lines)-1}')"`
+	dir="$(xdg-user-dir PICTURES)/memes"
+	LS="ls -1 $dir"
+	window_size=80
+	image_size=$(python -c "print(f'{int($(tput cols)*$window_size/100)-4}x{$(tput lines)-1}')")
 
 	$LS | fzf -m \
 		--bind="alt-t:execute-silent(bash -ic 'trash $dir/{}')+reload($LS)" \
@@ -54,10 +54,10 @@ meme() {
 # images manager
 # ------------------------------------------------------------------------------
 gallery() {
-	local dir="${1:-$(xdg-user-dir PICTURES)}"
-	local LS="ls -1 $dir"
-	local window_size=80
-	local image_size=`python -c "print(f'{int($(tput cols)*$window_size/100)-4}x{$(tput lines)-1}')"`
+	dir="${1:-$(xdg-user-dir PICTURES)}"
+	LS="ls -1 $dir"
+	window_size=80
+	image_size=$(python -c "print(f'{int($(tput cols)*$window_size/100)-4}x{$(tput lines)-1}')")
 
 	$LS | fzf -m \
 		--bind="alt-t:execute-silent(bash -ic 'trash $dir/{}')+reload($LS)" \
@@ -71,8 +71,8 @@ gallery() {
 # notes manager
 # ------------------------------------------------------------------------------
 nt() {
-	local dir="$(xdg-user-dir DOCUMENTS)/notes"
-	local LS="ls -1 $dir"
+	dir="$(xdg-user-dir DOCUMENTS)/notes"
+	LS="ls -1 $dir"
 
 	$LS | fzf -m \
 		--bind="alt-t:execute-silent(bash -ic 'trash $dir/{}')+reload($LS)" \
@@ -90,7 +90,7 @@ nt() {
 # trash manager
 # ------------------------------------------------------------------------------
 trash() {
-	local dir="$XDG_DATA_HOME/trash"
+	dir="$XDG_DATA_HOME/trash"
 
 	if [[ -e "$dir" ]]; then
 		test ! -d "$dir" && echo "Cannot make $dir: file exist." >&2 && return
@@ -136,7 +136,7 @@ backup() {
 
 	test -z "$(findmnt $mountpoint)" && sudo mount $mountpoint
 	test -z "$(findmnt $mountpoint)" && echo "Mount failed" >&2 && return 1
-	rsync -ahv --delete --exclude=dotfiles/ $HOME/* "$mountpoint/$(uname -n)"
+	rsync -ahv --delete --exclude=dotfiles/ "$HOME"/* "$mountpoint/$(uname -n)"
 	sudo umount $mountpoint
 }
 
@@ -157,7 +157,7 @@ wttr-desktop() {
 # convert WEBP meme/s into PNG
 # ------------------------------------------------------------------------------
 dwebp-memes() {
-	for file in $(xdg-user-dir PICTURES)/memes/*.webp; do
+	for file in "$(xdg-user-dir PICTURES)"/memes/*.webp; do
 		dwebp "$file" -o "${file%.*}.png" && trash "$file"
 	done
 }
