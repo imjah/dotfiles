@@ -3,6 +3,7 @@ theme = "gruvbox"
 [editor]
 rulers = [80]
 auto-format = false
+bufferline = 'multiple'
 
 [editor.whitespace]
 render = "all"
