@@ -14,8 +14,8 @@ set {
 
 # Location
 # ------------------------------------------------------------------------------
-set $latitude  53.34
-set $longitude 15.04
+set $latitude  53.20
+set $longitude 15.02
 
 # Caffeine
 # ------------------------------------------------------------------------------
@@ -92,7 +92,7 @@ bindsym {
 	$mod+Shift+space     exec footclient -HW 80x5 -a pop-up bash -ic "translate '' pl en"
 	XF86HomePage         exec gtk-launch firefox
 	XF86Calculator       exec gtk-launch fend
-	XF86Tools            exec gtk-launch spotify-player
+	XF86Tools            exec gtk-launch ncspot
 	XF86AudioPrev        exec playerctl previous
 	XF86AudioNext        exec playerctl next
 	XF86AudioPlay        exec playerctl play-pause
@@ -109,8 +109,7 @@ bindsym {
 	$mod+Return          exec footclient
 	$mod+Insert          seat * hide_cursor when-typing enable
 	$mod+Shift+Insert    seat * hide_cursor when-typing disable
-	$mod+x               exec mpv $(wl-paste)
-	$mod+i               exec "weather -l $latitude -L $longitude > /tmp/weather"
+	$mod+Home            exec "weather -l $latitude -L $longitude > /tmp/weather"
 }
 
 floating_modifier $mod
@@ -135,7 +134,7 @@ bindsym $mod+Escape mode $power
 # ------------------------------------------------------------------------------
 input type:keyboard {
 	xkb_layout pl
-	repeat_rate 50
+	repeat_rate 60
 	repeat_delay 250
 }
 
@@ -151,7 +150,7 @@ font Hack Nerd Font 9
 
 # Wallpaper
 # ------------------------------------------------------------------------------
-output * bg "$(xdg-user-dir PICTURES)/wallpapers/zero-sievert-industrial-area.jpg" fill
+output * bg "$(xdg-user-dir PICTURES)/wallpapers/zero-sievert-mall.jpg" fill
 
 # Window alignment
 # ------------------------------------------------------------------------------
