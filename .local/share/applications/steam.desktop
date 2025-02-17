@@ -1,4 +1,4 @@
 [Desktop Entry]
 Type=Application
 Name=steam
-Exec=steam-runtime %U
+Exec=steam-runtime-fake-home %U
