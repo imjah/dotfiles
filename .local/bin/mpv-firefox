@@ -4,4 +4,4 @@ url="${1/mpv:/}"
 
 notify-send mpv "$url"
 
-mpv "$url"
+mpv --wayland-app-id=mpv-firefox "$url"

@@ -156,6 +156,7 @@ output * bg "$(xdg-user-dir PICTURES)/wallpapers/zero-sievert-mall.jpg" fill
 # ------------------------------------------------------------------------------
 for_window [app_id="ttv-chat"]          resize shrink width 500
 no_focus   [app_id="ttv-chat"]
+for_window [app_id="mpv-firefox"]       floating enable, resize set 854 480, move position 1056 546
 for_window [title="gpg"]                floating enable
 for_window [title="pass:"]              floating enable, move right 790, move down 360
 for_window [title="Picture-in-Picture"] floating enable, resize set 427 240, move position 1483 810 
