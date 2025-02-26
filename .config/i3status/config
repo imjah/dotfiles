@@ -18,7 +18,7 @@ read_file caffeine {
 }
 
 read_file weather {
-	path = "/tmp/weather"
+	path = "~/.cache/weather"
 	format_bad = ""
 }
 

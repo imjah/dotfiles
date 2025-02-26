@@ -16,7 +16,6 @@ set {
 # ------------------------------------------------------------------------------
 set $latitude  53.20
 set $longitude 15.02
-
 # Caffeine
 # ------------------------------------------------------------------------------
 set $caffeine /tmp/caffeine
@@ -38,7 +37,6 @@ exec {
 		timeout 600  'test -e $caffeine || systemctl suspend' \
 		after-resume 'swaymsg "output * power on"' \
 		before-sleep 'swaylock -fuc "$bg"'
-	watch -n 900 "weather -l $latitude -L $longitude > /tmp/weather"
 }
 
 # Keybinds
