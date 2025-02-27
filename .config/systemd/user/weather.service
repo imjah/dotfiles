@@ -1,9 +1,11 @@
 [Unit]
+After=network.target
 Description=Weather Icon with current temperature
 
 [Service]
 EnvironmentFile=%E/location
 ExecStart=%h/.local/bin/weather -l $LATITUDE -L $LONGITUDE
+StandardError=journal
 StandardOutput=file:%C/weather
 
 [Install]
