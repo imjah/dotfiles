@@ -1,3 +1,5 @@
+source /usr/share/fzf/key-bindings.bash
+
 export PS1="\[\e[38;2;104;157;106m\]\w\[\033[0m\] "
 
 alias cat="bat"
