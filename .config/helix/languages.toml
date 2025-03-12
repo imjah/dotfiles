@@ -13,8 +13,7 @@ args = ["server", "--preview"]
 
 [[language]]
 name = "vue"
-formatter = { command = 'prettier', args = ["--parser", "vue"] }
-language-servers = ["volar"]
+language-servers = ["volar", "tailwindcss-ls"]
 
 [language-server.volar]
 command = "vue-language-server"

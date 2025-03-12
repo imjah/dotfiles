@@ -5,6 +5,9 @@ rulers = [80]
 auto-format = false
 bufferline = 'multiple'
 
+[editor.file-picker]
+hidden = false
+
 [editor.whitespace]
 render = "all"
 
