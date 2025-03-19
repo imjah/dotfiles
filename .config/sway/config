@@ -86,8 +86,8 @@ bindsym {
 	$mod+r               reload
 	$mod+grave           scratchpad show
 	$mod+Shift+grave     move scratchpad
-	$mod+space           exec footclient -HW 80x5 -a pop-up bash -ic "translate '' en pl"
-	$mod+Shift+space     exec footclient -HW 80x5 -a pop-up bash -ic "translate '' pl en"
+	$mod+minus           exec brightnessctl -q s 10%-
+	$mod+equal           exec brightnessctl -q s +10%
 	XF86HomePage         exec gtk-launch firefox
 	XF86Calculator       exec gtk-launch fend
 	XF86Tools            exec gtk-launch ncspot
@@ -107,7 +107,6 @@ bindsym {
 	$mod+Return          exec footclient
 	$mod+Insert          seat * hide_cursor when-typing enable
 	$mod+Shift+Insert    seat * hide_cursor when-typing disable
-	$mod+Home            exec "weather -l $latitude -L $longitude > /tmp/weather"
 }
 
 floating_modifier $mod
