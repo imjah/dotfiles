@@ -17,14 +17,6 @@ sleep-timer() {
 	sleep "$1" && systemctl suspend
 }
 
-# translator
-# ------------------------------------------------------------------------------
-translate() {
-	instance="https://lingva.lunar.icu/api/v1"
-
-	curl -s "$instance/${2:-en}/${3:-pl}/${1:-$(wl-paste -np)}" | cut -d'"' -f4
-}
-
 # config manager
 # ------------------------------------------------------------------------------
 config() {
