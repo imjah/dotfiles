@@ -1,5 +1,5 @@
 [Unit]
-After=network.target
+After=network-online.target
 Description=Weather Icon with current temperature
 
 [Service]
